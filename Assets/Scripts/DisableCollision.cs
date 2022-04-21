@@ -28,8 +28,17 @@ public class DisableCollision : MonoBehaviour
         {
             foreach (Collider collider in collidersToDisable)
             {
-                Physics.IgnoreCollision(handColliderLeft, collider, true);
-                Physics.IgnoreCollision(handColliderRight, collider, true);
+                Debug.Log("Ruben is kaulo lekker!");
+
+                handColliderLeft.enabled = false;
+                handColliderRight.enabled = false;
+
+                //int grabbedLayer = LayerMask.NameToLayer("Grabbed");
+
+                //collider.gameObject.layer = grabbedLayer;
+
+                //Physics.IgnoreCollision(handColliderLeft, collider, true);
+                //Physics.IgnoreCollision(handColliderRight, collider, true);
             }
         }
     }
@@ -40,8 +49,17 @@ public class DisableCollision : MonoBehaviour
         {
             foreach (Collider collider in collidersToDisable)
             {
-                Physics.IgnoreCollision(handColliderLeft, collider, false);
-                Physics.IgnoreCollision(handColliderRight, collider, false);
+                Debug.Log("TEST");
+
+                handColliderLeft.enabled = true;
+                handColliderRight.enabled = true;
+
+                //int grabbableLayer = LayerMask.NameToLayer("Grabbable");
+
+                //collider.gameObject.layer = grabbableLayer;
+
+                //Physics.IgnoreCollision(handColliderLeft, collider, false);
+                //Physics.IgnoreCollision(handColliderRight, collider, false);
             }
         }
     }

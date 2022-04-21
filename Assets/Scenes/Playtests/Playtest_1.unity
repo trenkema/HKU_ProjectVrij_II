@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 176045576}
   - component: {fileID: 176045578}
   - component: {fileID: 176045579}
+  - component: {fileID: 176045580}
   m_Layer: 7
   m_Name: XR Origin
   m_TagString: Untagged
@@ -302,7 +303,7 @@ MonoBehaviour:
   m_Camera: {fileID: 968817617}
   m_OriginBaseGameObject: {fileID: 176045573}
   m_CameraFloorOffsetObject: {fileID: 1713814959}
-  m_RequestedTrackingOriginMode: 1
+  m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.35
 --- !u!4 &176045575
 Transform:
@@ -360,6 +361,7 @@ MonoBehaviour:
   jumpForce: 350
   jumpEnabled: 0
   gravity: -9.81
+  useGravity: 0
 --- !u!114 &176045578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +389,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrackingOriginMode: 2
+--- !u!114 &176045580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176045573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1df65dca4d110a4781e6d0cbacb4fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 176045575}
+  vrStartDelay: 2
+  cameraOffset: -0.25
+  cameraOffsetTransform: {fileID: 1713814960}
+  playerController: {fileID: 176045577}
 --- !u!1 &566967790
 GameObject:
   m_ObjectHideFlags: 0
