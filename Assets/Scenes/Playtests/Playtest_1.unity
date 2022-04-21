@@ -264,7 +264,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &176045573
 GameObject:
@@ -321,7 +321,7 @@ Transform:
   - {fileID: 661123690}
   - {fileID: 566967793}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &176045576
 CharacterController:
@@ -925,6 +925,80 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1001 &1089195177
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 73880858779856875, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_Name
+      value: Paper
+      objectReference: {fileID: 0}
+    - target: {fileID: 73880858779856875, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.0327486
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.049
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.26656693
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630705949605874379, guid: c31a8cd12db6b8a4d90e8dd514a6987d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c31a8cd12db6b8a4d90e8dd514a6987d, type: 3}
 --- !u!1 &1132077457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +1156,7 @@ GameObject:
   - component: {fileID: 1413089765}
   - component: {fileID: 1413089764}
   - component: {fileID: 1413089770}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,10 +1204,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1413089770}
+        m_TargetAssemblyTypeName: DisableCollision, Assembly-CSharp
+        m_MethodName: Grabbed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1413089770}
+        m_TargetAssemblyTypeName: DisableCollision, Assembly-CSharp
+        m_MethodName: Released
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -1747,7 +1845,7 @@ Transform:
   - {fileID: 2055969342}
   - {fileID: 1413089769}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1852620946
 GameObject:
@@ -2481,7 +2579,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1424226145142493580
 Animator:

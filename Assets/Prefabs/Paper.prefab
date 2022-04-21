@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1211566103829353434}
   - component: {fileID: -2896430176646980865}
   - component: {fileID: 8852358402678948967}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Paper
   m_TagString: Destroyable
   m_Icon: {fileID: 0}
