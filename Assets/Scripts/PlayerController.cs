@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
 
     private XROrigin xrOrigin;
     private CharacterController character;
-    private float fallingSpeed;
+    private float fallingSpeed = 0;
+
+    public bool useGravity = false;
 
     private bool isGrounded => Physics.Raycast(new Vector2(transform.position.x, transform.position.y + 2.0f), Vector3.down, 2.0f);
 
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
         bool isGrounded = CheckIfGrounded();
 
-        if (isGrounded)
+        if (isGrounded || !useGravity)
             fallingSpeed = 0;
         else
         {

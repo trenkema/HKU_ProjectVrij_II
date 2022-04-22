@@ -97,6 +97,9 @@ public class Hand : MonoBehaviour
         if (isGrabbing || heldObject) return;
 
         Collider[] grabbableColliders = Physics.OverlapSphere(palm.position, reachDistance, grabbableLayer);
+
+        Debug.Log("Amount: " + grabbableColliders.Length);
+
         if (grabbableColliders.Length < 1) return;
 
         var objectToGrab = grabbableColliders[0].transform.gameObject;
@@ -147,29 +150,30 @@ public class Hand : MonoBehaviour
         objectBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         objectBody.interpolation = RigidbodyInterpolation.Interpolate;
 
+        // BUGGY
         // Attach joints
-        joint1 = gameObject.AddComponent<FixedJoint>();
-        joint1.connectedBody = objectBody;
-        joint1.breakForce = float.PositiveInfinity;
-        joint1.breakTorque = float.PositiveInfinity;
+        //joint1 = gameObject.AddComponent<FixedJoint>();
+        //joint1.connectedBody = objectBody;
+        //joint1.breakForce = float.PositiveInfinity;
+        //joint1.breakTorque = float.PositiveInfinity;
 
-        joint1.connectedMassScale = 1;
-        joint1.massScale = 1;
-        joint1.enableCollision = false;
-        joint1.enablePreprocessing = false;
+        //joint1.connectedMassScale = 1;
+        //joint1.massScale = 1;
+        //joint1.enableCollision = false;
+        //joint1.enablePreprocessing = false;
 
-        body.velocity = Vector3.zero;
-        body.angularVelocity = Vector3.zero;
+        //body.velocity = Vector3.zero;
+        //body.angularVelocity = Vector3.zero;
 
-        joint2 = heldObject.AddComponent<FixedJoint>();
-        joint2.connectedBody = body;
-        joint2.breakForce = float.PositiveInfinity;
-        joint2.breakTorque = float.PositiveInfinity;
+        //joint2 = heldObject.AddComponent<FixedJoint>();
+        //joint2.connectedBody = body;
+        //joint2.breakForce = float.PositiveInfinity;
+        //joint2.breakTorque = float.PositiveInfinity;
 
-        joint2.connectedMassScale = 1;
-        joint2.massScale = 1;
-        joint2.enableCollision = false;
-        joint2.enablePreprocessing = false;
+        //joint2.connectedMassScale = 1;
+        //joint2.massScale = 1;
+        //joint2.enableCollision = false;
+        //joint2.enablePreprocessing = false;
 
         // Reset follow target
         followTarget = controller.gameObject.transform;
@@ -177,16 +181,17 @@ public class Hand : MonoBehaviour
 
     private void Release(InputAction.CallbackContext context)
     {
-        if (joint1 != null)
-        {
-            Destroy(joint1);
-            joint1 = null;
-        }
-        if (joint2 != null)
-        {
-            Destroy(joint2);
-            joint2 = null;
-        }
+        // BUGGY
+        //if (joint1 != null)
+        //{
+        //    Destroy(joint1);
+        //    joint1 = null;
+        //}
+        //if (joint2 != null)
+        //{
+        //    Destroy(joint2);
+        //    joint2 = null;
+        //}
         if (grabPoint != null)
         {
             Destroy(grabPoint.gameObject);
