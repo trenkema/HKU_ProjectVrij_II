@@ -18,7 +18,7 @@ public class MatchstickScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Paper")
+        if (collision.gameObject.tag == "Destroyable")
         {
             Destroy(collision.collider.gameObject);
         }
