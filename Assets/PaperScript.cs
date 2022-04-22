@@ -22,9 +22,9 @@ public class PaperScript : MonoBehaviour
         {
             if (currentTime <= burnTime)
             {
-                currentTime += Time.deltaTime * speed;
+                currentTime += Time.deltaTime;
 
-                GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, currentTime);
+                GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, currentTime / burnTime);
             }
             else
             {
