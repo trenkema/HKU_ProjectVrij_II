@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VRStartSettings : MonoBehaviour
 {
+    [SerializeField] Vector3 startPosition;
+
     [SerializeField] Transform playerTransform;
 
     [SerializeField] float vrStartDelay = 0.25f;
@@ -23,7 +25,7 @@ public class VRStartSettings : MonoBehaviour
     {
         yield return new WaitForSeconds(vrStartDelay);
 
-        playerTransform.localPosition = new Vector3(0f, 1f, 0f);
+        playerTransform.localPosition = startPosition;
 
         playerController.useGravity = true;
 
