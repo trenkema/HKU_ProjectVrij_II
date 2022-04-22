@@ -4,24 +4,42 @@ using UnityEngine;
 
 public class PaperScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] ParticleSystem flameParticles;
+
+    bool isBurning = false;
+
+    public float speed = 1.0f;
+    public Color startColor;
+    public Color endColor;
+    [SerializeField] float burnTime = 4;
+
+    float currentTime = 0;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isBurning)
+        {
+            if (currentTime <= burnTime)
+            {
+                currentTime += Time.deltaTime * speed;
+
+                GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, currentTime);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
-    void OnTriggerEnter(Collider other)
+    public void SetInFlames()
     {
-        if (other.tag == "Window")
+        if (!isBurning)
         {
-            Debug.Log("Papier uit het raam gegooid");
-            Destroy(this.gameObject);
+            isBurning = true;
+
+            flameParticles.Play();
         }
     }
 }
