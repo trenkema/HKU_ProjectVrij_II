@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 7046829276956346025}
   - component: {fileID: 3544760493190169588}
   - component: {fileID: 961699093}
+  - component: {fileID: 8228613254407285804}
   m_Layer: 2
   m_Name: Arrow
   m_TagString: Arrow
@@ -248,7 +249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 961699093}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -276,10 +278,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8228613254407285804}
+        m_TargetAssemblyTypeName: DisableCollision, Assembly-CSharp
+        m_MethodName: Grabbed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8228613254407285804}
+        m_TargetAssemblyTypeName: DisableCollision, Assembly-CSharp
+        m_MethodName: Released
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -385,6 +411,24 @@ CapsuleCollider:
   m_Height: 0.8
   m_Direction: 2
   m_Center: {x: 0.004637705, y: 0, z: -0.0002289713}
+--- !u!114 &8228613254407285804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542102953145869890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1870d99fed404004db98f9e4850b53c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collidersToDisable:
+  - {fileID: 961699093}
+  handColliderLeft: {fileID: 0}
+  handColliderRight: {fileID: 0}
+  socketCollider: []
+  socketItemCollider: {fileID: 0}
 --- !u!1 &8589002692731022628
 GameObject:
   m_ObjectHideFlags: 0
