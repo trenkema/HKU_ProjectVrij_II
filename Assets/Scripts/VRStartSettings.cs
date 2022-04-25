@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VRStartSettings : MonoBehaviour
 {
+    [SerializeField] bool enableStartPosition = true;
+
     [SerializeField] Vector3 startPosition;
 
     [SerializeField] Transform playerTransform;
@@ -25,10 +27,11 @@ public class VRStartSettings : MonoBehaviour
     {
         yield return new WaitForSeconds(vrStartDelay);
 
-        playerTransform.localPosition = startPosition;
+        if (enableStartPosition)
+            playerTransform.localPosition = startPosition;
 
         playerController.useGravity = true;
 
-        cameraOffsetTransform.transform.localPosition = new Vector3(cameraOffsetTransform.transform.position.x, cameraOffset, cameraOffsetTransform.transform.position.z);
+        cameraOffsetTransform.transform.localPosition = new Vector3(cameraOffsetTransform.transform.localPosition.x, cameraOffset, cameraOffsetTransform.localPosition.z);
     }
 }
