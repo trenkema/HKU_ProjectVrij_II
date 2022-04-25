@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PaperScript : MonoBehaviour
 {
+    [SerializeField] float delayBeforeFlamable = 1f;
+
     [SerializeField] ParticleSystem flameParticles;
 
     bool isBurning = false;
@@ -14,6 +16,13 @@ public class PaperScript : MonoBehaviour
     [SerializeField] float burnTime = 4;
 
     float currentTime = 0;
+
+    bool canBurn = false;
+
+    private void Start()
+    {
+        Invoke("CanBurn", delayBeforeFlamable);
+    }
 
     // Update is called once per frame
     void Update()
@@ -33,9 +42,14 @@ public class PaperScript : MonoBehaviour
         }
     }
 
+    private void CanBurn()
+    {
+        canBurn = true;
+    }
+
     public void SetInFlames()
     {
-        if (!isBurning)
+        if (!isBurning && canBurn)
         {
             isBurning = true;
 

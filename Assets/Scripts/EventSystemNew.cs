@@ -4,19 +4,8 @@ using UnityEngine;
 
 public enum Event_Type
 {
-    QUEST_ADD_AMOUNT,
-    QUEST_COMPLETED,
-    ACTIVATE_QUEST,
-    CURSOR_ON,
-    FREEZE_ACTIONS,
-    FREEZE_POSITION,
-    TALK_TO_NPC,
-    PLAYER_NEAR_BOAT,
-    PLAYER_ON_BOAT,
-    RYTHM_BUTTON_DESTROYED,
-    PIPE_FIXED,
-    START_GAME,
-    GAME_FINISHED
+    PAPER_BURNED,
+    SET_OBJECTIVE
 }
 
 public static class EventSystemNew

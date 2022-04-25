@@ -24,6 +24,8 @@ public class PrintButtonCollision : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnDelay);
 
+        EventSystemNew<int>.RaiseEvent(Event_Type.SET_OBJECTIVE, 1);
+
         for (int i = 0; i < paperAmount; i++)
         {
             GameObject paper = Instantiate(paperPrefab, paperSpawnTransform.position, paperSpawnTransform.rotation);
@@ -34,7 +36,7 @@ public class PrintButtonCollision : MonoBehaviour
             float speed = Random.Range(minPaperForce, maxPaperForce);
             rb.isKinematic = false;
             Vector3 force = transform.forward;
-            force = new Vector3(force.x, 0.25f, force.z);
+            force = new Vector3(force.x, 0.5f, force.z);
             paper.GetComponent<Rigidbody>().AddForce(force * speed);
 
             yield return new WaitForSeconds(spawnInterval);
