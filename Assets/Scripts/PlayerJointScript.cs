@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerJointScript : MonoBehaviour
 {
     public GameObject RopeBottom;
+
+    [SerializeField] float force = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,7 @@ public class PlayerJointScript : MonoBehaviour
         float Horizontal = Input.GetAxis("Horizontal");
         float Vertical = Input.GetAxis("Vertical");
 
-        RopeBottom.GetComponent<Rigidbody>().AddForce(transform.forward * Vertical, ForceMode.Acceleration);
-        RopeBottom.GetComponent<Rigidbody>().AddForce(transform.right * Horizontal, ForceMode.Acceleration);
+        RopeBottom.GetComponent<Rigidbody>().AddForce(transform.forward * Vertical * force, ForceMode.Acceleration);
+        RopeBottom.GetComponent<Rigidbody>().AddForce(transform.right * Horizontal * force, ForceMode.Acceleration);
     }
 }

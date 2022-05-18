@@ -5,7 +5,7 @@ using UnityEngine;
 public enum Event_Type
 {
     PAPER_BURNED,
-    SET_OBJECTIVE
+    SET_OBJECTIVE,
 }
 
 public static class EventSystemNew
