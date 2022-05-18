@@ -23,6 +23,6 @@ public class GeneralSettings : MonoBehaviour {
 
     private void Update() {
         //On Press reset scene
-        if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

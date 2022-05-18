@@ -27,9 +27,16 @@ public class Spider : MonoBehaviour {
     [SerializeField] float forwardForce = 1f;
     [SerializeField] float upForce = 1f;
 
-    [SerializeField] KeyCode jumpKey = KeyCode.K;
+    [SerializeField] KeyCode jumpKey = KeyCode.Space;
 
     private Rigidbody rb;
+
+    [Header("Shooting")]
+
+    [SerializeField] public Transform bulletSpawnPoint;
+    [SerializeField] public GameObject bulletPrefab;
+    [SerializeField] public float bulletSpeed = 10;
+    [SerializeField] public Camera spiderCamera;
 
     [Header("Debug")]
     public bool showDebug;
@@ -248,6 +255,18 @@ public class Spider : MonoBehaviour {
                 EventSystemNew.RaiseEvent(Event_Type.COLLIDED);
             }
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            ShootWeb();
+        }
+    }
+
+    public void ShootWeb()
+    {
+        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, spiderCamera.transform.rotation);
+        bullet.GetComponent<Bullet>().Setup(GetComponent<Collider>());
+        bullet.GetComponent<Rigidbody>().velocity = spiderCamera.transform.forward * bulletSpeed;
     }
 
     public bool IsGrounded()
