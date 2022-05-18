@@ -22,8 +22,12 @@ using Raycasting;
 [DefaultExecutionOrder(0)] // Any controller of this spider should have default execution -1
 public class Spider : MonoBehaviour {
 
+    [Header("Jumping")]
+
     [SerializeField] float forwardForce = 1f;
     [SerializeField] float upForce = 1f;
+
+    [SerializeField] KeyCode jumpKey = KeyCode.K;
 
     private Rigidbody rb;
 
@@ -124,7 +128,26 @@ public class Spider : MonoBehaviour {
 
     private groundInfo grdInfo;
 
+    // New Stuff
+    private float startWalkSpeed;
+    private float startRunSpeed;
+
+    private bool isSwinging = false;
+
+    private void OnEnable()
+    {
+        EventSystemNew<bool>.Subscribe(Event_Type.IS_SWINGING, IsSwinging);
+    }
+
+    private void OnDisable()
+    {
+        EventSystemNew<bool>.Unsubscribe(Event_Type.IS_SWINGING, IsSwinging);
+    }
+
     private void Awake() {
+
+        startWalkSpeed = walkSpeed;
+        startRunSpeed = runSpeed;
 
         //Make sure the scale is uniform, since otherwise lossy scale will not be accurate.
         float x = transform.localScale.x; float y = transform.localScale.y; float z = transform.localScale.z;
@@ -213,9 +236,17 @@ public class Spider : MonoBehaviour {
         else isMoving = false;
 
         // JUMP
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(jumpKey))
         {
             rb.AddForce((transform.forward * forwardForce) + (transform.up * upForce));
+        }
+
+        if (isSwinging)
+        {
+            if (IsGrounded())
+            {
+                EventSystemNew.RaiseEvent(Event_Type.COLLIDED);
+            }
         }
     }
 
@@ -224,6 +255,13 @@ public class Spider : MonoBehaviour {
         return grdInfo.isGrounded;
     }
 
+    private void IsSwinging(bool _isSwinging)
+    {
+        isSwinging = _isSwinging;
+
+        walkSpeed = _isSwinging ? 0f : startWalkSpeed;
+        runSpeed = _isSwinging ? 0f : startRunSpeed;
+    }
 
     //** Movement methods**//
 

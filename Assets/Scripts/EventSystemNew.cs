@@ -6,6 +6,9 @@ public enum Event_Type
 {
     PAPER_BURNED,
     SET_OBJECTIVE,
+
+    IS_SWINGING,
+    COLLIDED
 }
 
 public static class EventSystemNew

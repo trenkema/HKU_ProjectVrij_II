@@ -34,6 +34,16 @@ public class RopeGenerator : MonoBehaviour
 
     float lerpDistanceToAdd = 0f;
 
+    private void OnEnable()
+    {
+        EventSystemNew.Subscribe(Event_Type.COLLIDED, DestroyRope);
+    }
+
+    private void OnDisable()
+    {
+        EventSystemNew.Unsubscribe(Event_Type.COLLIDED, DestroyRope);
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
@@ -55,6 +65,8 @@ public class RopeGenerator : MonoBehaviour
 
     private void DestroyRope()
     {
+        EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, false);
+
         target.SetParent(null);
 
         target.GetComponent<Rigidbody>().isKinematic = false;
@@ -86,6 +98,8 @@ public class RopeGenerator : MonoBehaviour
 
     private void GenerateRope(Vector3 _endPointTransform)
     {
+        EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, true);
+
         // Create an endpoint to attach the joint to
         GameObject endPoint = new GameObject("Rope");
 
