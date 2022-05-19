@@ -99,7 +99,7 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -108,12 +108,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.4504375, g: 0.4145903, b: 0.3900877, a: 1}
-    - _Color: {r: 0.45043743, g: 0.41459027, b: 0.39008766, a: 1}
+    - _BaseColor: {r: 0.52100426, g: 0.47916865, b: 0.450504, a: 1}
+    - _Color: {r: 0.52100426, g: 0.4791686, b: 0.45050395, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1465899973851558117
+--- !u!114 &6461181252169890406
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

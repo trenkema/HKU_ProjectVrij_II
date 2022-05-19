@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Scene
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 104
+  controlID: 22
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 94
+  controlID: 115
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 95
+  controlID: 116
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 96
+  controlID: 117
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -485,7 +485,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 167cffff1a7cffff1e7cffff227cffff02aaffff0cbfffffcad9ffffe6e3ffffbcfaffff727300000aab00004aae0000
+      m_ExpandedIDs: 12fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -795,13 +795,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.070851065, y: 0.9030764, z: -0.1637709, w: 0.3906768}
+    m_Target: {x: 0.07007006, y: 0.88092476, z: -0.13800645, w: 0.44725323}
     speed: 2
-    m_Value: {x: 0.070604764, y: 0.9036542, z: -0.16387568, w: 0.38931865}
+    m_Value: {x: 0.069862284, y: 0.881586, z: -0.13811004, w: 0.445927}
   m_Size:
-    m_Target: 0.24067615
+    m_Target: 0.63546515
     speed: 2
-    m_Value: 0.23932615
+    m_Value: 0.6318275
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -935,23 +935,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_OwnModels/Spider/Prefab
+    - Assets/_OwnModels/Spider
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/_OwnModels/Spider/Prefab
+  - Assets/_OwnModels/Spider
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\veerl\Desktop\Projecten\School\Jaar 2\Periode 4\Project
     vrij II\Unity\HKU_ProjectVrij_II
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 266}
-    m_SelectedIDs: d4fe0000
-    m_LastClickedID: 65236
-    m_ExpandedIDs: 0000000016890000188900001a8900001c8900001e89000020890000268900002a8900006e89000014b1000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: f0890000
+    m_LastClickedID: 35312
+    m_ExpandedIDs: 00000000d0890000d2890000d4890000d8890000da890000ec890000f0890000f289000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -979,7 +979,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000016890000188900001a8900001c8900001e89000020890000
+    m_ExpandedIDs: 00000000d0890000d2890000d4890000d6890000d8890000da890000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
