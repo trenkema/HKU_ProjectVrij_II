@@ -245,7 +245,10 @@ public class Spider : MonoBehaviour {
         // JUMP
         if (Input.GetKeyDown(jumpKey))
         {
-            rb.AddForce((transform.forward * forwardForce) + (transform.up * upForce));
+            if (IsGrounded())
+            {
+                rb.AddForce((transform.forward * forwardForce) + (transform.up * upForce));
+            }
         }
 
         if (isSwinging)
