@@ -127,10 +127,10 @@ public class SpiderController2 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         velocity = (smoothness * velocity + (transform.position - lastPosition)) / (1f + smoothness);
         if (velocity.magnitude < 0.00025f)
             velocity = lastVelocity;
+
         lastPosition = transform.position;
         lastVelocity = velocity;
         

@@ -135,20 +135,22 @@ public class Hand : MonoBehaviour
         // Move hand to grab points
         followTarget = grabPoint;
 
+        yield return new WaitForSeconds(0);
+
         // Wait for hand to reach grab point
-        while (grabPoint != null && Vector3.Distance(grabPoint.position, palm.position) > joinDistance && isGrabbing)
-        {
-            yield return new WaitForEndOfFrame();
-        }
+        //while (grabPoint != null && Vector3.Distance(grabPoint.position, palm.position) > joinDistance && isGrabbing)
+        //{
+        //    yield return new WaitForEndOfFrame();
+        //}
 
         // Freeze hand and object motion
-        body.velocity = Vector3.zero;
-        body.angularVelocity = Vector3.zero;
-        objectBody.velocity = Vector3.zero;
-        objectBody.angularVelocity = Vector3.zero;
+        //body.velocity = Vector3.zero;
+        //body.angularVelocity = Vector3.zero;
+        //objectBody.velocity = Vector3.zero;
+        //objectBody.angularVelocity = Vector3.zero;
 
-        objectBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
-        objectBody.interpolation = RigidbodyInterpolation.Interpolate;
+        //objectBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        //objectBody.interpolation = RigidbodyInterpolation.Interpolate;
 
         // BUGGY
         // Attach joints
@@ -176,7 +178,8 @@ public class Hand : MonoBehaviour
         //joint2.enablePreprocessing = false;
 
         // Reset follow target
-        followTarget = controller.gameObject.transform;
+        
+        //followTarget = controller.gameObject.transform;
     }
 
     private void Release(InputAction.CallbackContext context)
