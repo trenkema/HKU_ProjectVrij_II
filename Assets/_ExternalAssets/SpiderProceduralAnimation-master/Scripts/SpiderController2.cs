@@ -148,7 +148,7 @@ public class SpiderController2 : MonoBehaviour
         if (valueX != 0 || valueY != 0)
         {
             pn = GetClosestPoint(transform.position, transform.forward, transform.up, 0.5f, 0.1f, 30, -30, 4);
-            //        pn = GetClosestPointIco(transform.position, transform.up, 0.2f);
+                    //pn = GetClosestPointIco(transform.position, transform.up, 0.2f);
 
             upward = pn[1];
             Vector3[] pos = GetClosestPoint(transform.position, transform.forward, transform.up, 0.5f, raysEccentricity, innerRaysOffset, outerRaysOffset, raysNb);
