@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class RopeGenerator : MonoBehaviour
 {
+    [SerializeField] PhotonView PV;
+
+    [SerializeField] string spherePrefabName;
+
     [Header("Raycast Settings")]
 
     [SerializeField] LayerMask raycastLayers;
@@ -17,6 +22,8 @@ public class RopeGenerator : MonoBehaviour
     [SerializeField] GameObject spherePrefab;
 
     [SerializeField] Transform startPoint;
+
+    [SerializeField] int amountOfPointsOffset = 0;
 
     [SerializeField] Vector3 ropeOffset = Vector3.zero;
 
@@ -65,6 +72,9 @@ public class RopeGenerator : MonoBehaviour
 
     private void DestroyRope()
     {
+        if (!PV.IsMine)
+            return;
+
         EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, false);
 
         target.SetParent(null);
@@ -73,14 +83,24 @@ public class RopeGenerator : MonoBehaviour
 
         //target.gameObject.SetActive(true);
 
+        //foreach (var ropePoint in ropePoints)
+        //{
+        //    Destroy(ropePoint);
+        //}
+
+        //foreach (var endPoint in endPoints)
+        //{
+        //    Destroy(endPoint);
+        //}
+
         foreach (var ropePoint in ropePoints)
         {
-            Destroy(ropePoint);
+            PhotonNetwork.Destroy(ropePoint);
         }
 
         foreach (var endPoint in endPoints)
         {
-            Destroy(endPoint);
+            PhotonNetwork.Destroy(endPoint);
         }
 
         ropePoints.Clear();
@@ -115,15 +135,20 @@ public class RopeGenerator : MonoBehaviour
 
         int amountOfPoints = (int)Mathf.Ceil(distance / distanceBetweenPoints);
 
+        amountOfPoints -= amountOfPointsOffset;
+
         lerpDistanceToAdd = 1f / amountOfPoints;
 
         // Create all the points between the two vectors
         // i < amountOfPoints + 1
-        for (int i = 0; i < amountOfPoints; i++)
+        for (int i = 0; i < amountOfPoints + 1; i++)
         {
             instantiatePosition = Vector3.Lerp(endPoint.transform.position, startPoint.position, lerpValue);
 
-            GameObject ropePoint = Instantiate(spherePrefab, instantiatePosition, Quaternion.identity, endPoint.transform);
+            //GameObject ropePoint = Instantiate(spherePrefab, instantiatePosition, Quaternion.identity, endPoint.transform);
+            GameObject ropePoint = PhotonNetwork.Instantiate(spherePrefabName, instantiatePosition, Quaternion.identity);
+
+            ropePoint.transform.SetParent(endPoint.transform);
 
             ropePoints.Add(ropePoint);
 
@@ -140,8 +165,8 @@ public class RopeGenerator : MonoBehaviour
                     joint.connectedBody = ropePoints[i - 1].GetComponent<Rigidbody>();
                 }
 
-                // i == amountOfPoints
-                if (i == amountOfPoints -1)
+                // i == amountOfPoints - 1
+                if (i == amountOfPoints)
                 {
                     //target.gameObject.SetActive(false);
 

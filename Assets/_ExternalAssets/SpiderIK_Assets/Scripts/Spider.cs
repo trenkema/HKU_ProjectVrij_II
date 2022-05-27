@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Raycasting;
+using UnityEngine.InputSystem;
 
 /*
  * This class represents the actual spider. It is responsible for "glueing" it to the surfaces around it. This is accomplished by
@@ -22,21 +23,21 @@ using Raycasting;
 [DefaultExecutionOrder(0)] // Any controller of this spider should have default execution -1
 public class Spider : MonoBehaviour {
 
-    [Header("Jumping")]
+    [SerializeField] Animator animator;
 
+    Vector3 previousPos;
+
+    Vector3 velocity;
+
+    bool hasSwung = false;
+
+    [Header("Jumping")]
     [SerializeField] float forwardForce = 1f;
     [SerializeField] float upForce = 1f;
 
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
 
     private Rigidbody rb;
-
-    [Header("Shooting")]
-
-    [SerializeField] public Transform bulletSpawnPoint;
-    [SerializeField] public GameObject bulletPrefab;
-    [SerializeField] public float bulletSpeed = 10;
-    [SerializeField] public Camera spiderCamera;
 
     [Header("Debug")]
     public bool showDebug;
@@ -181,6 +182,17 @@ public class Spider : MonoBehaviour {
         //** Ground Check **//
         grdInfo = GroundCheck();
 
+        if (!grdInfo.isGrounded)
+        {
+            if (!animator.GetBool("isFalling"))
+                animator.SetBool("isFalling", true);
+        }
+        else
+        {
+            if (animator.GetBool("isFalling"))
+                animator.SetBool("isFalling", false);
+        }
+
         //** Rotation to normal **// 
         float normalAdjustSpeed = (grdInfo.rayType == RayType.ForwardRay) ? forwardNormalAdjustSpeed : groundNormalAdjustSpeed;
 
@@ -196,6 +208,22 @@ public class Spider : MonoBehaviour {
         // Dont apply gravity if close enough to ground
         if (grdInfo.distanceToGround > getGravityOffDistance()) {
             rb.AddForce(-grdInfo.groundNormal * gravityMultiplier * 0.0981f * getScale()); //Important using the groundnormal and not the lerping normal here!
+        }
+
+        if (isSwinging)
+        {
+            Vector3 curVelocity = (transform.position - previousPos) / Time.fixedDeltaTime;
+
+            velocity = Vector3.Lerp(velocity, curVelocity, 0.1f);
+
+            previousPos = transform.position;
+        }
+
+        if (grdInfo.isGrounded && hasSwung)
+        {
+            hasSwung = false;
+
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -242,15 +270,6 @@ public class Spider : MonoBehaviour {
         }
         else isMoving = false;
 
-        // JUMP
-        if (Input.GetKeyDown(jumpKey))
-        {
-            if (IsGrounded())
-            {
-                rb.AddForce((transform.forward * forwardForce) + (transform.up * upForce));
-            }
-        }
-
         if (isSwinging)
         {
             if (IsGrounded())
@@ -258,23 +277,22 @@ public class Spider : MonoBehaviour {
                 EventSystemNew.RaiseEvent(Event_Type.COLLIDED);
             }
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            ShootWeb();
-        }
-    }
-
-    public void ShootWeb()
-    {
-        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, spiderCamera.transform.rotation);
-        bullet.GetComponent<Bullet>().Setup(GetComponent<Collider>());
-        bullet.GetComponent<Rigidbody>().velocity = spiderCamera.transform.forward * bulletSpeed;
     }
 
     public bool IsGrounded()
     {
         return grdInfo.isGrounded;
+    }
+
+    public void Jump(InputAction.CallbackContext _context)
+    {
+        if (_context.phase == InputActionPhase.Started)
+        {
+            if (IsGrounded())
+            {
+                rb.AddForce((transform.forward * forwardForce) + (transform.up * upForce));
+            }
+        }
     }
 
     private void IsSwinging(bool _isSwinging)
@@ -283,6 +301,15 @@ public class Spider : MonoBehaviour {
 
         walkSpeed = _isSwinging ? 0f : startWalkSpeed;
         runSpeed = _isSwinging ? 0f : startRunSpeed;
+
+        animator.SetBool("isSwinging", isSwinging ? true : false);
+
+        if (!isSwinging && !grdInfo.isGrounded)
+        {
+            rb.velocity = velocity / 2;
+
+            hasSwung = true;
+        }
     }
 
     //** Movement methods**//
@@ -329,7 +356,17 @@ public class Spider : MonoBehaviour {
     // It is advised to call these on a fixed update basis.
 
     public void walk(Vector3 direction) {
-        if (direction.magnitude < Mathf.Epsilon) return;
+        if (direction.magnitude < Mathf.Epsilon)
+        {
+            if (animator.GetBool("isWalking") == true)
+                animator.SetBool("isWalking", false);
+
+            return;
+        }
+
+        if (animator.GetBool("isWalking") == false)
+            animator.SetBool("isWalking", true);
+
         move(direction, walkSpeed);
     }
 

@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Playtests/MainMenu.unity
+    guid: 6084149ddbe3a104990ee4be970e0365
+  - enabled: 1
+    path: Assets/Scenes/Playtests/Playtest_Multiplayer.unity
+    guid: c9ca890fac1d406498063740e8ae1884
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f88acda05b6d36e4d991bf2ce02ad068,
       type: 2}
