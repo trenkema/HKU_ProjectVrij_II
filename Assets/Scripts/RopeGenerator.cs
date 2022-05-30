@@ -45,6 +45,8 @@ public class RopeGenerator : MonoBehaviour
 
     bool canSwing = true;
 
+    bool canDelete = true;
+
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.COLLIDED, DestroyRope);
@@ -60,16 +62,20 @@ public class RopeGenerator : MonoBehaviour
         if (!PV.IsMine)
             return;
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && canSwing)
         {
             if (!spiderScript.IsGrounded())
             {
+                canSwing = false;
+
                 RaycastRope();
             }
         }
 
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) && canDelete)
         {
+            canDelete = false;
+
             DestroyRope();
         }
     }
@@ -95,6 +101,10 @@ public class RopeGenerator : MonoBehaviour
         {
             GenerateRope(rayHit.point);
         }
+        else
+        {
+            canSwing = true;
+        }
     }
 
     private void GenerateRope(Vector3 _endPointTransform)
@@ -105,6 +115,8 @@ public class RopeGenerator : MonoBehaviour
 
         // Create an endpoint to attach the joint to
         GameObject endPoint = PhotonNetwork.Instantiate("EndPoint", newEndPointTransform, Quaternion.identity);
+
+        endPoints.Add(endPoint);
 
         lerpValue = 0f;
 
@@ -200,5 +212,9 @@ public class RopeGenerator : MonoBehaviour
         ropePoints.Clear();
 
         endPoints.Clear();
+
+        canSwing = true;
+
+        Debug.Log("Can Swing");
     }
 }
