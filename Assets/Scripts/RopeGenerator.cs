@@ -247,11 +247,11 @@ public class RopeGenerator : MonoBehaviour
     {
         PhotonView.Find(_targetID).transform.SetParent(null);
 
-        if (PV.IsMine)
-        {
-            PhotonNetwork.Destroy(ropePrefab);
+        //if (PV.IsMine)
+        //{
+        //    PhotonNetwork.Destroy(ropePrefab);
 
-            PhotonNetwork.Destroy(endPoint);
-        }
+        //    PhotonNetwork.Destroy(endPoint);
+        //}
     }
 }
