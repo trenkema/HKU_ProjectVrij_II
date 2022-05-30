@@ -15,7 +15,8 @@ public class PhotonController : MonoBehaviour
     {
         if (!PV.IsMine)
         {
-            Destroy(cam);
+            if (cam != null)
+                Destroy(cam);
 
             foreach (var component in componentsToDisable)
             {
