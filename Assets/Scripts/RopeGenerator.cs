@@ -90,6 +90,8 @@ public class RopeGenerator : MonoBehaviour
         PV.RPC("RPC_SyncTarget", RpcTarget.All, target.GetComponent<PhotonView>().ViewID, false);
         PV.RPC("RPC_UnParentTarget", RpcTarget.All, target.GetComponent<PhotonView>().ViewID);
 
+        StartCoroutine(DeleteRope());
+
         //target.SetParent(null);
         //target.GetComponent<Rigidbody>().isKinematic = false;
 
@@ -255,13 +257,10 @@ public class RopeGenerator : MonoBehaviour
 
     private IEnumerator DeleteRope()
     {
-        if (PV.IsMine)
-        {
-            yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.25f);
 
-            PhotonNetwork.Destroy(ropePrefab);
+        PhotonNetwork.Destroy(ropePrefab);
 
-            PhotonNetwork.Destroy(endPoint);
-        }
+        PhotonNetwork.Destroy(endPoint);
     }
 }
