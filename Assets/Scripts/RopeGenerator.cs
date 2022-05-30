@@ -255,13 +255,13 @@ public class RopeGenerator : MonoBehaviour
 
     private IEnumerator DeleteRope()
     {
-        while (transform.parent != null)
+        if (PV.IsMine)
         {
-            yield return null;
+            yield return new WaitForEndOfFrame();
+
+            PhotonNetwork.Destroy(ropePrefab);
+
+            PhotonNetwork.Destroy(endPoint);
         }
-
-        PhotonNetwork.Destroy(ropePrefab);
-
-        PhotonNetwork.Destroy(endPoint);
     }
 }
