@@ -61,6 +61,9 @@ public class RopeGenerator : MonoBehaviour
 
     private void Update()
     {
+        if (!PV.IsMine)
+            return;
+
         if (Input.GetMouseButtonDown(1))
         {
             if (!spiderScript.IsGrounded())

@@ -31,6 +31,9 @@ public class RopeManager : MonoBehaviour
 
     public void Setup(Transform _target, Transform _endPoint)
     {
+        if (!PV.IsMine)
+            return;
+
         target = _target;
 
         EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, true);
