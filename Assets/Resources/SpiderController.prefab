@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 4755670782678666468}
+  ropePrefabName: 
   spherePrefabName: Sphere
   raycastLayers:
     serializedVersion: 2
@@ -3372,6 +3373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 4755670782678666468}
+  ropePrefabName: Rope
   spherePrefabName: Sphere
   raycastLayers:
     serializedVersion: 2

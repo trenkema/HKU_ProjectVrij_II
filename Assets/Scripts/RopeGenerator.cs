@@ -7,6 +7,8 @@ public class RopeGenerator : MonoBehaviour
 {
     [SerializeField] PhotonView PV;
 
+    [SerializeField] string ropePrefabName;
+
     [SerializeField] string spherePrefabName;
 
     [Header("Raycast Settings")]
@@ -43,6 +45,8 @@ public class RopeGenerator : MonoBehaviour
 
     float lerpDistanceToAdd = 0f;
 
+    GameObject ropePrefab;
+
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.COLLIDED, DestroyRope);
@@ -65,10 +69,12 @@ public class RopeGenerator : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1))
         {
-            if (endPoints.Count != 0)
-            {
-                DestroyRope();
-            }
+            //if (endPoints.Count != 0)
+            //{
+            //    DestroyRope();
+            //}
+
+            DestroyRope();
         }
     }
 
@@ -83,39 +89,41 @@ public class RopeGenerator : MonoBehaviour
 
         target.GetComponent<Rigidbody>().isKinematic = false;
 
-        //PV.RPC("RPC_SyncTarget", RpcTarget.Others, target.GetComponent<PhotonView>().ViewID, false);
+        PhotonNetwork.Destroy(ropePrefab);
 
-        //target.gameObject.SetActive(true);
+        ////PV.RPC("RPC_SyncTarget", RpcTarget.Others, target.GetComponent<PhotonView>().ViewID, false);
 
-        //foreach (var ropePoint in ropePoints)
+        ////target.gameObject.SetActive(true);
+
+        ////foreach (var ropePoint in ropePoints)
+        ////{
+        ////    Destroy(ropePoint);
+        ////}
+
+        ////foreach (var endPoint in endPoints)
+        ////{
+        ////    Destroy(endPoint);
+        ////}
+
+        //if (ropePoints.Count > 0)
         //{
-        //    Destroy(ropePoint);
+        //    foreach (var ropePoint in ropePoints)
+        //    {
+        //        PhotonNetwork.Destroy(ropePoint);
+        //    }
         //}
 
-        //foreach (var endPoint in endPoints)
+        //if (endPoints.Count > 0)
         //{
-        //    Destroy(endPoint);
+        //    foreach (var endPoint in endPoints)
+        //    {
+        //        PhotonNetwork.Destroy(endPoint);
+        //    }
         //}
 
-        if (ropePoints.Count > 0)
-        {
-            foreach (var ropePoint in ropePoints)
-            {
-                PhotonNetwork.Destroy(ropePoint);
-            }
-        }
+        //ropePoints.Clear();
 
-        if (endPoints.Count > 0)
-        {
-            foreach (var endPoint in endPoints)
-            {
-                PhotonNetwork.Destroy(endPoint);
-            }
-        }
-
-        ropePoints.Clear();
-
-        endPoints.Clear();
+        //endPoints.Clear();
     }
 
     private void RaycastRope()
@@ -130,72 +138,80 @@ public class RopeGenerator : MonoBehaviour
 
     private void GenerateRope(Vector3 _endPointTransform)
     {
-        Vector3 newEndPointTransform = _endPointTransform + ropeOffset;
+        //Vector3 targetDir = target.position - _endPointTransform;
 
-        EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, true);
+        //Vector3 angle = Vector3.Angle(targetDir, target);
 
-        // Create an endpoint to attach the joint to
-        GameObject endPoint = PhotonNetwork.Instantiate("EndPoint", newEndPointTransform, Quaternion.identity);
+        ropePrefab = PhotonNetwork.Instantiate(ropePrefabName, _endPointTransform, Quaternion.identity);
 
-        endPoints.Add(endPoint);
+        ropePrefab.GetComponent<RopeManager>().Setup(_endPointTransform, target);
 
-        //PV.RPC("RPC_SyncEndPoint", RpcTarget.Others, endPoint.GetComponent<PhotonView>().ViewID, newEndPointTransform.x, newEndPointTransform.y, newEndPointTransform.z);
+        //Vector3 newEndPointTransform = _endPointTransform + ropeOffset;
 
-        lerpValue = 0f;
+        //EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, true);
 
-        float distance = Vector3.Distance(startPoint.position, endPoint.transform.position);
+        //// Create an endpoint to attach the joint to
+        //GameObject endPoint = PhotonNetwork.Instantiate("EndPoint", newEndPointTransform, Quaternion.identity);
 
-        int amountOfPoints = (int)Mathf.Ceil(distance / distanceBetweenPoints);
+        //endPoints.Add(endPoint);
 
-        amountOfPoints -= amountOfPointsOffset;
+        ////PV.RPC("RPC_SyncEndPoint", RpcTarget.Others, endPoint.GetComponent<PhotonView>().ViewID, newEndPointTransform.x, newEndPointTransform.y, newEndPointTransform.z);
 
-        lerpDistanceToAdd = 1f / amountOfPoints;
+        //lerpValue = 0f;
 
-        // Create all the points between the two vectors
-        // i < amountOfPoints + 1
-        for (int i = 0; i < amountOfPoints + 1; i++)
-        {
-            instantiatePosition = Vector3.Lerp(endPoint.transform.position, startPoint.position, lerpValue);
+        //float distance = Vector3.Distance(startPoint.position, endPoint.transform.position);
 
-            //GameObject ropePoint = Instantiate(spherePrefab, instantiatePosition, Quaternion.identity, endPoint.transform);
-            GameObject ropePoint = PhotonNetwork.Instantiate(spherePrefabName, instantiatePosition, Quaternion.identity);
+        //int amountOfPoints = (int)Mathf.Ceil(distance / distanceBetweenPoints);
 
-            ropePoint.transform.SetParent(endPoint.transform);
+        //amountOfPoints -= amountOfPointsOffset;
 
-            ropePoints.Add(ropePoint);
+        //lerpDistanceToAdd = 1f / amountOfPoints;
 
-            ropePoint.transform.localScale = new Vector3(ropeSize, ropeSize, ropeSize);
+        //// Create all the points between the two vectors
+        //// i < amountOfPoints + 1
+        //for (int i = 0; i < amountOfPoints + 1; i++)
+        //{
+        //    instantiatePosition = Vector3.Lerp(endPoint.transform.position, startPoint.position, lerpValue);
 
-            if (ropePoint.TryGetComponent(out HingeJoint joint))
-            {
-                if (i == 0)
-                {
-                    joint.connectedBody = endPoint.GetComponent<Rigidbody>();
+        //    //GameObject ropePoint = Instantiate(spherePrefab, instantiatePosition, Quaternion.identity, endPoint.transform);
+        //    GameObject ropePoint = PhotonNetwork.Instantiate(spherePrefabName, instantiatePosition, Quaternion.identity);
 
-                    //PV.RPC("RPC_SyncRopePoint", RpcTarget.Others, ropePoint.GetComponent<PhotonView>().ViewID, endPoint.GetComponent<PhotonView>().ViewID, ropeSize);
-                }
-                else
-                {
-                    joint.connectedBody = ropePoints[i - 1].GetComponent<Rigidbody>();
+        //    ropePoint.transform.SetParent(endPoint.transform);
 
-                    //PV.RPC("RPC_SyncRopePoint", RpcTarget.Others, ropePoint.GetComponent<PhotonView>().ViewID, ropePoints[i - 1].GetComponent<PhotonView>().ViewID, ropeSize);
-                }
+        //    ropePoints.Add(ropePoint);
 
-                // i == amountOfPoints - 1
-                if (i == amountOfPoints)
-                {
-                    //target.gameObject.SetActive(false);
+        //    ropePoint.transform.localScale = new Vector3(ropeSize, ropeSize, ropeSize);
 
-                    target.SetParent(ropePoint.transform);
+        //    if (ropePoint.TryGetComponent(out HingeJoint joint))
+        //    {
+        //        if (i == 0)
+        //        {
+        //            joint.connectedBody = endPoint.GetComponent<Rigidbody>();
 
-                    target.GetComponent<Rigidbody>().isKinematic = true;
+        //            //PV.RPC("RPC_SyncRopePoint", RpcTarget.Others, ropePoint.GetComponent<PhotonView>().ViewID, endPoint.GetComponent<PhotonView>().ViewID, ropeSize);
+        //        }
+        //        else
+        //        {
+        //            joint.connectedBody = ropePoints[i - 1].GetComponent<Rigidbody>();
 
-                    //PV.RPC("RPC_SyncTarget", RpcTarget.Others, target.GetComponent<PhotonView>().ViewID, true);
-                }
-            }
+        //            //PV.RPC("RPC_SyncRopePoint", RpcTarget.Others, ropePoint.GetComponent<PhotonView>().ViewID, ropePoints[i - 1].GetComponent<PhotonView>().ViewID, ropeSize);
+        //        }
 
-            lerpValue += lerpDistanceToAdd;
-        }
+        //        // i == amountOfPoints - 1
+        //        if (i == amountOfPoints)
+        //        {
+        //            //target.gameObject.SetActive(false);
+
+        //            target.SetParent(ropePoint.transform);
+
+        //            target.GetComponent<Rigidbody>().isKinematic = true;
+
+        //            //PV.RPC("RPC_SyncTarget", RpcTarget.Others, target.GetComponent<PhotonView>().ViewID, true);
+        //        }
+        //    }
+
+        //    lerpValue += lerpDistanceToAdd;
+        //}
     }
 
     [PunRPC]
