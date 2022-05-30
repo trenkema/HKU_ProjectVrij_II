@@ -35,14 +35,14 @@ public class RopeManager : MonoBehaviour
 
         EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, true);
 
-        ropePoints[0].GetComponent<HingeJoint>().connectedBody = _endPoint.GetComponent<Rigidbody>();
+        //ropePoints[0].GetComponent<HingeJoint>().connectedBody = _endPoint.GetComponent<Rigidbody>();
 
-        _target.SetParent(ropePoints[ropePoints.Count - 1].transform);
+        //_target.SetParent(ropePoints[ropePoints.Count - 1].transform);
 
-        _target.GetComponent<Rigidbody>().isKinematic = true;
+        //_target.GetComponent<Rigidbody>().isKinematic = true;
 
-        //PV.RPC("RPC_SyncRope", RpcTarget.MasterClient, target.GetComponent<PhotonView>().ViewID, ropePoints[0].GetComponent<PhotonView>().ViewID, 
-        //    ropePoints[ropePoints.Count - 1].GetComponent<PhotonView>().ViewID, _endPoint.GetComponent<PhotonView>().ViewID);
+        PV.RPC("RPC_SyncRope", RpcTarget.MasterClient, target.GetComponent<PhotonView>().ViewID, ropePoints[0].GetComponent<PhotonView>().ViewID,
+            ropePoints[ropePoints.Count - 1].GetComponent<PhotonView>().ViewID, _endPoint.GetComponent<PhotonView>().ViewID);
     }
 
     [PunRPC]
