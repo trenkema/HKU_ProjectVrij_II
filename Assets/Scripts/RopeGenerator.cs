@@ -47,6 +47,8 @@ public class RopeGenerator : MonoBehaviour
 
     GameObject ropePrefab;
 
+    GameObject endPoint;
+
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.COLLIDED, DestroyRope);
@@ -90,6 +92,8 @@ public class RopeGenerator : MonoBehaviour
         target.GetComponent<Rigidbody>().isKinematic = false;
 
         PhotonNetwork.Destroy(ropePrefab);
+
+        PhotonNetwork.Destroy(endPoint);
 
         ////PV.RPC("RPC_SyncTarget", RpcTarget.Others, target.GetComponent<PhotonView>().ViewID, false);
 
@@ -142,9 +146,11 @@ public class RopeGenerator : MonoBehaviour
 
         //Vector3 angle = Vector3.Angle(targetDir, target);
 
+        endPoint = PhotonNetwork.Instantiate("EndPoint", _endPointTransform, Quaternion.identity);
+
         ropePrefab = PhotonNetwork.Instantiate(ropePrefabName, _endPointTransform, Quaternion.identity);
 
-        ropePrefab.GetComponent<RopeManager>().Setup(_endPointTransform, target);
+        ropePrefab.GetComponent<RopeManager>().Setup(target, endPoint.transform);
 
         //Vector3 newEndPointTransform = _endPointTransform + ropeOffset;
 

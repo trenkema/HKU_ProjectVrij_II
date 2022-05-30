@@ -18,17 +18,25 @@ public class RopeManager : MonoBehaviour
         PV = GetComponent<PhotonView>();
     }
 
-    public void Setup(Vector3 _endPointTransform, Transform _target)
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (PV.IsMine)
+            {
+                ropePoints[ropePoints.Count - 1].GetComponent<Rigidbody>().AddForce(0, 0, 100);
+            }
+        }
+    }
+
+    public void Setup(Transform _target, Transform _endPoint)
     {
         target = _target;
 
         EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, true);
 
-        // Create an endpoint to attach the joint to
-        GameObject endPoint = PhotonNetwork.Instantiate("EndPoint", _endPointTransform, Quaternion.identity);
-
         PV.RPC("RPC_SyncRope", RpcTarget.All, target.GetComponent<PhotonView>().ViewID, ropePoints[0].GetComponent<PhotonView>().ViewID, 
-            ropePoints[ropePoints.Count - 1].GetComponent<PhotonView>().ViewID, endPoint.GetComponent<PhotonView>().ViewID);
+            ropePoints[ropePoints.Count - 1].GetComponent<PhotonView>().ViewID, _endPoint.GetComponent<PhotonView>().ViewID);
     }
 
     [PunRPC]

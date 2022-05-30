@@ -3157,6 +3157,7 @@ GameObject:
   - component: {fileID: 4755670782678666468}
   - component: {fileID: 5948544759246810981}
   - component: {fileID: 2589912353427137587}
+  - component: {fileID: -158715072357820325}
   m_Layer: 31
   m_Name: SpiderController
   m_TagString: Player
@@ -3340,6 +3341,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 5948544759246810981}
+  - {fileID: -158715072357820325}
   - {fileID: 4964661663518766746}
   sceneViewId: 0
   InstantiationId: 0
@@ -3388,6 +3390,22 @@ MonoBehaviour:
   ropeOffset: {x: 0, y: -0.025, z: 0}
   ropeSize: 0.05
   distanceBetweenPoints: 0.15
+--- !u!114 &-158715072357820325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059377557813265921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &2059377557833229412
 GameObject:
   m_ObjectHideFlags: 0
@@ -5332,7 +5350,6 @@ MonoBehaviour:
   componentsToDisable:
   - {fileID: 3522027600439065312}
   - {fileID: 974648722269106508}
-  - {fileID: 2383843247202239363}
   - {fileID: 8321617517307955769}
   PV: {fileID: 4755670782678666468}
 --- !u!1 &7881982668697183407
