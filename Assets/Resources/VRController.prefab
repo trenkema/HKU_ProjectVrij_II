@@ -1108,8 +1108,7 @@ GameObject:
   - component: {fileID: 4093400482194291852}
   - component: {fileID: 4093400482194291853}
   - component: {fileID: 4093400482194291842}
-  - component: {fileID: 4161273648714916813}
-  - component: {fileID: 7878646241963880742}
+  - component: {fileID: 3021861943254240494}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1290,7 +1289,7 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &4161273648714916813
+--- !u!114 &3021861943254240494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1299,36 +1298,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4093400482194291855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b8e1ce6331b80e488919587cb2ed598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
---- !u!114 &7878646241963880742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4093400482194291855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 4161273648714916813}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &4093400482209958566
 GameObject:
   m_ObjectHideFlags: 0
@@ -4247,7 +4219,7 @@ MonoBehaviour:
   - {fileID: 789377428894540421}
   - {fileID: 2415897604124697087}
   - {fileID: 4628095048162693747}
-  - {fileID: 4161273648714916813}
+  - {fileID: 0}
   - {fileID: 2955987837181291739}
   - {fileID: 6286022017377798676}
   sceneViewId: 0
