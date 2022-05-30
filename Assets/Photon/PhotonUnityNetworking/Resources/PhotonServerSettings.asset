@@ -44,6 +44,7 @@ MonoBehaviour:
   - RPC_SyncTarget
   - RPC_SyncEndPoint
   - RPC_SyncRope
+  - RPC_UnParentTarget
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

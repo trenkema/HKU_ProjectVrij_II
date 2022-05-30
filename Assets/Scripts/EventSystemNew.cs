@@ -8,7 +8,9 @@ public enum Event_Type
     SET_OBJECTIVE,
 
     IS_SWINGING,
-    COLLIDED
+    COLLIDED,
+
+    SWING_DESTROYED
 }
 
 public static class EventSystemNew
