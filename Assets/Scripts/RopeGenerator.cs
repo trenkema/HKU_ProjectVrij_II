@@ -87,9 +87,11 @@ public class RopeGenerator : MonoBehaviour
 
         EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, false);
 
-        target.SetParent(null);
+        PV.RPC("RPC_SyncTarget", RpcTarget.All, target.GetComponent<PhotonView>().ViewID, false);
+        PV.RPC("RPC_UnParentTarget", RpcTarget.All, target.GetComponent<PhotonView>().ViewID);
 
-        target.GetComponent<Rigidbody>().isKinematic = false;
+        //target.SetParent(null);
+        //target.GetComponent<Rigidbody>().isKinematic = false;
 
         PhotonNetwork.Destroy(ropePrefab);
 
@@ -238,5 +240,11 @@ public class RopeGenerator : MonoBehaviour
     public void RPC_SyncTarget(int _targetID, bool _isKinematic)
     {
         PhotonView.Find(_targetID).GetComponent<Rigidbody>().isKinematic = _isKinematic;
+    }
+
+    [PunRPC]
+    public void RPC_UnParentTarget(int _targetID)
+    {
+        PhotonView.Find(_targetID).transform.SetParent(null);
     }
 }
