@@ -10,7 +10,7 @@ public enum Event_Type
     IS_SWINGING,
     COLLIDED,
 
-    SWING_DESTROYED
+    CAN_SWING
 }
 
 public static class EventSystemNew

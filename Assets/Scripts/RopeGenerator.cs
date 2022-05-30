@@ -49,14 +49,20 @@ public class RopeGenerator : MonoBehaviour
 
     GameObject endPoint;
 
+    bool canSwing = true;
+
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.COLLIDED, DestroyRope);
+
+        EventSystemNew.Subscribe(Event_Type.CAN_SWING, CanSwing);
     }
 
     private void OnDisable()
     {
         EventSystemNew.Unsubscribe(Event_Type.COLLIDED, DestroyRope);
+
+        EventSystemNew.Unsubscribe(Event_Type.CAN_SWING, CanSwing);
     }
 
     private void Update()
@@ -149,6 +155,8 @@ public class RopeGenerator : MonoBehaviour
 
     private void GenerateRope(Vector3 _endPointTransform)
     {
+        canSwing = false;
+
         //Vector3 targetDir = target.position - _endPointTransform;
 
         //Vector3 angle = Vector3.Angle(targetDir, target);
@@ -227,6 +235,11 @@ public class RopeGenerator : MonoBehaviour
         //}
     }
 
+    private void CanSwing()
+    {
+        canSwing = true;
+    }
+
     [PunRPC]
     public void RPC_SyncEndPoint(int _endPointID, float _x, float _y, float _z)
     {
@@ -265,5 +278,7 @@ public class RopeGenerator : MonoBehaviour
         PhotonNetwork.Destroy(ropePrefab);
 
         PhotonNetwork.Destroy(endPoint);
+
+        canSwing = true;
     }
 }
