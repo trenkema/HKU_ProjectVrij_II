@@ -41,7 +41,7 @@ public class RopeManager : MonoBehaviour
 
         //_target.GetComponent<Rigidbody>().isKinematic = true;
 
-        PV.RPC("RPC_SyncRope", RpcTarget.MasterClient, target.GetComponent<PhotonView>().ViewID, ropePoints[0].GetComponent<PhotonView>().ViewID,
+        PV.RPC("RPC_SyncRope", RpcTarget.All, target.GetComponent<PhotonView>().ViewID, ropePoints[0].GetComponent<PhotonView>().ViewID,
             ropePoints[ropePoints.Count - 1].GetComponent<PhotonView>().ViewID, _endPoint.GetComponent<PhotonView>().ViewID);
     }
 
