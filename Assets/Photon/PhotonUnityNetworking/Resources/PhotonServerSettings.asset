@@ -39,6 +39,10 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - SyncRopePoint
+  - RPC_SyncRopePoint
+  - RPC_SyncTarget
+  - RPC_SyncEndPoint
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
-  DevRegionSetOnce: 0
+  ShowSettings: 1
+  DevRegionSetOnce: 1

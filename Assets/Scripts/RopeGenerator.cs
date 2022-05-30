@@ -19,6 +19,8 @@ public class RopeGenerator : MonoBehaviour
 
     [SerializeField] Transform target;
 
+    [SerializeField] Spider spiderScript;
+
     [SerializeField] GameObject spherePrefab;
 
     [SerializeField] Transform startPoint;
@@ -55,7 +57,7 @@ public class RopeGenerator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (!target.GetComponent<Spider>().IsGrounded())
+            if (!spiderScript.IsGrounded())
             {
                 RaycastRope();
             }
@@ -81,6 +83,8 @@ public class RopeGenerator : MonoBehaviour
 
         target.GetComponent<Rigidbody>().isKinematic = false;
 
+        //PV.RPC("RPC_SyncTarget", RpcTarget.Others, target.GetComponent<PhotonView>().ViewID, false);
+
         //target.gameObject.SetActive(true);
 
         //foreach (var ropePoint in ropePoints)
@@ -93,17 +97,25 @@ public class RopeGenerator : MonoBehaviour
         //    Destroy(endPoint);
         //}
 
-        foreach (var ropePoint in ropePoints)
+        if (ropePoints.Count > 0)
         {
-            PhotonNetwork.Destroy(ropePoint);
+            foreach (var ropePoint in ropePoints)
+            {
+                PhotonNetwork.Destroy(ropePoint);
+            }
         }
 
-        foreach (var endPoint in endPoints)
+        if (endPoints.Count > 0)
         {
-            PhotonNetwork.Destroy(endPoint);
+            foreach (var endPoint in endPoints)
+            {
+                PhotonNetwork.Destroy(endPoint);
+            }
         }
 
         ropePoints.Clear();
+
+        endPoints.Clear();
     }
 
     private void RaycastRope()
@@ -118,16 +130,16 @@ public class RopeGenerator : MonoBehaviour
 
     private void GenerateRope(Vector3 _endPointTransform)
     {
+        Vector3 newEndPointTransform = _endPointTransform + ropeOffset;
+
         EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, true);
 
         // Create an endpoint to attach the joint to
-        GameObject endPoint = new GameObject("Rope");
+        GameObject endPoint = PhotonNetwork.Instantiate("EndPoint", newEndPointTransform, Quaternion.identity);
 
         endPoints.Add(endPoint);
 
-        endPoint.AddComponent<Rigidbody>().isKinematic = true;
-
-        endPoint.transform.position = _endPointTransform + ropeOffset;
+        //PV.RPC("RPC_SyncEndPoint", RpcTarget.Others, endPoint.GetComponent<PhotonView>().ViewID, newEndPointTransform.x, newEndPointTransform.y, newEndPointTransform.z);
 
         lerpValue = 0f;
 
@@ -159,10 +171,14 @@ public class RopeGenerator : MonoBehaviour
                 if (i == 0)
                 {
                     joint.connectedBody = endPoint.GetComponent<Rigidbody>();
+
+                    //PV.RPC("RPC_SyncRopePoint", RpcTarget.Others, ropePoint.GetComponent<PhotonView>().ViewID, endPoint.GetComponent<PhotonView>().ViewID, ropeSize);
                 }
                 else
                 {
                     joint.connectedBody = ropePoints[i - 1].GetComponent<Rigidbody>();
+
+                    //PV.RPC("RPC_SyncRopePoint", RpcTarget.Others, ropePoint.GetComponent<PhotonView>().ViewID, ropePoints[i - 1].GetComponent<PhotonView>().ViewID, ropeSize);
                 }
 
                 // i == amountOfPoints - 1
@@ -173,10 +189,32 @@ public class RopeGenerator : MonoBehaviour
                     target.SetParent(ropePoint.transform);
 
                     target.GetComponent<Rigidbody>().isKinematic = true;
+
+                    //PV.RPC("RPC_SyncTarget", RpcTarget.Others, target.GetComponent<PhotonView>().ViewID, true);
                 }
             }
 
             lerpValue += lerpDistanceToAdd;
         }
+    }
+
+    [PunRPC]
+    public void RPC_SyncEndPoint(int _endPointID, float _x, float _y, float _z)
+    {
+        PhotonView.Find(_endPointID).transform.position = new Vector3(_x, _y, _z);
+    }
+
+    [PunRPC]
+    public void RPC_SyncRopePoint(int _ropePointID, int _endPointID, float _ropeSize)
+    {
+        PhotonView.Find(_ropePointID).GetComponent<HingeJoint>().connectedBody = PhotonView.Find(_endPointID).GetComponent<Rigidbody>();
+
+        PhotonView.Find(_ropePointID).transform.localScale = new Vector3(_ropeSize, _ropeSize, _ropeSize);
+    }
+
+    [PunRPC]
+    public void RPC_SyncTarget(int _targetID, bool _isKinematic)
+    {
+        PhotonView.Find(_targetID).GetComponent<Rigidbody>().isKinematic = _isKinematic;
     }
 }
