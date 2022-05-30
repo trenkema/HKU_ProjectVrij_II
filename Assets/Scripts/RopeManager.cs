@@ -35,7 +35,7 @@ public class RopeManager : MonoBehaviour
 
         EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, true);
 
-        PV.RPC("RPC_SyncRope", RpcTarget.All, target.GetComponent<PhotonView>().ViewID, ropePoints[0].GetComponent<PhotonView>().ViewID, 
+        PV.RPC("RPC_SyncRope", RpcTarget.MasterClient, target.GetComponent<PhotonView>().ViewID, ropePoints[0].GetComponent<PhotonView>().ViewID, 
             ropePoints[ropePoints.Count - 1].GetComponent<PhotonView>().ViewID, _endPoint.GetComponent<PhotonView>().ViewID);
     }
 
