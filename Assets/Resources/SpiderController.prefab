@@ -5205,6 +5205,7 @@ MonoBehaviour:
   webTrailPrefabName: WebTrail
   webTrailSpawnPoint: {fileID: 7728275695751807984}
   webTrailSpeed: 5
+  shootDelay: 1
 --- !u!1 &4359120851785416156
 GameObject:
   m_ObjectHideFlags: 0

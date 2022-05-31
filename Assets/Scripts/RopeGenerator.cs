@@ -72,10 +72,8 @@ public class RopeGenerator : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(1) && canDelete)
+        if (Input.GetMouseButtonUp(1) && endPoints.Count > 0)
         {
-            canDelete = false;
-
             DestroyRope();
         }
     }
@@ -212,6 +210,8 @@ public class RopeGenerator : MonoBehaviour
         ropePoints.Clear();
 
         endPoints.Clear();
+
+        yield return new WaitForSeconds(0.25f);
 
         canSwing = true;
 

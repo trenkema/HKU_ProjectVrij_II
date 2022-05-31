@@ -18,14 +18,32 @@ public class WebShooter : MonoBehaviour
     [Header("Settings")]
     [SerializeField] float webTrailSpeed = 5f;
 
+    [SerializeField] float shootDelay = 1f;
+
+    bool canShoot = true;
+
     public void ShootWeb(InputAction.CallbackContext _context)
     {
         if (_context.phase == InputActionPhase.Started)
         {
-            GameObject webTrail = PhotonNetwork.Instantiate(webTrailPrefabName, webTrailSpawnPoint.position, spiderCamera.transform.rotation);
+            if (canShoot)
+            {
+                canShoot = false;
 
-            webTrail.GetComponent<WebTrail>().Setup(spiderCollider);
-            webTrail.GetComponent<Rigidbody>().velocity = spiderCamera.transform.forward * webTrailSpeed;
+                GameObject webTrail = PhotonNetwork.Instantiate(webTrailPrefabName, webTrailSpawnPoint.position, spiderCamera.transform.rotation);
+
+                webTrail.GetComponent<WebTrail>().Setup(spiderCollider);
+                webTrail.GetComponent<Rigidbody>().velocity = spiderCamera.transform.forward * webTrailSpeed;
+
+                StartCoroutine(DelayWebShooting());
+            }
         }
+    }
+
+    IEnumerator DelayWebShooting()
+    {
+        yield return new WaitForSeconds(shootDelay);
+
+        canShoot = true;
     }
 }

@@ -37,11 +37,6 @@ public class WebTrail : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        transform.Rotate(0, 90, 90);
-    }
-
     public void Setup(Collider PlayerCollider)
     {
         Physics.IgnoreCollision(PlayerCollider, GetComponent<Collider>());
