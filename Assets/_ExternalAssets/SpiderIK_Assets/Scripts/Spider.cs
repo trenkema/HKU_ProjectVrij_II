@@ -37,7 +37,7 @@ public class Spider : MonoBehaviour {
 
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     [Header("Debug")]
     public bool showDebug;

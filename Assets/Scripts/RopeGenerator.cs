@@ -45,6 +45,8 @@ public class RopeGenerator : MonoBehaviour
 
     bool canSwing = true;
 
+    bool isCurrentlySwinging = false;
+
     bool canDelete = true;
 
     private void OnEnable()
@@ -76,6 +78,17 @@ public class RopeGenerator : MonoBehaviour
         {
             DestroyRope();
         }
+
+        //Werkt niet:
+        if (isCurrentlySwinging)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                Debug.Log("Add force to spider while swinging");
+                spiderScript.rb.AddForce((transform.forward * 100) + (transform.up * 10));
+            }
+        }
+        //
     }
 
     private void DestroyRope()
@@ -89,6 +102,8 @@ public class RopeGenerator : MonoBehaviour
         PV.RPC("RPC_UnParentTarget", RpcTarget.All, target.GetComponent<PhotonView>().ViewID);
 
         StartCoroutine(DeleteRope());
+
+        isCurrentlySwinging = false;
     }
 
     private void RaycastRope()
@@ -153,6 +168,7 @@ public class RopeGenerator : MonoBehaviour
 
             lerpValue += lerpDistanceToAdd;
         }
+        isCurrentlySwinging = true;
     }
 
     [PunRPC]
