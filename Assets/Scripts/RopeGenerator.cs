@@ -5,6 +5,11 @@ using Photon.Pun;
 
 public class RopeGenerator : MonoBehaviour
 {
+    [SerializeField] float forwardForce = 1;
+    [SerializeField] float upwardForce = 1f;
+
+    [SerializeField] Camera cam;
+
     [SerializeField] PhotonView PV;
 
     [SerializeField] string spherePrefabName;
@@ -36,6 +41,8 @@ public class RopeGenerator : MonoBehaviour
     List<GameObject> ropePoints = new List<GameObject>();
 
     List<GameObject> endPoints = new List<GameObject>();
+
+    Rigidbody lastRopePointRB;
 
     Vector3 instantiatePosition;
 
@@ -79,16 +86,13 @@ public class RopeGenerator : MonoBehaviour
             DestroyRope();
         }
 
-        //Werkt niet:
         if (isCurrentlySwinging)
         {
             if (Input.GetKey(KeyCode.W))
             {
-                Debug.Log("Add force to spider while swinging");
-                spiderScript.rb.AddForce((transform.forward * 100) + (transform.up * 10));
+                lastRopePointRB.AddForce((cam.transform.forward * forwardForce) + (cam.transform.up * upwardForce));
             }
         }
-        //
     }
 
     private void DestroyRope()
@@ -122,6 +126,8 @@ public class RopeGenerator : MonoBehaviour
 
     private void GenerateRope(Vector3 _endPointTransform)
     {
+        // Rope Generation End to Start
+
         Vector3 newEndPointTransform = _endPointTransform + ropeOffset;
 
         EventSystemNew<bool>.RaiseEvent(Event_Type.IS_SWINGING, true);
@@ -161,13 +167,16 @@ public class RopeGenerator : MonoBehaviour
             // i == amountOfPoints - 1
             if (i == amountOfPoints)
             {
-                PV.RPC("RPC_ParentTarget", RpcTarget.All, target.GetComponent<PhotonView>().ViewID, ropePoint.GetComponent<PhotonView>().ViewID);
+                lastRopePointRB = ropePoint.GetComponent<Rigidbody>();
+
+                PV.RPC("RPC_ParentTarget", RpcTarget.All, target.GetComponent<PhotonView>().ViewID, ropePoint.GetComponent<PhotonView>().ViewID, ropeSize);
             }
 
             ropePoints.Add(ropePoint);
 
             lerpValue += lerpDistanceToAdd;
         }
+
         isCurrentlySwinging = true;
     }
 
@@ -189,10 +198,12 @@ public class RopeGenerator : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_ParentTarget(int _targetID, int _ropePointID)
+    public void RPC_ParentTarget(int _targetID, int _ropePointID, float _ropeSize)
     {
         Transform target = PhotonView.Find(_targetID).transform;
         Transform ropePoint = PhotonView.Find(_ropePointID).transform;
+
+        ropePoint.transform.localScale = new Vector3(_ropeSize, _ropeSize, _ropeSize);
 
         target.SetParent(ropePoint);
         target.GetComponent<Rigidbody>().isKinematic = true;

@@ -1,64 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1865375432
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1865375434}
-  - component: {fileID: 1865375433}
-  m_Layer: 31
-  m_Name: RopeGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1865375434
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865375432}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5926396427344374381}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1865375433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865375432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bffc1017359fb24da72936bce61f689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PV: {fileID: 4755670782678666468}
-  spherePrefabName: Sphere
-  raycastLayers:
-    serializedVersion: 2
-    m_Bits: 2049
-  maxDistance: 5
-  target: {fileID: 2059377557813265925}
-  spiderScript: {fileID: 0}
-  spherePrefab: {fileID: 8003524334342837631, guid: 7016331826774854d8e1819236373256,
-    type: 3}
-  startPoint: {fileID: 7728275695439395582}
-  amountOfPointsOffset: 0
-  ropeOffset: {x: 0, y: -0.025, z: 0}
-  ropeSize: 0.05
-  distanceBetweenPoints: 0.15
 --- !u!1 &144517254280685884
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +30,6 @@ Transform:
   m_Children:
   - {fileID: 1078223527052594877}
   - {fileID: 3173154669150004326}
-  - {fileID: 1865375434}
   m_Father: {fileID: 2059377557813265925}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3200,6 +3140,7 @@ MonoBehaviour:
   forwardForce: 75
   upForce: 100
   jumpKey: 32
+  rb: {fileID: 0}
   showDebug: 0
   walkSpeed: 5
   runSpeed: 8
@@ -3357,6 +3298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bffc1017359fb24da72936bce61f689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forwardForce: 1.5
+  upwardForce: 0
+  cam: {fileID: 2059377558581881328}
   PV: {fileID: 4755670782678666468}
   spherePrefabName: Sphere
   raycastLayers:
@@ -3367,7 +3311,7 @@ MonoBehaviour:
   spiderScript: {fileID: 3522027600439065312}
   spherePrefab: {fileID: 8003524334342837631, guid: 7016331826774854d8e1819236373256,
     type: 3}
-  startPoint: {fileID: 7728275695439395582}
+  startPoint: {fileID: 5918433346233611412}
   amountOfPointsOffset: 0
   ropeOffset: {x: 0, y: -0.025, z: 0}
   ropeSize: 0.05
@@ -5239,7 +5183,7 @@ Transform:
   m_Father: {fileID: 2059377557813265925}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7728275695439395577
+--- !u!1 &5594621188170449745
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5247,7 +5191,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7728275695439395582}
+  - component: {fileID: 5918433346233611412}
   m_Layer: 31
   m_Name: RopeStartPoint
   m_TagString: Untagged
@@ -5255,20 +5199,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7728275695439395582
+--- !u!4 &5918433346233611412
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7728275695439395577}
+  m_GameObject: {fileID: 5594621188170449745}
   m_LocalRotation: {x: -0.42261836, y: -0, z: -0, w: 0.90630776}
-  m_LocalPosition: {x: 0, y: 0.037500005, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4749691526403954714}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -50, y: 0, z: 0}
 --- !u!1 &7728275695751807987
 GameObject:
@@ -5299,7 +5243,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4749691526403954714}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7742419515122495376
 GameObject:
@@ -5380,8 +5324,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7728275695439395582}
   - {fileID: 7728275695751807984}
+  - {fileID: 5918433346233611412}
   m_Father: {fileID: 2059377557813265925}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
