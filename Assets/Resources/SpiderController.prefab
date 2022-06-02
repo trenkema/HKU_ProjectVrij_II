@@ -3306,7 +3306,7 @@ MonoBehaviour:
   raycastLayers:
     serializedVersion: 2
     m_Bits: 2049
-  maxDistance: 5
+  maxDistance: 2.5
   target: {fileID: 2059377557813265925}
   spiderScript: {fileID: 3522027600439065312}
   spherePrefab: {fileID: 8003524334342837631, guid: 7016331826774854d8e1819236373256,
