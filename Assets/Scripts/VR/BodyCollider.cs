@@ -11,6 +11,8 @@ public class BodyCollider : MonoBehaviour
 
     [SerializeField] CharacterController controller;
 
+    [SerializeField] Transform target;
+
     [SerializeField] LayerMask groundLayer;
 
     [SerializeField] float gravity = -9.81f;
@@ -21,9 +23,9 @@ public class BodyCollider : MonoBehaviour
     {
         if (xrRig.CameraInOriginSpacePos != null)
         {
-            var center = xrRig.CameraInOriginSpacePos;
+            //var center = xrRig.CameraInOriginSpacePos;
 
-            controller.center = new Vector3(center.x, controller.center.y, center.z);
+            controller.center = new Vector3(target.position.x, controller.center.y, target.position.z);
 
             controller.height = xrRig.CameraInOriginSpaceHeight;
 

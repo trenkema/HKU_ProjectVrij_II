@@ -2490,7 +2490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b0c542673bc1b4aa05a84b03a0c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isVR: 1
+  isVR: 0
   mainMenuScene: MainMenu
   playerPrefab: VRController
   spiderPrefab: SpiderController
