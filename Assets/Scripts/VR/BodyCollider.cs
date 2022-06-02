@@ -27,16 +27,16 @@ public class BodyCollider : MonoBehaviour
 
             controller.height = xrRig.CameraInOriginSpaceHeight;
 
-            bool isGrounded = CheckIfGrounded();
+            //bool isGrounded = CheckIfGrounded();
 
-            if (isGrounded)
-                fallingSpeed = 0;
-            else
-            {
-                fallingSpeed += gravity * Time.fixedDeltaTime;
-            }
+            //if (isGrounded)
+            //    fallingSpeed = 0;
+            //else
+            //{
+            //    fallingSpeed += gravity * Time.fixedDeltaTime;
+            //}
 
-            controller.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
+            //controller.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
         }
     }
 
