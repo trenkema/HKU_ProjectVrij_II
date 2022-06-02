@@ -7,21 +7,13 @@ public class RBForce : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
 
-    PhotonView PV;
-
-    private void Awake()
-    {
-        PV = GetComponent<PhotonView>();
-    }
+    [SerializeField] float forwardForce = 50f;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                rb.AddForce(new Vector3(0, 0, 50));
-            }
+            rb.AddForce(new Vector3(0, 0, forwardForce));
         }
     }
 }

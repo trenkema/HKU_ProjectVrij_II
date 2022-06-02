@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -831104666968859626}
   - component: {fileID: 2535082162473042016}
   m_Layer: 12
-  m_Name: Sphere
+  m_Name: WebPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
