@@ -2341,6 +2341,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light_04
       objectReference: {fileID: 0}
+    - target: {fileID: 6192012878074295229, guid: 82bb5471eea0de54b8c12534c7f43fba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6820035655623731463, guid: 82bb5471eea0de54b8c12534c7f43fba,
         type: 3}
       propertyPath: m_RootOrder
@@ -37448,6 +37453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Light_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148175989134512493, guid: b6a4060921ac1db4f8585175e7576da5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8148175989134675277, guid: b6a4060921ac1db4f8585175e7576da5,
         type: 3}
