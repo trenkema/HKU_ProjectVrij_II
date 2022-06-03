@@ -102,10 +102,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Joined Lobby");
 
-        foreach (var item in mainMenuItemsToLoad)
-        {
-            item.SetActive(true);
-        }
+        EventSystemNew.RaiseEvent(Event_Type.PHOTON_LOADED);
+
+        //foreach (var item in mainMenuItemsToLoad)
+        //{
+        //    item.SetActive(true);
+        //}
 
         if (PlayerPrefs.HasKey("NickName"))
         {

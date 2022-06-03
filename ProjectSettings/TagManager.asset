@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Destroyable
-  - Arrow
+  - Spider
   layers:
   - Default
   - TransparentFX
@@ -26,7 +25,7 @@ TagManager:
   - 
   - XRBody
   - 
-  - 
+  - Hide
   - 
   - 
   - 

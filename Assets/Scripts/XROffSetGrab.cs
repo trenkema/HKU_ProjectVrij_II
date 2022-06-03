@@ -11,6 +11,8 @@ public class XROffSetGrab : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        Debug.Log("Grabbed");
+
         base.OnSelectEntered(args);
         if (args.interactor.GetType() != typeof(XRSocketInteractorTag))
         {

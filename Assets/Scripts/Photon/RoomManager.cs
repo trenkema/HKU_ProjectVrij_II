@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static RoomManager Instance;
 
     [Header("Setup")]
-    [SerializeField] bool isVR = false;
-
     [SerializeField] string mainMenuScene;
 
     [SerializeField] string playerPrefab;
@@ -54,6 +53,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
+            var xrDisplaySubsystems = new List<XRDisplaySubsystem>();
+            SubsystemManager.GetInstances(xrDisplaySubsystems);
+            bool isVR = xrDisplaySubsystems[0].running;
 
             if (isVR)
             {

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public enum Event_Type
 {
-    PAPER_BURNED,
-    SET_OBJECTIVE,
+    SPIDER_RESPAWNED,
 
     IS_SWINGING,
     COLLIDED,
 
-    CAN_SWING
+    CAN_SWING,
+
+    PHOTON_LOADED
 }
 
 public static class EventSystemNew

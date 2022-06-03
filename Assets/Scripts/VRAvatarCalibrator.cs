@@ -14,7 +14,6 @@ public class VRAvatarCalibrator : MonoBehaviour
     void Start()
     {
         watcher.primaryButtonPress.AddListener(OnPrimaryButtonEvent);
-
     }
 
     public void OnPrimaryButtonEvent(bool pressed)

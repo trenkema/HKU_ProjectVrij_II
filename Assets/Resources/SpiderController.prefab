@@ -3097,9 +3097,10 @@ GameObject:
   - component: {fileID: 2589912353427137587}
   - component: {fileID: 127058389811818652}
   - component: {fileID: 2728775439532156639}
+  - component: {fileID: 6332434669677768168}
   m_Layer: 15
   m_Name: SpiderController
-  m_TagString: Player
+  m_TagString: Spider
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3257,10 +3258,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.005
+  m_Radius: 0.0075
   m_Height: 0.022
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.0025, z: 0}
 --- !u!114 &4755670782678666468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3348,6 +3349,20 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!136 &6332434669677768168
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059377557813265921}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.005
+  m_Height: 0.022
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2059377557833229412
 GameObject:
   m_ObjectHideFlags: 0
