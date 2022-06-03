@@ -56,7 +56,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
             var xrDisplaySubsystems = new List<XRDisplaySubsystem>();
             SubsystemManager.GetInstances(xrDisplaySubsystems);
-            bool isVR = xrDisplaySubsystems[0].running;
+
+            bool isVR = xrDisplaySubsystems.Count != 0 ? xrDisplaySubsystems[0].running : false;
 
             if (isVR)
             {
