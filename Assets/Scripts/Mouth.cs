@@ -23,11 +23,6 @@ public class Mouth : MonoBehaviour
         EventSystemNew.Unsubscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
     }
 
-    private void Awake()
-    {
-        PV = GetComponent<PhotonView>();
-    }
-
     private void SpiderRespawned()
     {
         hasEnteredMouth = false;
