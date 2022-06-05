@@ -5145,7 +5145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spiderCamera: {fileID: 2059377558581881328}
-  spiderCollider: {fileID: 0}
+  spiderCollider: {fileID: 6332434669677768168}
   webTrailPrefabName: WebTrail
   webTrailSpawnPoint: {fileID: 7728275695751807984}
   webTrailSpeed: 5

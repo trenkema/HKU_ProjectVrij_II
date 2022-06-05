@@ -49,6 +49,7 @@ MonoBehaviour:
   - RPC_SyncTransform
   - RPC_GameOver
   - RPC_MouthEntered
+  - RPC_DestroySpider
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

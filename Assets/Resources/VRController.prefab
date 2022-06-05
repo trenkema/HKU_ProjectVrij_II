@@ -3215,6 +3215,7 @@ GameObject:
   - component: {fileID: 4932013479662461276}
   - component: {fileID: 8701947034374875862}
   - component: {fileID: 6928727562445382043}
+  - component: {fileID: 8049571104510047820}
   m_Layer: 14
   m_Name: HeadCollider
   m_TagString: Untagged
@@ -3265,7 +3266,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 2
   spiderTag: Spider
-  PV: {fileID: 6128949153828305977}
+  PV: {fileID: 8049571104510047820}
+--- !u!114 &8049571104510047820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998537451572189218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8214280454196436777
 GameObject:
   m_ObjectHideFlags: 0
