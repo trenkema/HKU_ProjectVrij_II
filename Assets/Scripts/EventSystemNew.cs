@@ -11,7 +11,9 @@ public enum Event_Type
 
     CAN_SWING,
 
-    PHOTON_LOADED
+    PHOTON_LOADED,
+
+    GAME_WON
 }
 
 public static class EventSystemNew

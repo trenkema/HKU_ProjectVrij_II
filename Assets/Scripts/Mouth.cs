@@ -11,30 +11,13 @@ public class Mouth : MonoBehaviour
 
     [SerializeField] PhotonView PV;
 
-    bool hasEnteredMouth = false;
-
-    private void OnEnable()
-    {
-        EventSystemNew.Subscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
-    }
-
-    private void OnDisable()
-    {
-        EventSystemNew.Unsubscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
-    }
-
-    private void SpiderRespawned()
-    {
-        hasEnteredMouth = false;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(spiderTag) && !hasEnteredMouth)
+        if (other.CompareTag(spiderTag) && PV.IsMine)
         {
-            hasEnteredMouth = true;
+            PhotonNetwork.Destroy(other.gameObject);
 
-            PV.RPC("RPC_MouthEntered", RpcTarget.Others);
+            MouthEntered();
         }
     }
 
@@ -49,19 +32,10 @@ public class Mouth : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_MouthEntered()
-    {
-        if (!PV.IsMine)
-            return;
-
-        Debug.Log("Mouth Entered");
-
-        MouthEntered();
-    }
-
-    [PunRPC]
     public void RPC_GameOver()
     {
         Debug.Log("Game Over");
+
+        EventSystemNew<PlayerTypes>.RaiseEvent(Event_Type.GAME_WON, PlayerTypes.Spiders);
     }
 }

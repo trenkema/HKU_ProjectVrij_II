@@ -3114,7 +3114,7 @@ Transform:
   m_GameObject: {fileID: 2059377557813265921}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.5681, y: 0.1355, z: -0.2317}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2059377558581881332}
@@ -3147,8 +3147,8 @@ MonoBehaviour:
   runSpeed: 8
   turnSpeed: 4
   walkDrag: 0.75
-  capsuleCollider: {fileID: 7728275697239409216}
-  gravityMultiplier: 2
+  capsuleCollider: {fileID: 6332434669677768168}
+  gravityMultiplier: 4
   groundNormalAdjustSpeed: 6
   forwardNormalAdjustSpeed: 2
   walkableLayer:
@@ -3257,7 +3257,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2059377557813265921}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.0075
   m_Height: 0.022
   m_Direction: 2
@@ -3299,8 +3299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bffc1017359fb24da72936bce61f689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardForce: 1.5
-  upwardForce: 0
+  forwardForce: 5
+  upwardForce: 4
   cam: {fileID: 2059377558581881328}
   PV: {fileID: 4755670782678666468}
   spherePrefabName: WebPoint
@@ -3358,7 +3358,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2059377557813265921}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.005
   m_Height: 0.022
   m_Direction: 2

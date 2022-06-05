@@ -2625,7 +2625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b0c542673bc1b4aa05a84b03a0c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isVR: 0
   mainMenuScene: MainMenu
   playerPrefab: VRController
   spiderPrefab: SpiderController
@@ -11857,6 +11856,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 915410941}
     m_Modifications:
+    - target: {fileID: 64000785037271176, guid: 4c7796793c01a3141b63022aedc330d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8989791832446840857, guid: 4c7796793c01a3141b63022aedc330d2,
         type: 3}
       propertyPath: m_RootOrder
