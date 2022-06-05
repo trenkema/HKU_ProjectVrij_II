@@ -15,7 +15,7 @@ public class Mouth : MonoBehaviour
     {
         if (other.CompareTag(spiderTag) && PV.IsMine)
         {
-            PhotonNetwork.Destroy(other.gameObject);
+            PV.RPC("RPC_DestroySpider", RpcTarget.Others, other.GetComponent<PhotonView>().ViewID);
 
             MouthEntered();
         }
@@ -28,6 +28,17 @@ public class Mouth : MonoBehaviour
         if (lives <= 0)
         {
             PV.RPC("RPC_GameOver", RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    public void RPC_DestroySpider(int _spiderID)
+    {
+        PhotonView spider = PhotonView.Find(_spiderID);
+
+        if (spider.IsMine)
+        {
+            PhotonNetwork.Destroy(spider.gameObject);
         }
     }
 

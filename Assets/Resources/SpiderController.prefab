@@ -3092,7 +3092,6 @@ GameObject:
   - component: {fileID: 974648722269106508}
   - component: {fileID: 2383843247202239363}
   - component: {fileID: 2059377557813265927}
-  - component: {fileID: 7728275697239409216}
   - component: {fileID: 4755670782678666468}
   - component: {fileID: 2589912353427137587}
   - component: {fileID: 127058389811818652}
@@ -3248,20 +3247,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!136 &7728275697239409216
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059377557813265921}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.0075
-  m_Height: 0.022
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.0025, z: 0}
 --- !u!114 &4755670782678666468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5160,7 +5145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spiderCamera: {fileID: 2059377558581881328}
-  spiderCollider: {fileID: 7728275697239409216}
+  spiderCollider: {fileID: 0}
   webTrailPrefabName: WebTrail
   webTrailSpawnPoint: {fileID: 7728275695751807984}
   webTrailSpeed: 5
