@@ -44,10 +44,10 @@ public class ReceiveEvents : MonoBehaviour
 
         byte eventCode = _photonEvent.Code;
 
-        object[] data = (object[])_photonEvent.CustomData;
-
         if (eventCode == destroySpiderEventCode)
         {
+            object[] data = (object[])_photonEvent.CustomData;
+
             // Find PhotonView with ViewID Data
             PhotonNetwork.Destroy(PhotonView.Find((int)data[0]).gameObject);
         }
