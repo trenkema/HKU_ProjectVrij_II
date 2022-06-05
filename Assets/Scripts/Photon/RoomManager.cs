@@ -11,6 +11,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public static RoomManager Instance;
 
     [Header("Setup")]
+    [SerializeField] string eventReceiverPrefabName;
+
     [SerializeField] string mainMenuScene;
 
     [SerializeField] string playerPrefab;
@@ -51,6 +53,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if (scene.buildIndex == 1)
         {
+            PhotonNetwork.Instantiate(eventReceiverPrefabName, Vector3.zero, Quaternion.identity);
+
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
