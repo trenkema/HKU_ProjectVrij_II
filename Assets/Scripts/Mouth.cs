@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
 using Photon.Pun;
+using ExitGames.Client.Photon;
 
 public class Mouth : MonoBehaviour
 {
@@ -9,13 +11,17 @@ public class Mouth : MonoBehaviour
 
     [SerializeField] string spiderTag;
 
-    [SerializeField] PhotonView PV;
+    [SerializeField] byte destroySpiderEventCode = 1;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(spiderTag) && PV.IsMine)
+        if (other.CompareTag(spiderTag))
         {
-            PV.RPC("RPC_DestroySpider", RpcTarget.Others, other.GetComponent<PhotonView>().ViewID);
+            object[] content = new object[] { other.GetComponent<PhotonView>().ViewID };
+
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+
+            PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 
             MouthEntered();
         }
@@ -27,26 +33,7 @@ public class Mouth : MonoBehaviour
 
         if (lives <= 0)
         {
-            PV.RPC("RPC_GameOver", RpcTarget.All);
+            EventSystemNew<PlayerTypes>.RaiseEvent(Event_Type.GAME_WON, PlayerTypes.Spiders);
         }
-    }
-
-    [PunRPC]
-    public void RPC_DestroySpider(int _spiderID)
-    {
-        PhotonView spider = PhotonView.Find(_spiderID);
-
-        if (spider.IsMine)
-        {
-            PhotonNetwork.Destroy(spider.gameObject);
-        }
-    }
-
-    [PunRPC]
-    public void RPC_GameOver()
-    {
-        Debug.Log("Game Over");
-
-        EventSystemNew<PlayerTypes>.RaiseEvent(Event_Type.GAME_WON, PlayerTypes.Spiders);
     }
 }
