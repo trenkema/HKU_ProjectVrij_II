@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Collider leftHandPalmCollider;
     public Collider rightHandPalmCollider;
 
+    public bool isVR;
+
     private void Awake()
     {
         if (Instance == null)
