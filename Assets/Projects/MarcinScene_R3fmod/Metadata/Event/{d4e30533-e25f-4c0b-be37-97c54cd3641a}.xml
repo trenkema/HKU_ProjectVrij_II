@@ -29,6 +29,7 @@
 			<destination>{1d527f78-df04-4865-a40d-1456de477a47}</destination>
 			<destination>{e687ea92-52b0-48c6-bd88-1d4d3e56a91f}</destination>
 			<destination>{f2ea0200-6c33-48af-8b18-ca474d047b3c}</destination>
+			<destination>{2480675b-9dd6-42fa-849d-31798f5dbb03}</destination>
 		</relationship>
 		<relationship name="timeline">
 			<destination>{f795011e-1535-4dd0-a488-b52d8f08d823}</destination>
@@ -92,6 +93,11 @@
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{12fee556-a3ec-4f7f-9e22-c84bbe839736}</destination>
+		</relationship>
+	</object>
+	<object class="GroupTrack" id="{2480675b-9dd6-42fa-849d-31798f5dbb03}">
+		<relationship name="mixerGroup">
+			<destination>{c184258d-3c70-4596-876e-ed9586c6d730}</destination>
 		</relationship>
 	</object>
 	<object class="Timeline" id="{f795011e-1535-4dd0-a488-b52d8f08d823}">
@@ -229,6 +235,20 @@
 		</relationship>
 		<relationship name="panner">
 			<destination>{6e179806-de1f-4617-8af5-880bddc50c3d}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{471ff659-71b9-40b6-95b7-3a35caaf0a46}</destination>
+		</relationship>
+	</object>
+	<object class="EventMixerGroup" id="{c184258d-3c70-4596-876e-ed9586c6d730}">
+		<property name="name">
+			<value>Audio 4</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{72d73cd9-958d-4da3-9d0e-4908f8978f42}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{c3674765-1ada-4366-b8d7-d6beb7e158f6}</destination>
 		</relationship>
 		<relationship name="output">
 			<destination>{471ff659-71b9-40b6-95b7-3a35caaf0a46}</destination>
@@ -454,6 +474,12 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6e179806-de1f-4617-8af5-880bddc50c3d}" />
+	<object class="MixerBusEffectChain" id="{72d73cd9-958d-4da3-9d0e-4908f8978f42}">
+		<relationship name="effects">
+			<destination>{42784506-b37d-47d8-ab16-581de4b8d3d2}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{c3674765-1ada-4366-b8d7-d6beb7e158f6}" />
 	<object class="MixerBusFader" id="{0e785abc-15f9-42dd-a3f6-3c23988cb642}" />
 	<object class="CompressorEffect" id="{a06447b7-f5f7-4c49-9d2d-116ce1208517}">
 		<property name="threshold">
@@ -494,4 +520,5 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{10e488f8-30df-46b9-9aa5-61bfaf690d36}" />
+	<object class="MixerBusFader" id="{42784506-b37d-47d8-ab16-581de4b8d3d2}" />
 </objects>

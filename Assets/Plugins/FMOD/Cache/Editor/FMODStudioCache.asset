@@ -42,10 +42,10 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637901424493149543
+  lastModified: 637901585935902830
   FileSizes:
   - Name: Desktop
-    Value: 1350
+    Value: 1444
   Exists: 1
 --- !u!114 &-5866224436481398977
 MonoBehaviour:
@@ -207,7 +207,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 0.2
-  MaxDistance: 5.6
+  MaxDistance: 6.8
   Length: 6876
 --- !u!114 &-698846448711861499
 MonoBehaviour:
@@ -266,13 +266,42 @@ MonoBehaviour:
   - {fileID: 8662545600280872091}
   - {fileID: -4013081863842058306}
   - {fileID: -5866224436481398977}
+  - {fileID: 4395372225752187992}
+  - {fileID: 614083198990745183}
   EditorParameters: []
   MasterBanks:
   - {fileID: 8185239452862957790}
   StringsBanks:
   - {fileID: -6654038201005732990}
-  cacheTime: 637901424493149543
+  cacheTime: 637901585935902830
   cacheVersion: 131591
+--- !u!114 &614083198990745183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpiderRun
+  m_EditorClassIdentifier: 
+  Path: event:/SpiderRun
+  Guid:
+    Data1: -654096961
+    Data2: 1283606556
+    Data3: -1948598632
+    Data4: -1883327098
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1.8000001
+  MaxDistance: 15
+  Length: 843
 --- !u!114 &2632815097140529480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +356,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 42885
+--- !u!114 &4395372225752187992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WebEffect
+  m_EditorClassIdentifier: 
+  Path: event:/WebEffect
+  Guid:
+    Data1: 1892009561
+    Data2: 1330658294
+    Data3: 717912251
+    Data4: -1165451309
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0.1
+  MaxDistance: 6.8
+  Length: 1156
 --- !u!114 &4603265636850343336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,10 +503,10 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637901424493134543
+  lastModified: 637901585935852822
   FileSizes:
   - Name: Desktop
-    Value: 4095584
+    Value: 4164640
   Exists: 1
 --- !u!114 &8662545600280872091
 MonoBehaviour:

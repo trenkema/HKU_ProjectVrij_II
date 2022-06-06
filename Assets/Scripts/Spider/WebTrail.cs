@@ -12,6 +12,7 @@ public class WebTrail : MonoBehaviour
     //SOUND
 
     private FMOD.Studio.EventInstance spiderTrailSound;
+    private FMOD.Studio.EventInstance spiderTrailSoundEffect;
 
     GameObject spawnedWeb;
 
@@ -22,6 +23,11 @@ public class WebTrail : MonoBehaviour
     void Awake()
     {
         PV = GetComponent<PhotonView>();
+
+        //SOUND
+        spiderTrailSoundEffect = FMODUnity.RuntimeManager.CreateInstance("event:/WebEffect");
+        spiderTrailSoundEffect.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        spiderTrailSoundEffect.start();
 
         if (PV.IsMine)
         {
@@ -59,6 +65,8 @@ public class WebTrail : MonoBehaviour
                     PhotonNetwork.Destroy(gameObject);
 
                     //SOUND
+
+                    spiderTrailSoundEffect.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
                     spiderTrailSound = FMODUnity.RuntimeManager.CreateInstance("event:/WebCollider");
                     spiderTrailSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));

@@ -25,6 +25,9 @@ public class Spider : MonoBehaviour {
 
     [SerializeField] Animator animator;
 
+    //SOUND
+    private FMOD.Studio.EventInstance spiderJumpSound;
+
     Vector3 previousPos;
 
     Vector3 velocity;
@@ -291,6 +294,11 @@ public class Spider : MonoBehaviour {
             if (IsGrounded())
             {
                 rb.AddForce((transform.forward * forwardForce) + (transform.up * upForce));
+
+                //SOUND
+                spiderJumpSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderJump");
+                spiderJumpSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                spiderJumpSound.start();
             }
         }
     }

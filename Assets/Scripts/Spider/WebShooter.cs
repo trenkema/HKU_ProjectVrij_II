@@ -53,7 +53,6 @@ public class WebShooter : MonoBehaviour
     IEnumerator DelayWebShooting()
     {
         yield return new WaitForSeconds(shootDelay);
-
         canShoot = true;
     }
 }
