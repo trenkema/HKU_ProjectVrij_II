@@ -21,11 +21,6 @@ public class SpiderController : MonoBehaviour {
     [Header("Camera")]
     public SmoothCamera smoothCam;
 
-    private void OnDestroy()
-    {
-        Destroy(smoothCam.gameObject);
-    }
-
     void FixedUpdate() {
         //** Movement **//
         Vector3 input = getInput();

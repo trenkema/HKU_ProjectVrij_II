@@ -45,12 +45,12 @@ public class ReceiveEvents : MonoBehaviour
             object[] data = (object[])_photonEvent.CustomData;
 
             // Check if the Event is send to me
-            if (PV.ViewID == (int)data[0])
+            if (PhotonView.Find((int)data[0]).IsMine)
             {
+                EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, true);
+
                 // Find PhotonView with ViewID Data
                 PhotonNetwork.Destroy(PhotonView.Find((int)data[0]).gameObject);
-
-                EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, true);
             }
             else
             {

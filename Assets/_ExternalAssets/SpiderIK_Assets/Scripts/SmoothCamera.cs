@@ -6,7 +6,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 /*
  * Inherits from abstract class CameraAbstract and manipulates the camera target by simply parenting it to the observed object.
  * Moreover, a rollDamp is implemented which will rotate the camera target back vertically whenever the observed object rotates.
@@ -24,6 +23,16 @@ public class SmoothCamera : CameraAbstract {
 
     private Vector3 lastObservedObjectNormal;
 
+    private void OnEnable()
+    {
+        EventSystemNew<bool>.Subscribe(Event_Type.SPIDER_DIED, SpiderDied);
+    }
+
+    private void OnDisable()
+    {
+        EventSystemNew<bool>.Unsubscribe(Event_Type.SPIDER_DIED, SpiderDied);
+    }
+
     protected override void Awake() {
         base.Awake();
         lastObservedObjectNormal = observedObject.up;
@@ -36,6 +45,14 @@ public class SmoothCamera : CameraAbstract {
             float angle = Vector3.SignedAngle(lastObservedObjectNormal, observedObject.up, camTarget.right);
             RotateCameraVertical(rollDamp * -angle);
             lastObservedObjectNormal = observedObject.up;
+        }
+    }
+
+    private void SpiderDied(bool _ownDeath)
+    {
+        if (_ownDeath)
+        {
+            Destroy(gameObject);
         }
     }
 

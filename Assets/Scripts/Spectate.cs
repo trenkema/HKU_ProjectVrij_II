@@ -38,11 +38,11 @@ public class Spectate : MonoBehaviour
     {
         if (_ownDeath)
         {
-            spectateCamera = Instantiate(spectateCameraPrefab).GetComponent<SmoothCamera>();
+            //spectateCamera = Instantiate(spectateCameraPrefab).GetComponent<SmoothCamera>();
 
             spectateHUD.SetActive(true);
 
-            isSpectating = true;
+            //isSpectating = true;
         }
 
         if (isSpectating)

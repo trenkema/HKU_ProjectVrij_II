@@ -3284,6 +3284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bffc1017359fb24da72936bce61f689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroySpiderEventCode: 1
   forwardForce: 5
   upwardForce: 4
   cam: {fileID: 2059377558581881328}
