@@ -58,7 +58,7 @@ public class ReceiveEvents : MonoBehaviour
 
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
 
-                PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+                PhotonNetwork.RaiseEvent(spiderDestroyedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 
                 EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, true);
             }
