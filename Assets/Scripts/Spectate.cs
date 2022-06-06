@@ -42,6 +42,8 @@ public class Spectate : MonoBehaviour
     {
         if (_ownDeath)
         {
+            spectateID = 0;
+
             spectateHUD.SetActive(true);
 
             isSpectating = true;
@@ -53,12 +55,12 @@ public class Spectate : MonoBehaviour
         {
             int spidersAliveCount = FindObjectsOfType<RopeGenerator>().Length;
 
-            Debug.Log("Spiders Count: " + spidersAliveCount);
-
             if (spidersAliveCount != 0)
             {
                 if (spiders[spectateID] == null)
                 {
+                    spectateID = 0;
+
                     spiders = FindObjectsOfType<RopeGenerator>();
 
                     if (spiders.Length > 0)
@@ -74,6 +76,10 @@ public class Spectate : MonoBehaviour
                             cam.gameObject.SetActive(true);
 
                             spiderNameText.text = spiders[spectateID].GetComponent<PhotonView>().Controller.NickName;
+                        }
+                        else
+                        {
+                            SpiderDied(false);
                         }
                     }
                     else
