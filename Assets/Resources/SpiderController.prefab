@@ -3152,7 +3152,7 @@ MonoBehaviour:
   forwardNormalAdjustSpeed: 2
   walkableLayer:
     serializedVersion: 2
-    m_Bits: 1073760257
+    m_Bits: 1073743873
   gravityOffDistance: 0.2
   body: {fileID: 2059377557076313348}
   legs:

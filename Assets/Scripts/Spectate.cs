@@ -8,6 +8,8 @@ using Cinemachine;
 public class Spectate : MonoBehaviour
 {
     [SerializeField] CinemachineFreeLook spectateCamera;
+    [SerializeField] CinemachineVirtualCamera noSpectatorsCamera;
+
     [SerializeField] Camera cam;
 
     [SerializeField] GameObject spectateHUD;
@@ -18,7 +20,7 @@ public class Spectate : MonoBehaviour
 
     //SmoothCamera spectateCamera;
 
-    RopeGenerator[] spiders;
+    List<RopeGenerator> spiders = new List<RopeGenerator>();
 
     bool isSpectating = false;
 
@@ -40,42 +42,91 @@ public class Spectate : MonoBehaviour
     {
         if (_ownDeath)
         {
+            spiders.Clear();
+
             spectateHUD.SetActive(true);
 
             isSpectating = true;
 
-            spiders = FindObjectsOfType<RopeGenerator>();
+            RopeGenerator[] tempSpiders = FindObjectsOfType<RopeGenerator>();
+
+            foreach (var spider in tempSpiders)
+            {
+                if (spider.GetComponent<PhotonView>().IsMine)
+                {
+                    break;
+                }
+                else
+                {
+                    spiders.Add(spider);
+                }
+            }
         }
 
         if (isSpectating)
         {
-            if (spiders[spectateID] == null)
+            if (spiders.Count > 0)
             {
-                spiders = FindObjectsOfType<RopeGenerator>();
-
-                if (spiders.Length > 0)
+                if (spiders[spectateID] == null)
                 {
-                    if (spiders[spectateID] != null)
-                    {
-                        spectateCamera.Follow = spiders[spectateID].transform;
-                        spectateCamera.LookAt = spiders[spectateID].transform;
+                    spiders.Clear();
 
-                        spectateCamera.gameObject.SetActive(true);
+                    RopeGenerator[] tempSpiders = FindObjectsOfType<RopeGenerator>();
+
+                    foreach (var spider in tempSpiders)
+                    {
+                        if (spider.GetComponent<PhotonView>().IsMine)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            spiders.Add(spider);
+                        }
+                    }
+
+                    if (spiders.Count > 0)
+                    {
+                        noSpectatorsCamera.gameObject.SetActive(false);
+
+                        if (spiders[spectateID] != null)
+                        {
+                            spectateCamera.Follow = spiders[spectateID].transform;
+                            spectateCamera.LookAt = spiders[spectateID].transform;
+
+                            spectateCamera.gameObject.SetActive(true);
+                            cam.gameObject.SetActive(true);
+
+                            spiderNameText.text = spiders[spectateID].GetComponent<PhotonView>().Controller.NickName;
+                        }
+                    }
+                    else
+                    {
+                        noSpectatorsCamera.gameObject.SetActive(true);
                         cam.gameObject.SetActive(true);
 
-                        spiderNameText.text = spiders[spectateID].GetComponent<PhotonView>().Controller.NickName;
+                        spiderNameText.text = "Nobody";
                     }
+                }
+                else
+                {
+                    noSpectatorsCamera.gameObject.SetActive(false);
+
+                    spectateCamera.Follow = spiders[spectateID].transform;
+                    spectateCamera.LookAt = spiders[spectateID].transform;
+
+                    spectateCamera.gameObject.SetActive(true);
+                    cam.gameObject.SetActive(true);
+
+                    spiderNameText.text = spiders[spectateID].GetComponent<PhotonView>().Controller.NickName;
                 }
             }
             else
             {
-                spectateCamera.Follow = spiders[spectateID].transform;
-                spectateCamera.LookAt = spiders[spectateID].transform;
-
-                spectateCamera.gameObject.SetActive(true);
+                noSpectatorsCamera.gameObject.SetActive(true);
                 cam.gameObject.SetActive(true);
 
-                spiderNameText.text = spiders[spectateID].GetComponent<PhotonView>().Controller.NickName;
+                spiderNameText.text = "Nobody";
             }
         }
     }
@@ -91,6 +142,7 @@ public class Spectate : MonoBehaviour
                 spectateID = 0;
 
                 spectateCamera.gameObject.SetActive(false);
+                noSpectatorsCamera.gameObject.SetActive(false);
                 cam.gameObject.SetActive(false);
             }
 

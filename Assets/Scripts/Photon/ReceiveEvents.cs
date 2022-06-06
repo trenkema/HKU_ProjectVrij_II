@@ -10,6 +10,7 @@ public class ReceiveEvents : MonoBehaviour
     [Header("Event Codes")]
     [SerializeField] byte destroySpiderEventCode = 1;
     [SerializeField] byte respawnSpiderEventCode = 2;
+    [SerializeField] byte gameWonEventCode = 3;
 
     PhotonView PV;
 
@@ -74,6 +75,13 @@ public class ReceiveEvents : MonoBehaviour
             {
                 EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_RESPAWNED, false);
             }
+        }
+
+        if (eventCode == gameWonEventCode)
+        {
+            object[] data = (object[])_photonEvent.CustomData;
+
+            EventSystemNew<PlayerTypes>.RaiseEvent(Event_Type.GAME_WON, (PlayerTypes)data[0]);
         }
     }
 }

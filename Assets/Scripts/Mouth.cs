@@ -13,6 +13,8 @@ public class Mouth : MonoBehaviour
 
     [SerializeField] byte destroySpiderEventCode = 1;
 
+    [SerializeField] byte gameWonEventCode = 3;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(spiderTag))
@@ -33,7 +35,11 @@ public class Mouth : MonoBehaviour
 
         if (lives <= 0)
         {
-            EventSystemNew<PlayerTypes>.RaiseEvent(Event_Type.GAME_WON, PlayerTypes.Spiders);
+            object[] content = new object[] { (int)PlayerTypes.Spiders };
+
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+
+            PhotonNetwork.RaiseEvent(gameWonEventCode, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
 }
