@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2254d6b5-ce6a-4b33-bab2-44d4bf9933d3}">
+		<property name="assetPath">
+			<value>Sound FX/ESM_Bugs_Crawling_6_Futuristic_Mobile_App_Pick_Up_Sci_fi.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>13.714625850340136</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f66b6c2d-4252-4ec0-8944-ed549e18c1e0}</destination>
+		</relationship>
+	</object>
+</objects>

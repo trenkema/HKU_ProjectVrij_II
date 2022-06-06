@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ff037c97-5f1c-4151-b0f0-c4eb2bfe0437}">
+		<property name="assetPath">
+			<value>SpiderGame Happy Music 1.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>89.345555555555549</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f66b6c2d-4252-4ec0-8944-ed549e18c1e0}</destination>
+		</relationship>
+	</object>
+</objects>

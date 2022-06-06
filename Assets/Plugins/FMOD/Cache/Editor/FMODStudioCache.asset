@@ -1,0 +1,482 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8140938267881720852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpiderShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SpiderShoot
+  Guid:
+    Data1: -723319501
+    Data2: 1275847263
+    Data3: -979945538
+    Data4: 442815308
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0.6
+  MaxDistance: 7.6
+  Length: 3000
+--- !u!114 &-6654038201005732990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637901192243397924
+  FileSizes:
+  - Name: Desktop
+    Value: 1350
+  Exists: 1
+--- !u!114 &-5866224436481398977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpiderStep
+  m_EditorClassIdentifier: 
+  Path: event:/SpiderStep
+  Guid:
+    Data1: 1523291638
+    Data2: 1318758330
+    Data3: 590440117
+    Data4: -922669903
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1.8000001
+  MaxDistance: 15
+  Length: 2375
+--- !u!114 &-5062135036613454822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/HappyMusic
+  m_EditorClassIdentifier: 
+  Path: event:/HappyMusic
+  Guid:
+    Data1: -148627391
+    Data2: 1158269314
+    Data3: -1868147832
+    Data4: 1439064689
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 89345
+--- !u!114 &-4622613160707474862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpiderHang
+  m_EditorClassIdentifier: 
+  Path: event:/SpiderHang
+  Guid:
+    Data1: -118944191
+    Data2: 1101675781
+    Data3: 500693633
+    Data4: 654965445
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4500
+--- !u!114 &-4013081863842058306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Fireplace
+  m_EditorClassIdentifier: 
+  Path: event:/Fireplace
+  Guid:
+    Data1: -1379090968
+    Data2: 1184306428
+    Data3: 1502404772
+    Data4: -1179702322
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 8
+  Length: 112778
+--- !u!114 &-3982751904119833933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music 1
+  m_EditorClassIdentifier: 
+  Path: event:/Music 1
+  Guid:
+    Data1: 1898584324
+    Data2: 1249905434
+    Data3: -1891537787
+    Data4: -990128929
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 25
+  Length: 55172
+--- !u!114 &-1538465691654451978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WebCollider
+  m_EditorClassIdentifier: 
+  Path: event:/WebCollider
+  Guid:
+    Data1: -627591798
+    Data2: 1252201532
+    Data3: 1832232383
+    Data4: 1191924120
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0.2
+  MaxDistance: 5.6
+  Length: 6876
+--- !u!114 &-698846448711861499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpiderJump
+  m_EditorClassIdentifier: 
+  Path: event:/SpiderJump
+  Guid:
+    Data1: 34168074
+    Data2: 1196896376
+    Data3: 1495746691
+    Data4: 222804354
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0.3
+  MaxDistance: 5.4
+  Length: 2000
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -6654038201005732990}
+  - {fileID: 8185239452862957790}
+  EditorEvents:
+  - {fileID: -3982751904119833933}
+  - {fileID: -698846448711861499}
+  - {fileID: -8140938267881720852}
+  - {fileID: -4622613160707474862}
+  - {fileID: -5062135036613454822}
+  - {fileID: 6069234198522835849}
+  - {fileID: 6812624498425843191}
+  - {fileID: 2891245275604626914}
+  - {fileID: -1538465691654451978}
+  - {fileID: 2632815097140529480}
+  - {fileID: 5584489727784615521}
+  - {fileID: 8662545600280872091}
+  - {fileID: -4013081863842058306}
+  - {fileID: -5866224436481398977}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 8185239452862957790}
+  StringsBanks:
+  - {fileID: -6654038201005732990}
+  cacheTime: 637901192243397924
+  cacheVersion: 131591
+--- !u!114 &2632815097140529480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpiderLand
+  m_EditorClassIdentifier: 
+  Path: event:/SpiderLand
+  Guid:
+    Data1: -111182418
+    Data2: 1133615360
+    Data3: -1471844456
+    Data4: -478518617
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &2891245275604626914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MysteriousMusic
+  m_EditorClassIdentifier: 
+  Path: event:/MysteriousMusic
+  Guid:
+    Data1: 524141402
+    Data2: 1107672699
+    Data3: 433982089
+    Data4: 148088161
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 42885
+--- !u!114 &4603265636850343336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Crawl/RPM
+  m_EditorClassIdentifier: 
+  Name: RPM
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 2272601954
+    data2: 3169889173
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &5584489727784615521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music 2D
+  m_EditorClassIdentifier: 
+  Path: event:/Music 2D
+  Guid:
+    Data1: -1324402733
+    Data2: 1161257900
+    Data3: 1355013770
+    Data4: 170895952
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 55172
+--- !u!114 &6069234198522835849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpiderRise
+  m_EditorClassIdentifier: 
+  Path: event:/SpiderRise
+  Guid:
+    Data1: -490284472
+    Data2: 1086767499
+    Data3: 1096792504
+    Data4: 1023361373
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1875
+--- !u!114 &6812624498425843191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpiderPull
+  m_EditorClassIdentifier: 
+  Path: event:/SpiderPull
+  Guid:
+    Data1: 387305034
+    Data2: 1120638293
+    Data3: -165426521
+    Data4: 401159347
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1.8000001
+  MaxDistance: 7.6
+  Length: 1531
+--- !u!114 &8185239452862957790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637901192243347920
+  FileSizes:
+  - Name: Desktop
+    Value: 4095840
+  Exists: 1
+--- !u!114 &8662545600280872091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crawl
+  m_EditorClassIdentifier: 
+  Path: event:/Crawl
+  Guid:
+    Data1: -24867117
+    Data2: 1153676934
+    Data3: 2059419281
+    Data4: -340543632
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4603265636850343336}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0

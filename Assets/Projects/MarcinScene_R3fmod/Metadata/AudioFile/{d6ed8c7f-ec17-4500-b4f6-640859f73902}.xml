@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d6ed8c7f-ec17-4500-b4f6-640859f73902}">
+		<property name="assetPath">
+			<value>Sound FX/SpiderBiteChew_BU01.588.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.4186666666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f66b6c2d-4252-4ec0-8944-ed549e18c1e0}</destination>
+		</relationship>
+	</object>
+</objects>

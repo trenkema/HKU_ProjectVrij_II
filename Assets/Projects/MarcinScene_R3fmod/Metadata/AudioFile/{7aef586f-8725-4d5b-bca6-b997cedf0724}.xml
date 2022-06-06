@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{7aef586f-8725-4d5b-bca6-b997cedf0724}">
+		<property name="assetPath">
+			<value>Sound FX/ESM_One_Shot_Vocal_Spider_Queen_Monster_Pain_2_Insect_Bug_Screech_Chirp_Death_Hit_Squish.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.0825208333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f66b6c2d-4252-4ec0-8944-ed549e18c1e0}</destination>
+		</relationship>
+	</object>
+</objects>
