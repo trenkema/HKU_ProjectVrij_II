@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroySpiderEventCode: 1
+  respawnSpiderEventCode: 2
 --- !u!114 &6739106642828526026
 MonoBehaviour:
   m_ObjectHideFlags: 0
