@@ -47,10 +47,10 @@ public class ReceiveEvents : MonoBehaviour
             // Check if the Event is send to me
             if (PhotonView.Find((int)data[0]).IsMine)
             {
+                EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, true);
+
                 // Find PhotonView with ViewID Data
                 PhotonNetwork.Destroy(PhotonView.Find((int)data[0]).gameObject);
-
-                EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, true);
             }
             else
             {

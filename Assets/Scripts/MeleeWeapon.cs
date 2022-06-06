@@ -11,6 +11,21 @@ public class MeleeWeapon : MonoBehaviour
 
     [SerializeField] byte destroySpiderEventCode = 1;
 
+    PhotonView PV;
+
+    private void Awake()
+    {
+        PV = GetComponent<PhotonView>();
+    }
+
+    private void Start()
+    {
+        if (!PV.IsMine)
+        {
+            Destroy(this);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag(spiderTag))
