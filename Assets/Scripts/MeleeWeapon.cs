@@ -32,7 +32,7 @@ public class MeleeWeapon : MonoBehaviour
         {
             object[] content = new object[] { collision.transform.GetComponent<PhotonView>().ViewID };
 
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
             PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
         }
