@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 public class RopeGenerator : MonoBehaviour
 {
@@ -54,8 +56,6 @@ public class RopeGenerator : MonoBehaviour
 
     bool isCurrentlySwinging = false;
 
-    bool canDelete = true;
-
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.COLLIDED, DestroyRope);
@@ -92,6 +92,15 @@ public class RopeGenerator : MonoBehaviour
             {
                 lastRopePointRB.AddForce((cam.transform.forward * forwardForce) + (cam.transform.up * upwardForce));
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            object[] content = new object[] { PV.ViewID };
+
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+            PhotonNetwork.RaiseEvent(1, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
 

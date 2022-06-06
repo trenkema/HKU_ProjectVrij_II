@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum Event_Type
 {
+    SPIDER_DIED,
     SPIDER_RESPAWNED,
 
     IS_SWINGING,
