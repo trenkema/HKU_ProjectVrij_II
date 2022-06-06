@@ -22,6 +22,10 @@ public class WebShooter : MonoBehaviour
 
     bool canShoot = true;
 
+    //SOUND
+
+    private FMOD.Studio.EventInstance spiderShootSound;
+
     public void ShootWeb(InputAction.CallbackContext _context)
     {
         if (_context.phase == InputActionPhase.Started)
@@ -36,6 +40,12 @@ public class WebShooter : MonoBehaviour
                 webTrail.GetComponent<Rigidbody>().velocity = spiderCamera.transform.forward * webTrailSpeed;
 
                 StartCoroutine(DelayWebShooting());
+
+                //SOUND
+
+                spiderShootSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderShoot");
+                spiderShootSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                spiderShootSound.start();
             }
         }
     }

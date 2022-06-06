@@ -9,6 +9,10 @@ public class WebTrail : MonoBehaviour
 
     [SerializeField] float destroyTime = 3;
 
+    //SOUND
+
+    private FMOD.Studio.EventInstance spiderTrailSound;
+
     GameObject spawnedWeb;
 
     PhotonView PV;
@@ -53,6 +57,12 @@ public class WebTrail : MonoBehaviour
                     isDestroyed = true;
 
                     PhotonNetwork.Destroy(gameObject);
+
+                    //SOUND
+
+                    spiderTrailSound = FMODUnity.RuntimeManager.CreateInstance("event:/WebCollider");
+                    spiderTrailSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                    spiderTrailSound.start();
 
                     spawnedWeb = PhotonNetwork.Instantiate(webPrefabName, transform.position, Quaternion.identity);
                 }
