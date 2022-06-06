@@ -92,7 +92,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{d2662a21-aec9-4d18-8fb0-4f6066f3035a}">
 		<property name="volume">
-			<value>-19.5</value>
+			<value>-9</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{9835528a-a254-420c-865b-bf2b0494c791}</destination>
@@ -142,7 +142,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{184c5c77-88fc-4e0c-af1e-a19da56ea612}">
 		<property name="volume">
-			<value>-23.5</value>
+			<value>-18</value>
 		</property>
 		<property name="name">
 			<value>Audio 2</value>
@@ -165,14 +165,7 @@
 			<destination>{58b7271e-1392-4218-8ced-de79028a169a}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{8b7daefd-07b7-458f-aa11-a5c2684a11bf}">
-		<property name="surroundPanDirection">
-			<value>-2.08256531</value>
-		</property>
-		<property name="surroundPanExtent">
-			<value>93.8400726</value>
-		</property>
-	</object>
+	<object class="MixerBusPanner" id="{8b7daefd-07b7-458f-aa11-a5c2684a11bf}" />
 	<object class="MixerBusFader" id="{cb1aea5e-7ad3-4462-9232-83b4462a9fc3}" />
 	<object class="RandomizerModulator" id="{92cced73-2f3d-46b5-9511-85c0a6627b3f}">
 		<property name="nameOfPropertyBeingModulated">
@@ -277,10 +270,13 @@
 			<value>0</value>
 		</property>
 		<property name="decayTime">
-			<value>200</value>
+			<value>120</value>
 		</property>
 		<property name="sustainValue">
 			<value>-80</value>
+		</property>
+		<property name="releaseTime">
+			<value>900</value>
 		</property>
 		<property name="finalValue">
 			<value>-80</value>
