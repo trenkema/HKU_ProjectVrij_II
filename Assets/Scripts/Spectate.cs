@@ -20,7 +20,7 @@ public class Spectate : MonoBehaviour
 
     //SmoothCamera spectateCamera;
 
-    List<RopeGenerator> spiders = new List<RopeGenerator>();
+    RopeGenerator[] spiders;
 
     bool isSpectating = false;
 
@@ -42,50 +42,26 @@ public class Spectate : MonoBehaviour
     {
         if (_ownDeath)
         {
-            spiders.Clear();
-
             spectateHUD.SetActive(true);
 
             isSpectating = true;
 
-            RopeGenerator[] tempSpiders = FindObjectsOfType<RopeGenerator>();
-
-            foreach (var spider in tempSpiders)
-            {
-                if (spider.GetComponent<PhotonView>().IsMine)
-                {
-                    break;
-                }
-                else
-                {
-                    spiders.Add(spider);
-                }
-            }
+            spiders = FindObjectsOfType<RopeGenerator>();
         }
 
         if (isSpectating)
         {
-            if (spiders.Count > 0)
+            int spidersAliveCount = FindObjectsOfType<RopeGenerator>().Length;
+
+            Debug.Log("Spiders Count: " + spidersAliveCount);
+
+            if (spidersAliveCount != 0)
             {
                 if (spiders[spectateID] == null)
                 {
-                    spiders.Clear();
+                    spiders = FindObjectsOfType<RopeGenerator>();
 
-                    RopeGenerator[] tempSpiders = FindObjectsOfType<RopeGenerator>();
-
-                    foreach (var spider in tempSpiders)
-                    {
-                        if (spider.GetComponent<PhotonView>().IsMine)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            spiders.Add(spider);
-                        }
-                    }
-
-                    if (spiders.Count > 0)
+                    if (spiders.Length > 0)
                     {
                         noSpectatorsCamera.gameObject.SetActive(false);
 
@@ -102,6 +78,7 @@ public class Spectate : MonoBehaviour
                     }
                     else
                     {
+                        spectateCamera.gameObject.SetActive(true);
                         noSpectatorsCamera.gameObject.SetActive(true);
                         cam.gameObject.SetActive(true);
 
@@ -123,6 +100,7 @@ public class Spectate : MonoBehaviour
             }
             else
             {
+                spectateCamera.gameObject.SetActive(false);
                 noSpectatorsCamera.gameObject.SetActive(true);
                 cam.gameObject.SetActive(true);
 

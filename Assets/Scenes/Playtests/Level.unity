@@ -22232,12 +22232,12 @@ MonoBehaviour:
   m_BindingMode: 5
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 0
-    m_Radius: 0
-  - m_Height: 0
-    m_Radius: 0
-  - m_Height: 0
-    m_Radius: 0
+  - m_Height: 0.2
+    m_Radius: 0.02
+  - m_Height: 0.075
+    m_Radius: 0.2
+  - m_Height: 0.05
+    m_Radius: 0.3
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1255236769}

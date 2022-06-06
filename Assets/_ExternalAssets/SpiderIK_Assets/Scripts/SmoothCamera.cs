@@ -25,12 +25,12 @@ public class SmoothCamera : CameraAbstract {
 
     private void OnEnable()
     {
-        EventSystemNew<bool>.Subscribe(Event_Type.SPIDER_DIED, SpiderDied);
+        EventSystemNew.Subscribe(Event_Type.SPIDER_DESTROY_CAMERA, SpiderDestroyCamera);
     }
 
     private void OnDisable()
     {
-        EventSystemNew<bool>.Unsubscribe(Event_Type.SPIDER_DIED, SpiderDied);
+        EventSystemNew.Unsubscribe(Event_Type.SPIDER_DESTROY_CAMERA, SpiderDestroyCamera);
     }
 
     protected override void Awake() {
@@ -48,12 +48,9 @@ public class SmoothCamera : CameraAbstract {
         }
     }
 
-    private void SpiderDied(bool _ownDeath)
+    private void SpiderDestroyCamera()
     {
-        if (_ownDeath)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     protected override Vector3 getHorizontalRotationAxis() {

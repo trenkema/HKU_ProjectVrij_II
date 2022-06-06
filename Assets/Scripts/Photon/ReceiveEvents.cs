@@ -11,6 +11,7 @@ public class ReceiveEvents : MonoBehaviour
     [SerializeField] byte destroySpiderEventCode = 1;
     [SerializeField] byte respawnSpiderEventCode = 2;
     [SerializeField] byte gameWonEventCode = 3;
+    [SerializeField] byte spiderDestroyedEventCode = 4;
 
     PhotonView PV;
 
@@ -48,15 +49,24 @@ public class ReceiveEvents : MonoBehaviour
             // Check if the Event is send to me
             if (PhotonView.Find((int)data[0]).IsMine)
             {
-                EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, true);
+                EventSystemNew.RaiseEvent(Event_Type.SPIDER_DESTROY_CAMERA);
 
                 // Find PhotonView with ViewID Data
                 PhotonNetwork.Destroy(PhotonView.Find((int)data[0]).gameObject);
+
+                object[] content = new object[] { PV.ViewID };
+
+                RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+
+                PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+
+                EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, true);
             }
-            else
-            {
-                EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, false);
-            }
+        }
+
+        if (eventCode == spiderDestroyedEventCode)
+        {
+            EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, false);
         }
 
         if (eventCode == respawnSpiderEventCode)
