@@ -12,6 +12,7 @@ public class ReceiveEvents : MonoBehaviour
     [SerializeField] byte respawnSpiderEventCode = 2;
     [SerializeField] byte gameWonEventCode = 3;
     [SerializeField] byte spiderDestroyedEventCode = 4;
+    [SerializeField] byte updateScoreEventCode = 5;
 
     PhotonView PV;
 
@@ -88,7 +89,14 @@ public class ReceiveEvents : MonoBehaviour
         {
             object[] data = (object[])_photonEvent.CustomData;
 
-            EventSystemNew<PlayerTypes>.RaiseEvent(Event_Type.GAME_WON, (PlayerTypes)data[0]);
+            EventSystemNew<string>.RaiseEvent(Event_Type.GAME_WON, (string)data[0]);
+        }
+
+        if (eventCode == updateScoreEventCode)
+        {
+            object[] data = (object[])_photonEvent.CustomData;
+
+            EventSystemNew<Player, int>.RaiseEvent(Event_Type.UPDATE_SCORE, PhotonView.Find((int)data[0]).Owner, (int)data[1]);
         }
     }
 }

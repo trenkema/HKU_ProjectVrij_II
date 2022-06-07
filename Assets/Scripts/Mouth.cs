@@ -13,33 +13,25 @@ public class Mouth : MonoBehaviour
 
     [SerializeField] byte destroySpiderEventCode = 1;
 
-    [SerializeField] byte gameWonEventCode = 3;
+    [SerializeField] byte updateScoreEventCode = 5;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(spiderTag))
         {
+            // Destroy Spider
             object[] content = new object[] { other.GetComponent<PhotonView>().ViewID, true };
 
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
             PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 
-            MouthEntered();
-        }
-    }
+            // Update Score
+            object[] content2 = new object[] { other.GetComponent<PhotonView>().ViewID, 3 };
 
-    private void MouthEntered()
-    {
-        lives--;
+            RaiseEventOptions raiseEventOptions2 = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-        if (lives <= 0)
-        {
-            object[] content = new object[] { (int)PlayerTypes.Spiders };
-
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
-
-            PhotonNetwork.RaiseEvent(gameWonEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent(destroySpiderEventCode, content2, raiseEventOptions2, SendOptions.SendReliable);
         }
     }
 }

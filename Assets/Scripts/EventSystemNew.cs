@@ -15,7 +15,9 @@ public enum Event_Type
 
     PHOTON_LOADED,
 
-    GAME_WON
+    GAME_WON,
+
+    UPDATE_SCORE
 }
 
 public static class EventSystemNew

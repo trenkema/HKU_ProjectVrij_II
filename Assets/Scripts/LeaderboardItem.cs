@@ -12,6 +12,13 @@ public class LeaderboardItem : MonoBehaviour
 
     public void Initialize(Player _player)
     {
-        playerNameText.text = _player.NickName;
+        playerNameText.text = _player.NickName + " |";
+
+        scoreText.text = "0";
+    }
+
+    public void UpdateScore(int _score)
+    {
+        scoreText.text = _score.ToString();
     }
 }
