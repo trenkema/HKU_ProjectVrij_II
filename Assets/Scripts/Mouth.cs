@@ -23,18 +23,18 @@ public class Mouth : MonoBehaviour
             int player = PhotonView.Find(viewID).Owner.ActorNumber;
 
             // Destroy Spider
-            object[] content = new object[] { viewID, false };
+            object[] contentDestroy = new object[] { viewID, false };
 
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            RaiseEventOptions raiseEventOptionsDestroy = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-            PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent(destroySpiderEventCode, contentDestroy, raiseEventOptionsDestroy, SendOptions.SendReliable);
 
             // Update Score
-            object[] content2 = new object[] { player, scoreToEarn };
+            object[] contentScore = new object[] { player, scoreToEarn };
 
-            RaiseEventOptions raiseEventOptions2 = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
 
-            PhotonNetwork.RaiseEvent(updateScoreEventCode, content2, raiseEventOptions2, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent(updateScoreEventCode, contentScore, raiseEventOptionsScore, SendOptions.SendReliable);
         }
     }
 }

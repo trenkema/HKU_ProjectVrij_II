@@ -43,7 +43,7 @@ public class Leaderboard : MonoBehaviourPunCallbacks
 
         item.Initialize(_player);
 
-        leaderboardItems[_player] = item;
+        leaderboardItems.Add(_player, item);
     }
 
     private void RemoveLeaderboardItem(Player _player)

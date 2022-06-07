@@ -96,11 +96,9 @@ public class ReceiveEvents : MonoBehaviour
         {
             object[] data = (object[])_photonEvent.CustomData;
 
-            Player[] players = PhotonNetwork.PlayerList;
-
             Player correctPlayer = null;
 
-            foreach (Player player in players)
+            foreach (Player player in PhotonNetwork.PlayerList)
             {
                 if (player.ActorNumber == (int)data[0])
                 {
