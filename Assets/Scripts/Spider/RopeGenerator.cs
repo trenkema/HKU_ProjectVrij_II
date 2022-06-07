@@ -44,6 +44,7 @@ public class RopeGenerator : MonoBehaviour
 
     //SOUND
     private FMOD.Studio.EventInstance spiderPullSound;
+    private FMOD.Studio.EventInstance spiderHangSound;
 
     List<GameObject> ropePoints = new List<GameObject>();
 
@@ -88,6 +89,9 @@ public class RopeGenerator : MonoBehaviour
                 spiderPullSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderPull");
                 spiderPullSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
                 spiderPullSound.start();
+                spiderHangSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderHang");
+                spiderHangSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                spiderHangSound.start();
             }
         }
 
@@ -124,9 +128,13 @@ public class RopeGenerator : MonoBehaviour
         PV.RPC("RPC_SyncTarget", RpcTarget.All, target.GetComponent<PhotonView>().ViewID, false);
         PV.RPC("RPC_UnParentTarget", RpcTarget.All, target.GetComponent<PhotonView>().ViewID);
 
+        //SOUND
+        spiderHangSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
         StartCoroutine(DeleteRope());
 
         isCurrentlySwinging = false;
+
     }
 
     private void RaycastRope()

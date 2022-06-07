@@ -123,6 +123,8 @@ public class IKStepper : MonoBehaviour {
     private Vector3 maxOrient;
     private string lastHitRay;
 
+    //SOUND
+    private FMOD.Studio.EventInstance spiderWalkSound;
 
     private void Awake() {
         ikChain = GetComponent<IKChain>();
@@ -324,7 +326,10 @@ public class IKStepper : MonoBehaviour {
         if (isStepping) return false;
 
         if (!ikChain.getTarget().grounded) return true;
-
+        //SOUND
+        spiderWalkSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderStep");
+        spiderWalkSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        spiderWalkSound.start();
         if (timeSinceLastStep < stepCooldown) return false;
 
         foreach (var chain in asyncChain) {

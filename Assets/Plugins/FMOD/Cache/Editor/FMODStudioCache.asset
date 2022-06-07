@@ -42,10 +42,10 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637901585935902830
+  lastModified: 637901664288160096
   FileSizes:
   - Name: Desktop
-    Value: 1444
+    Value: 1488
   Exists: 1
 --- !u!114 &-5866224436481398977
 MonoBehaviour:
@@ -125,9 +125,9 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters: []
-  MinDistance: 1
+  MinDistance: 0.6
   MaxDistance: 20
-  Length: 4500
+  Length: 4625
 --- !u!114 &-4013081863842058306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 0.2
-  MaxDistance: 6.8
+  MaxDistance: 9.6
   Length: 6876
 --- !u!114 &-698846448711861499
 MonoBehaviour:
@@ -268,12 +268,13 @@ MonoBehaviour:
   - {fileID: -5866224436481398977}
   - {fileID: 4395372225752187992}
   - {fileID: 614083198990745183}
+  - {fileID: 4699720373040083555}
   EditorParameters: []
   MasterBanks:
   - {fileID: 8185239452862957790}
   StringsBanks:
   - {fileID: -6654038201005732990}
-  cacheTime: 637901585935902830
+  cacheTime: 637901664288160096
   cacheVersion: 131591
 --- !u!114 &614083198990745183
 MonoBehaviour:
@@ -407,6 +408,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &4699720373040083555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MysteriousMusic 2
+  m_EditorClassIdentifier: 
+  Path: event:/MysteriousMusic 2
+  Guid:
+    Data1: 486657680
+    Data2: 1228825611
+    Data3: 561424288
+    Data4: -514577910
+  Banks:
+  - {fileID: 8185239452862957790}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 42885
 --- !u!114 &5584489727784615521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,10 +531,10 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637901585935852822
+  lastModified: 637901664288105077
   FileSizes:
   - Name: Desktop
-    Value: 4164640
+    Value: 4174592
   Exists: 1
 --- !u!114 &8662545600280872091
 MonoBehaviour:

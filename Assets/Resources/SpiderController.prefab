@@ -3097,6 +3097,7 @@ GameObject:
   - component: {fileID: 127058389811818652}
   - component: {fileID: 2728775439532156639}
   - component: {fileID: 6332434669677768168}
+  - component: {fileID: 6016694459248778053}
   m_Layer: 15
   m_Name: SpiderController
   m_TagString: Spider
@@ -3349,6 +3350,36 @@ CapsuleCollider:
   m_Height: 0.022
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6016694459248778053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059377557813265921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 486657680
+      Data2: 1228825611
+      Data3: 561424288
+      Data4: -514577910
+    Path: event:/MysteriousMusic 2
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2059377557833229412
 GameObject:
   m_ObjectHideFlags: 0
