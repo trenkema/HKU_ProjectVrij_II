@@ -7,7 +7,7 @@ using ExitGames.Client.Photon;
 
 public class Mouth : MonoBehaviour
 {
-    [SerializeField] int lives = 1;
+    [SerializeField] int scoreToEarn = 1;
 
     [SerializeField] string spiderTag;
 
@@ -27,7 +27,7 @@ public class Mouth : MonoBehaviour
             PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 
             // Update Score
-            object[] content2 = new object[] { other.GetComponent<PhotonView>().ViewID, 3 };
+            object[] content2 = new object[] { other.GetComponent<PhotonView>().ViewID, scoreToEarn };
 
             RaiseEventOptions raiseEventOptions2 = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
