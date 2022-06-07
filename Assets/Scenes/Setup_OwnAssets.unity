@@ -40855,12 +40855,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2107805416}
   - {fileID: 324163057}
   - {fileID: 1320296186}
   - {fileID: 2118328236}
   - {fileID: 1635940294}
   - {fileID: 1879660028}
-  - {fileID: 2107805416}
   m_Father: {fileID: 1435836853}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45637,7 +45637,7 @@ Transform:
   - {fileID: 1416468874}
   - {fileID: 1389795399}
   m_Father: {fileID: 1852994816}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2116913747
 PrefabInstance:
