@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{09369b4f-196a-419d-bb9c-8b0810961333}">
+		<property name="name">
+			<value>Pitch</value>
+		</property>
+		<relationship name="folder">
+			<destination>{48cccbec-9062-4f99-983d-2ca5b5fff9ea}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{6cafec2c-d346-4d93-923c-413001a63dc7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{6cafec2c-d346-4d93-923c-413001a63dc7}">
+		<property name="minimum">
+			<value>-12</value>
+		</property>
+		<property name="maximum">
+			<value>12</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<relationship name="automators">
+			<destination>{092fb984-fc5a-4742-a29e-282264049138}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{092fb984-fc5a-4742-a29e-282264049138}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>cursorPosition</value>
+		</property>
+	</object>
+</objects>

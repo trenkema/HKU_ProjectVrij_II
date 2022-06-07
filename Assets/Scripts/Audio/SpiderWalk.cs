@@ -13,7 +13,7 @@ public class SpiderWalk : MonoBehaviour
     {
         void Update()
         {
-            spiderRunningSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderStep");
+            spiderRunningSound = FMODUnity.RuntimeManager.CreateInstance(path);
             spiderRunningSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
             spiderRunningSound.start();
 

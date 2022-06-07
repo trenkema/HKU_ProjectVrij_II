@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{5acb95f6-a7ba-4e9a-b566-3123b12c01c9}">
 		<property name="name">
-			<value>SpiderStep</value>
+			<value>SpiderStep2</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{6b10a21a-1ad0-416e-9c45-63e31c960256}</destination>
+			<destination>{c6e8e152-eedb-4854-8b29-7d3652a795ca}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{83026405-57d6-4aa7-9b40-2c0d2632ca82}</destination>
