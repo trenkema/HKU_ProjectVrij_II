@@ -30,7 +30,9 @@ public class MeleeWeapon : MonoBehaviour
     {
         if (collision.transform.CompareTag(spiderTag))
         {
-            object[] content = new object[] { collision.transform.GetComponent<PhotonView>().ViewID, true };
+            int viewID = collision.transform.GetComponent<PhotonView>().ViewID;
+
+            object[] content = new object[] { viewID, true };
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 

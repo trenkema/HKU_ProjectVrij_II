@@ -18456,6 +18456,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dumbbell_01
       objectReference: {fileID: 0}
+    - target: {fileID: 2467845427091951342, guid: 48e0d960018a82542865d4612ca27f01,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2987114688658216020, guid: 48e0d960018a82542865d4612ca27f01,
         type: 3}
       propertyPath: m_RootOrder
@@ -20386,6 +20391,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dumbbell_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2467845427091951342, guid: 48e0d960018a82542865d4612ca27f01,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2987114688658216020, guid: 48e0d960018a82542865d4612ca27f01,
         type: 3}

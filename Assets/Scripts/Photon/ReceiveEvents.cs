@@ -96,7 +96,19 @@ public class ReceiveEvents : MonoBehaviour
         {
             object[] data = (object[])_photonEvent.CustomData;
 
-            EventSystemNew<Player, int>.RaiseEvent(Event_Type.UPDATE_SCORE, PhotonView.Find((int)data[0]).Owner, (int)data[1]);
+            Player[] players = PhotonNetwork.PlayerList;
+
+            Player correctPlayer = null;
+
+            foreach (Player player in players)
+            {
+                if (player.ActorNumber == (int)data[0])
+                {
+                    correctPlayer = player;
+                }
+            }
+
+            EventSystemNew<Player, int>.RaiseEvent(Event_Type.UPDATE_SCORE, correctPlayer, (int)data[1]);
         }
     }
 }

@@ -20,6 +20,7 @@ public class Mouth : MonoBehaviour
         if (other.CompareTag(spiderTag))
         {
             int viewID = other.GetComponent<PhotonView>().ViewID;
+            int player = PhotonView.Find(viewID).Owner.ActorNumber;
 
             // Destroy Spider
             object[] content = new object[] { viewID, true };
@@ -29,7 +30,7 @@ public class Mouth : MonoBehaviour
             PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 
             // Update Score
-            object[] content2 = new object[] { viewID, scoreToEarn };
+            object[] content2 = new object[] { player, scoreToEarn };
 
             RaiseEventOptions raiseEventOptions2 = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
