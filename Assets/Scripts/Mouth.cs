@@ -19,7 +19,7 @@ public class Mouth : MonoBehaviour
     {
         if (other.CompareTag(spiderTag))
         {
-            object[] content = new object[] { other.GetComponent<PhotonView>().ViewID };
+            object[] content = new object[] { other.GetComponent<PhotonView>().ViewID, true };
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
 

@@ -98,7 +98,7 @@ public class RopeGenerator : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            object[] content = new object[] { PV.ViewID };
+            object[] content = new object[] { PV.ViewID, false };
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 

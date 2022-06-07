@@ -60,13 +60,13 @@ public class ReceiveEvents : MonoBehaviour
 
                 PhotonNetwork.RaiseEvent(spiderDestroyedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 
-                EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, true);
+                EventSystemNew<bool, bool>.RaiseEvent(Event_Type.SPIDER_DIED, true, (bool)data[1]);
             }
         }
 
         if (eventCode == spiderDestroyedEventCode)
         {
-            EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_DIED, false);
+            EventSystemNew<bool, bool>.RaiseEvent(Event_Type.SPIDER_DIED, false, false);
         }
 
         if (eventCode == respawnSpiderEventCode)
@@ -74,11 +74,8 @@ public class ReceiveEvents : MonoBehaviour
             object[] data = (object[])_photonEvent.CustomData;
 
             // Check if the Event is send to me
-            if (PV.ViewID == (int)data[0])
+            if (PhotonView.Find((int)data[0]).IsMine)
             {
-                // Find PhotonView with ViewID Data
-                PhotonNetwork.Destroy(PhotonView.Find((int)data[0]).gameObject);
-
                 EventSystemNew<bool>.RaiseEvent(Event_Type.SPIDER_RESPAWNED, true);
             }
             else

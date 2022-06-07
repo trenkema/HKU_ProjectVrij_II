@@ -26,19 +26,19 @@ public class Spectate : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystemNew<bool>.Subscribe(Event_Type.SPIDER_DIED, SpiderDied);
+        EventSystemNew<bool, bool>.Subscribe(Event_Type.SPIDER_DIED, SpiderDied);
 
         EventSystemNew<bool>.Subscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
     }
 
     private void OnDisable()
     {
-        EventSystemNew<bool>.Unsubscribe(Event_Type.SPIDER_DIED, SpiderDied);
+        EventSystemNew<bool, bool>.Unsubscribe(Event_Type.SPIDER_DIED, SpiderDied);
 
         EventSystemNew<bool>.Unsubscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
     }
 
-    private void SpiderDied(bool _ownDeath)
+    private void SpiderDied(bool _ownDeath, bool _increaseRespawnTime)
     {
         if (_ownDeath)
         {
@@ -79,7 +79,7 @@ public class Spectate : MonoBehaviour
                         }
                         else
                         {
-                            SpiderDied(false);
+                            SpiderDied(false, false);
                         }
                     }
                     else
@@ -134,7 +134,7 @@ public class Spectate : MonoBehaviour
         }
         else
         {
-            SpiderDied(false);
+            SpiderDied(false, false);
         }
     }
 
@@ -153,7 +153,7 @@ public class Spectate : MonoBehaviour
                 spectateID = PhotonNetwork.PlayerList.Length - 1;
             }
 
-            SpiderDied(false);
+            SpiderDied(false, false);
         }
     }
 }
