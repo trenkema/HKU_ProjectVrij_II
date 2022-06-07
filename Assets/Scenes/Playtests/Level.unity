@@ -2823,7 +2823,7 @@ MonoBehaviour:
   playerWonNameText: {fileID: 2113631299}
   leftHandPalmCollider: {fileID: 0}
   rightHandPalmCollider: {fileID: 0}
-  isVR: 0
+  isVR: 1
 --- !u!1001 &120826133
 PrefabInstance:
   m_ObjectHideFlags: 0

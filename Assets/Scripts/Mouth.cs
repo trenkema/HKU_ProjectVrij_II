@@ -19,15 +19,17 @@ public class Mouth : MonoBehaviour
     {
         if (other.CompareTag(spiderTag))
         {
+            int viewID = other.GetComponent<PhotonView>().ViewID;
+
             // Destroy Spider
-            object[] content = new object[] { other.GetComponent<PhotonView>().ViewID, true };
+            object[] content = new object[] { viewID, true };
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
             PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 
             // Update Score
-            object[] content2 = new object[] { other.GetComponent<PhotonView>().ViewID, scoreToEarn };
+            object[] content2 = new object[] { viewID, scoreToEarn };
 
             RaiseEventOptions raiseEventOptions2 = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
