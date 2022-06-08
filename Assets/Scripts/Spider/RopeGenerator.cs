@@ -68,6 +68,22 @@ public class RopeGenerator : MonoBehaviour
         EventSystemNew.Unsubscribe(Event_Type.COLLIDED, DestroyRope);
     }
 
+    private void OnDestroy()
+    {
+        if (endPoints.Count > 0)
+        {
+            foreach (var ropePoint in ropePoints)
+            {
+                PhotonNetwork.Destroy(ropePoint);
+            }
+
+            foreach (var endPoint in endPoints)
+            {
+                PhotonNetwork.Destroy(endPoint);
+            }
+        }
+    }
+
     private void Update()
     {
         if (!PV.IsMine)
