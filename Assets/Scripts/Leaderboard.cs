@@ -4,12 +4,15 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 using ExitGames.Client.Photon;
+using TMPro;
 
 public class Leaderboard : MonoBehaviourPunCallbacks
 {
     [SerializeField] byte gameWonEventCode = 3;
 
     [SerializeField] int maxScore = 3;
+
+    [SerializeField] TextMeshProUGUI scoreNeededText;
 
     [SerializeField] Transform leaderboardContainer;
 
@@ -35,6 +38,8 @@ public class Leaderboard : MonoBehaviourPunCallbacks
         {
             AddLeaderboardItem(player);
         }
+
+        scoreNeededText.text = string.Format("<color=#FF9F00>First to</color> <color=#18FF00>{0}</color> <color=#FF9F00>points</color>", maxScore);
     }
 
     private void AddLeaderboardItem(Player _player)

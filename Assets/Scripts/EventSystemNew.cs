@@ -13,8 +13,6 @@ public enum Event_Type
 
     CAN_SWING,
 
-    PHOTON_LOADED,
-
     GAME_WON,
 
     UPDATE_SCORE
