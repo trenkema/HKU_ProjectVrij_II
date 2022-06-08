@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1|2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5bcf999ddbc908b4d9357724feb10982, type: 2}
-  m_sharedMaterial: {fileID: 3646845503795902046, guid: 5bcf999ddbc908b4d9357724feb10982,
+  m_fontAsset: {fileID: 11400000, guid: 89d7688abe0af0042839fa18990e728d, type: 2}
+  m_sharedMaterial: {fileID: 1814716933830139015, guid: 89d7688abe0af0042839fa18990e728d,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -370,8 +370,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Room Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5bcf999ddbc908b4d9357724feb10982, type: 2}
-  m_sharedMaterial: {fileID: 3646845503795902046, guid: 5bcf999ddbc908b4d9357724feb10982,
+  m_fontAsset: {fileID: 11400000, guid: 89d7688abe0af0042839fa18990e728d, type: 2}
+  m_sharedMaterial: {fileID: 1814716933830139015, guid: 89d7688abe0af0042839fa18990e728d,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
