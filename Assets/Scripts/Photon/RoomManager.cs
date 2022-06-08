@@ -76,12 +76,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            var xrDisplaySubsystems = new List<XRDisplaySubsystem>();
-            SubsystemManager.GetInstances(xrDisplaySubsystems);
-
-            bool isVR = xrDisplaySubsystems.Count != 0 ? xrDisplaySubsystems[0].running : false;
-
-            if (isVR)
+            if (GameManager.Instance.isVR)
             {
                 int randomPlayerSpawnPoint = Random.Range(0, playerSpawnPoints.Length);
 
