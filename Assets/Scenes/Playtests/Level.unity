@@ -63855,7 +63855,7 @@ MonoBehaviour:
   playerWonNameText: {fileID: 2113631299}
   leftHandPalmCollider: {fileID: 0}
   rightHandPalmCollider: {fileID: 0}
-  isVR: 0
+  isVR: 1
 --- !u!4 &1879717086
 Transform:
   m_ObjectHideFlags: 0

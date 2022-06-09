@@ -50,6 +50,7 @@ MonoBehaviour:
   gameWonEventCode: 3
   spiderDestroyedEventCode: 4
   updateScoreEventCode: 5
+  gameStartedEventCode: 6
 --- !u!114 &6739106642828526026
 MonoBehaviour:
   m_ObjectHideFlags: 0

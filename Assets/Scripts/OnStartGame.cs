@@ -10,6 +10,19 @@ public class OnStartGame : MonoBehaviour
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
+
+        if (GameManager.Instance.gameStarted)
+        {
+            foreach (var item in objectToDisableOnStart)
+            {
+                item.SetActive(false);
+            }
+
+            foreach (var item in objectToEnableOnStart)
+            {
+                item.SetActive(true);
+            }
+        }
     }
 
     private void OnDisable()
