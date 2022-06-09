@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9163236587547521996}
   - component: {fileID: -4722940256823036999}
   - component: {fileID: 7790788741183899745}
+  - component: {fileID: 3310789624609517348}
   m_Layer: 0
   m_Name: Web
   m_TagString: Untagged
@@ -138,3 +139,15 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &3310789624609517348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713319239842790587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124c9aba78147354d911206bfc110bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
