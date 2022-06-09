@@ -10,9 +10,23 @@ public class BodyCollider : MonoBehaviour
     [Header("References")]
     [SerializeField] XROrigin xrRig;
 
+    [SerializeField] Transform cameraOffset;
+
     [SerializeField] CharacterController controller;
 
     [SerializeField] Transform target;
+
+    private void Start()
+    {
+        StartCoroutine(SetOffset());
+    }
+
+    private IEnumerator SetOffset()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        cameraOffset.localPosition = new Vector3(cameraOffset.localPosition.x, -0.25f, cameraOffset.localPosition.z);
+    }
 
     private void Update()
     {

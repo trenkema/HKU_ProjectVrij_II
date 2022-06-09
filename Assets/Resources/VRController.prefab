@@ -1096,6 +1096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xrRig: {fileID: 3226569219195826304}
+  cameraOffset: {fileID: 3226569219045431905}
   controller: {fileID: 5158901967760395996}
   target: {fileID: 142089033380553641}
 --- !u!143 &5158901967760395996
@@ -5384,6 +5385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6c3eb339055a8448d35174fe2de5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraOffset: {fileID: 3226569219045431905}
   watcher: {fileID: 3226569219195826307}
   IsPressed: 0
   ik: {fileID: 464561547357087600}
