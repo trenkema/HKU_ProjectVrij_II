@@ -68348,13 +68348,14 @@ MonoBehaviour:
   gameEndedEventCode: 7
   objectsToDisableForVR:
   - {fileID: 1444786228}
+  - {fileID: 1540895942}
   - {fileID: 539952370}
   - {fileID: 1183053204}
+  - {fileID: 411728050}
   objectsToDisableForNonVR:
   - {fileID: 149444263}
-  - {fileID: 838753105}
-  - {fileID: 529599610}
-  - {fileID: 2098332337}
+  - {fileID: 1641631590}
+  - {fileID: 512259830}
   objectsToEnableForNonVROnStart: []
   playerWonHUDNonVR: {fileID: 1540895942}
   playerWonNameTextNonVR: {fileID: 2113631299}
