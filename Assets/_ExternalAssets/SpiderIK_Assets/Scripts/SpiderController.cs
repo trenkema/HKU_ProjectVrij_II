@@ -26,6 +26,18 @@ public class SpiderController : MonoBehaviour {
 
     bool isFalling = false;
 
+    bool canMove = false;
+
+    private void OnEnable()
+    {
+        EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
+    }
+
+    private void OnDisable()
+    {
+        EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
+    }
+
     void FixedUpdate() {
         //** Movement **//
         Vector3 input = getInput();
@@ -52,13 +64,18 @@ public class SpiderController : MonoBehaviour {
     }
 
     private Vector3 getInput() {
-        Vector3 up = spider.transform.up;
-        Vector3 right = spider.transform.right;
-        Vector3 input = Vector3.ProjectOnPlane(smoothCam.getCameraTarget().forward, up).normalized * Input.GetAxis("Vertical") + (Vector3.ProjectOnPlane(smoothCam.getCameraTarget().right, up).normalized * Input.GetAxis("Horizontal"));
-        Quaternion fromTo = Quaternion.AngleAxis(Vector3.SignedAngle(up, spider.getGroundNormal(), right), right);
-        input = fromTo * input;
-        float magnitude = input.magnitude;
-        return (magnitude <= 1) ? input : input /= magnitude;
+        if (canMove)
+        {
+            Vector3 up = spider.transform.up;
+            Vector3 right = spider.transform.right;
+            Vector3 input = Vector3.ProjectOnPlane(smoothCam.getCameraTarget().forward, up).normalized * Input.GetAxis("Vertical") + (Vector3.ProjectOnPlane(smoothCam.getCameraTarget().right, up).normalized * Input.GetAxis("Horizontal"));
+            Quaternion fromTo = Quaternion.AngleAxis(Vector3.SignedAngle(up, spider.getGroundNormal(), right), right);
+            input = fromTo * input;
+            float magnitude = input.magnitude;
+            return (magnitude <= 1) ? input : input /= magnitude;
+        }
+
+        return Vector3.zero;
     }
 
     public void Fall(InputAction.CallbackContext _context)
@@ -85,5 +102,10 @@ public class SpiderController : MonoBehaviour {
     private void SetFalling()
     {
         isFalling = true;
+    }
+
+    private void GameStarted()
+    {
+        canMove = true;
     }
 }

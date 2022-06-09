@@ -13,6 +13,7 @@ public enum Event_Type
 
     CAN_SWING,
 
+    GAME_STARTED,
     GAME_WON,
 
     UPDATE_SCORE,

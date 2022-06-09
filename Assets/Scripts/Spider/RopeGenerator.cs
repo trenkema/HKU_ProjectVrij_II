@@ -58,6 +58,8 @@ public class RopeGenerator : MonoBehaviour
 
     bool isCurrentlySwinging = false;
 
+    bool canMove = false;
+
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.COLLIDED, DestroyRope);
@@ -88,6 +90,11 @@ public class RopeGenerator : MonoBehaviour
     {
         if (!PV.IsMine)
             return;
+
+        if (!canMove)
+        {
+            return;
+        }
 
         if (Input.GetMouseButtonDown(1) && canSwing)
         {
@@ -268,5 +275,10 @@ public class RopeGenerator : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         canSwing = true;
+    }
+
+    private void GameStarted()
+    {
+        canMove = true;
     }
 }
