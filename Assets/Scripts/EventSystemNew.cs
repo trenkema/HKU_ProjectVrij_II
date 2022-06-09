@@ -15,9 +15,9 @@ public enum Event_Type
 
     GAME_STARTED,
     GAME_WON,
+    GAME_ENDED,
 
     UPDATE_SCORE,
-    RESET_RESPAWN_TIME,
 
     CHANGE_SPECTATOR,
 }

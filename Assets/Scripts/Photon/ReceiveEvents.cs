@@ -14,6 +14,7 @@ public class ReceiveEvents : MonoBehaviour
     [SerializeField] byte spiderDestroyedEventCode = 4;
     [SerializeField] byte updateScoreEventCode = 5;
     [SerializeField] byte gameStartedEventCode = 6;
+    [SerializeField] byte gameRestartedEventCode = 7;
 
     PhotonView PV;
 
@@ -100,11 +101,6 @@ public class ReceiveEvents : MonoBehaviour
                 }
             }
 
-            if (correctPlayer == PhotonNetwork.LocalPlayer)
-            {
-                EventSystemNew.RaiseEvent(Event_Type.RESET_RESPAWN_TIME);
-            }
-
             EventSystemNew<Player, int>.RaiseEvent(Event_Type.UPDATE_SCORE, correctPlayer, (int)data[1]);
         }
 
@@ -118,6 +114,16 @@ public class ReceiveEvents : MonoBehaviour
         if (eventCode == gameStartedEventCode)
         {
             EventSystemNew.RaiseEvent(Event_Type.GAME_STARTED);
+        }
+
+        if (eventCode == gameRestartedEventCode)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                object[] data = (object[])_photonEvent.CustomData;
+
+                PhotonNetwork.LoadLevel((string)data[0]);
+            }
         }
     }
 }

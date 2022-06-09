@@ -13,6 +13,18 @@ public class MeleeWeapon : MonoBehaviour
 
     PhotonView PV;
 
+    bool canKill = true;
+
+    private void OnEnable()
+    {
+        EventSystemNew<string>.Subscribe(Event_Type.GAME_WON, GameWon);
+    }
+
+    private void OnDisable()
+    {
+        EventSystemNew<string>.Unsubscribe(Event_Type.GAME_WON, GameWon);
+    }
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -26,9 +38,14 @@ public class MeleeWeapon : MonoBehaviour
         }
     }
 
+    private void GameWon(string _playerName)
+    {
+        canKill = false;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag(spiderTag))
+        if (collision.transform.CompareTag(spiderTag) && canKill)
         {
             int viewID = collision.transform.GetComponent<PhotonView>().ViewID;
 

@@ -15,6 +15,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     [Header("Setup")]
     [SerializeField] byte respawnSpiderEventCode = 2;
+    [SerializeField] byte gameRestartedEventCode = 8;
 
     [SerializeField] TextMeshProUGUI respawnTimeText;
     [SerializeField] int respawnTime = 5;
@@ -68,8 +69,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         EventSystemNew<bool, bool>.Subscribe(Event_Type.SPIDER_DIED, SpiderDied);
-
-        EventSystemNew.Subscribe(Event_Type.RESET_RESPAWN_TIME, ResetRespawnTime);
     }
 
     public override void OnDisable()
@@ -78,8 +77,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         SceneManager.sceneLoaded -= OnSceneLoaded;
 
         EventSystemNew<bool, bool>.Unsubscribe(Event_Type.SPIDER_DIED, SpiderDied);
-
-        EventSystemNew.Unsubscribe(Event_Type.RESET_RESPAWN_TIME, ResetRespawnTime);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -118,6 +115,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private IEnumerator RespawnSpider(bool _increaseRespawnTime)
     {
+        if (!_increaseRespawnTime)
+        {
+            respawnTime = startRespawnTime;
+
+            currentTime = respawnTime;
+        }
+
         respawnTimeText.text = string.Format("{0} Seconds", currentTime);
 
         while (currentTime > 0)
@@ -152,11 +156,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         yield break;
     }
 
-    private void ResetRespawnTime()
-    {
-        respawnTime = startRespawnTime;
-    }
-
     public void LeaveRoom()
     {
         if (!hasLeft)
@@ -169,6 +168,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
             PhotonNetwork.LocalPlayer.CustomProperties.Clear();
             PhotonNetwork.LeaveRoom();
         }
+    }
+
+    public void RestartLevel(string _levelName)
+    {
+        object[] content = new object[] { _levelName };
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+        PhotonNetwork.RaiseEvent(gameRestartedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
     public override void OnLeftRoom()

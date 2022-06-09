@@ -13,14 +13,18 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] byte gameStartedEventCode = 6;
+    [SerializeField] byte gameEndedEventCode = 7;
 
     [SerializeField] GameObject[] objectsToDisableForVR;
     [SerializeField] GameObject[] objectsToDisableForNonVR;
 
     [SerializeField] GameObject[] objectsToEnableForNonVROnStart;
 
-    [SerializeField] GameObject playerWonHUD;
-    [SerializeField] TextMeshProUGUI playerWonNameText;
+    [SerializeField] GameObject playerWonHUDNonVR;
+    [SerializeField] TextMeshProUGUI playerWonNameTextNonVR;
+
+    [SerializeField] GameObject playerWonHUDVR;
+    [SerializeField] TextMeshProUGUI[] playerWonNameTextsVR;
 
     public Collider leftHandPalmCollider;
     public Collider rightHandPalmCollider;
@@ -28,6 +32,8 @@ public class GameManager : MonoBehaviour
     public bool isVR;
 
     public bool gameStarted { private set; get; }
+
+    public bool gameEnded { private set; get; }
 
     private void OnEnable()
     {
@@ -82,12 +88,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void GameWon(string _playerName)
-    {
-        playerWonHUD.SetActive(true);
-        playerWonNameText.text = _playerName;
-    }
-
     public void StartGame()
     {
         object[] content = new object[] { };
@@ -100,5 +100,23 @@ public class GameManager : MonoBehaviour
     private void GameStarted()
     {
         gameStarted = true;
+    }
+
+    private void GameWon(string _playerName)
+    {
+        if (isVR)
+        {
+            playerWonHUDVR.SetActive(true);
+
+            foreach (var item in playerWonNameTextsVR)
+            {
+                item.text = _playerName;
+            }
+        }
+        else
+        {
+            playerWonHUDNonVR.SetActive(true);
+            playerWonNameTextNonVR.text = _playerName;
+        }
     }
 }
