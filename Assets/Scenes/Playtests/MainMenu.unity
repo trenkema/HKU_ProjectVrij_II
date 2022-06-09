@@ -20088,6 +20088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bfd5d176467b44e89748bc0987761e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStartedEventCode: 6
   objectsToDisableForVR:
   - {fileID: 21667336}
   - {fileID: 2051221988}
@@ -20095,11 +20096,12 @@ MonoBehaviour:
   - {fileID: 1226061702}
   - {fileID: 108348391}
   - {fileID: 130528986}
+  objectsToEnableForNonVROnStart: []
   playerWonHUD: {fileID: 0}
   playerWonNameText: {fileID: 0}
   leftHandPalmCollider: {fileID: 0}
   rightHandPalmCollider: {fileID: 0}
-  isVR: 1
+  isVR: 0
 --- !u!4 &1278974578
 Transform:
   m_ObjectHideFlags: 0

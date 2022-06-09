@@ -27,14 +27,20 @@ public class GameManager : MonoBehaviour
 
     public bool isVR;
 
+    public bool gameStarted { private set; get; }
+
     private void OnEnable()
     {
         EventSystemNew<string>.Subscribe(Event_Type.GAME_WON, GameWon);
+
+        EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
     }
 
     private void OnDisable()
     {
         EventSystemNew<string>.Unsubscribe(Event_Type.GAME_WON, GameWon);
+
+        EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
     }
 
     private void Awake()
@@ -77,5 +83,10 @@ public class GameManager : MonoBehaviour
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
         PhotonNetwork.RaiseEvent(gameStartedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+
+    private void GameStarted()
+    {
+        gameStarted = true;
     }
 }

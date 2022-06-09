@@ -31,6 +31,11 @@ public class SpiderController : MonoBehaviour {
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
+
+        if (GameManager.Instance.gameStarted)
+        {
+            canMove = true;
+        }
     }
 
     private void OnDisable()

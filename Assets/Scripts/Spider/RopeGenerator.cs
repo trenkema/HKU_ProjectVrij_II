@@ -63,11 +63,20 @@ public class RopeGenerator : MonoBehaviour
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.COLLIDED, DestroyRope);
+
+        EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
+
+        if (GameManager.Instance.gameStarted)
+        {
+            canMove = true;
+        }
     }
 
     private void OnDisable()
     {
         EventSystemNew.Unsubscribe(Event_Type.COLLIDED, DestroyRope);
+
+        EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
     }
 
     private void OnDestroy()
