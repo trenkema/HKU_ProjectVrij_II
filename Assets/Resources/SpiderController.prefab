@@ -3163,7 +3163,7 @@ MonoBehaviour:
   upForce: 100
   jumpKey: 32
   showDebug: 0
-  walkSpeed: 5
+  walkSpeed: 7
   runSpeed: 8
   turnSpeed: 4
   walkDrag: 0.75

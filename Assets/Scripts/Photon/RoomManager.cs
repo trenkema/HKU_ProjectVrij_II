@@ -31,6 +31,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [SerializeField] Transform[] playerSpawnPoints;
     [SerializeField] Transform[] spiderSpawnPoints;
 
+    [SerializeField] GameObject[] startHUDSVR;
+
     GameObject spawnedPlayer;
 
     bool hasLeft = false;
@@ -53,6 +55,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
         currentTime = respawnTime;
 
         startRespawnTime = respawnTime;
+
+        foreach (var item in startHUDSVR)
+        {
+            item.SetActive(false);
+        }
     }
 
     public override void OnEnable()
@@ -87,6 +94,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
             if (GameManager.Instance.isVR)
             {
                 int randomPlayerSpawnPoint = Random.Range(0, playerSpawnPoints.Length);
+
+                startHUDSVR[randomPlayerSpawnPoint].SetActive(true);
 
                 spawnedPlayer = PhotonNetwork.Instantiate(playerPrefab, playerSpawnPoints[randomPlayerSpawnPoint].position, Quaternion.identity);
             }

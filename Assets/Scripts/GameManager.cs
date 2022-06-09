@@ -70,6 +70,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            object[] content = new object[] { };
+
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+            PhotonNetwork.RaiseEvent(gameStartedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+        }
+    }
+
     private void GameWon(string _playerName)
     {
         playerWonHUD.SetActive(true);
