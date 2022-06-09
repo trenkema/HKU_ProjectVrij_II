@@ -66,9 +66,15 @@ public class RopeGenerator : MonoBehaviour
 
         EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
 
-        if (GameManager.Instance.gameStarted)
+        EventSystemNew.Subscribe(Event_Type.GAME_ENDED, GameEnded);
+
+        if (GameManager.Instance.gameStarted && !GameManager.Instance.gameEnded)
         {
             canMove = true;
+        }
+        else
+        {
+            canMove = false;
         }
     }
 
@@ -77,6 +83,8 @@ public class RopeGenerator : MonoBehaviour
         EventSystemNew.Unsubscribe(Event_Type.COLLIDED, DestroyRope);
 
         EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
+
+        EventSystemNew.Unsubscribe(Event_Type.GAME_ENDED, GameEnded);
     }
 
     private void OnDestroy()
@@ -289,5 +297,10 @@ public class RopeGenerator : MonoBehaviour
     private void GameStarted()
     {
         canMove = true;
+    }
+
+    private void GameEnded()
+    {
+        canMove = false;
     }
 }

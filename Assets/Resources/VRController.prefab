@@ -3684,6 +3684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf3e2366e687a34489d756cb5ad159f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitingForHostText: {fileID: 0}
   objectToDisableOnStart:
   - {fileID: 396314890643346545}
   - {fileID: 8847746208328094339}

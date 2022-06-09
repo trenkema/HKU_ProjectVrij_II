@@ -5218,6 +5218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf3e2366e687a34489d756cb5ad159f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitingForHostText: {fileID: 7156295524769360345}
   objectToDisableOnStart:
   - {fileID: 7156295524769360345}
   objectToEnableOnStart:

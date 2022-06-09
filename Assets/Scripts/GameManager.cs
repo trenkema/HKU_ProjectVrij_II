@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
         EventSystemNew<string>.Subscribe(Event_Type.GAME_WON, GameWon);
 
         EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
+
+        EventSystemNew.Subscribe(Event_Type.GAME_ENDED, GameEnded);
     }
 
     private void OnDisable()
@@ -47,6 +49,8 @@ public class GameManager : MonoBehaviour
         EventSystemNew<string>.Unsubscribe(Event_Type.GAME_WON, GameWon);
 
         EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
+
+        EventSystemNew.Unsubscribe(Event_Type.GAME_ENDED, GameEnded);
     }
 
     private void Awake()
@@ -118,5 +122,12 @@ public class GameManager : MonoBehaviour
             playerWonHUDNonVR.SetActive(true);
             playerWonNameTextNonVR.text = _playerName;
         }
+    }
+
+    public void GameEnded()
+    {
+        gameStarted = false;
+
+        gameEnded = true;
     }
 }

@@ -56344,6 +56344,7 @@ GameObject:
   - component: {fileID: 1540895943}
   - component: {fileID: 1540895948}
   - component: {fileID: 1540895947}
+  - component: {fileID: 1540895949}
   m_Layer: 5
   m_Name: PlayerWonHUD
   m_TagString: Untagged
@@ -56467,6 +56468,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1540895949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540895942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced7b9911d059824282c94bdf9f313f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1542125218
 PrefabInstance:
   m_ObjectHideFlags: 0

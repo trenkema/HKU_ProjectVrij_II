@@ -32,15 +32,27 @@ public class SpiderController : MonoBehaviour {
     {
         EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
 
-        if (GameManager.Instance.gameStarted)
+        EventSystemNew.Subscribe(Event_Type.GAME_ENDED, GameEnded);
+
+        if (GameManager.Instance.gameStarted && !GameManager.Instance.gameEnded)
         {
             canMove = true;
+
+        }
+        else if (GameManager.Instance.gameEnded)
+        {
+            canMove = false;
+
+            smoothCam.XSensitivity = 0;
+            smoothCam.YSensitivity = 0;
         }
     }
 
     private void OnDisable()
     {
         EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
+
+        EventSystemNew.Unsubscribe(Event_Type.GAME_ENDED, GameEnded);
     }
 
     void FixedUpdate() {
@@ -112,5 +124,10 @@ public class SpiderController : MonoBehaviour {
     private void GameStarted()
     {
         canMove = true;
+    }
+
+    private void GameEnded()
+    {
+        canMove = false;
     }
 }
