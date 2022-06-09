@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] GameObject[] objectsToDisableForVR;
+    [SerializeField] GameObject[] objectsToDisableForNonVR;
 
     [SerializeField] GameObject playerWonHUD;
     [SerializeField] TextMeshProUGUI playerWonNameText;
@@ -43,6 +44,13 @@ public class GameManager : MonoBehaviour
         if (isVR)
         {
             foreach (var item in objectsToDisableForVR)
+            {
+                Destroy(item);
+            }
+        }
+        else
+        {
+            foreach (var item in objectsToDisableForNonVR)
             {
                 Destroy(item);
             }

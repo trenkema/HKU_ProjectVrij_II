@@ -85,13 +85,6 @@ public class ReceiveEvents : MonoBehaviour
             }
         }
 
-        if (eventCode == gameWonEventCode)
-        {
-            object[] data = (object[])_photonEvent.CustomData;
-
-            EventSystemNew<string>.RaiseEvent(Event_Type.GAME_WON, (string)data[0]);
-        }
-
         if (eventCode == updateScoreEventCode)
         {
             object[] data = (object[])_photonEvent.CustomData;
@@ -106,7 +99,19 @@ public class ReceiveEvents : MonoBehaviour
                 }
             }
 
+            if (correctPlayer == PhotonNetwork.LocalPlayer)
+            {
+                EventSystemNew.RaiseEvent(Event_Type.RESET_RESPAWN_TIME);
+            }
+
             EventSystemNew<Player, int>.RaiseEvent(Event_Type.UPDATE_SCORE, correctPlayer, (int)data[1]);
+        }
+
+        if (eventCode == gameWonEventCode)
+        {
+            object[] data = (object[])_photonEvent.CustomData;
+
+            EventSystemNew<string>.RaiseEvent(Event_Type.GAME_WON, (string)data[0]);
         }
     }
 }

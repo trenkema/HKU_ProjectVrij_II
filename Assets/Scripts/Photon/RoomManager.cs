@@ -19,7 +19,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [SerializeField] TextMeshProUGUI respawnTimeText;
     [SerializeField] int respawnTime = 5;
     [SerializeField] int respawnTimeIncrease = 5;
-    [SerializeField] int maxRespawnTime = 25;
+    [SerializeField] int maxRespawnTime = 15;
 
     [SerializeField] string eventReceiverPrefabName;
 
@@ -37,6 +37,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     int currentTime = 0;
 
+    int startRespawnTime;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -49,6 +51,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         Instance = this;
 
         currentTime = respawnTime;
+
+        startRespawnTime = respawnTime;
     }
 
     public override void OnEnable()
@@ -57,6 +61,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         EventSystemNew<bool, bool>.Subscribe(Event_Type.SPIDER_DIED, SpiderDied);
+
+        EventSystemNew.Subscribe(Event_Type.RESET_RESPAWN_TIME, ResetRespawnTime);
     }
 
     public override void OnDisable()
@@ -65,6 +71,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         SceneManager.sceneLoaded -= OnSceneLoaded;
 
         EventSystemNew<bool, bool>.Unsubscribe(Event_Type.SPIDER_DIED, SpiderDied);
+
+        EventSystemNew.Unsubscribe(Event_Type.RESET_RESPAWN_TIME, ResetRespawnTime);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -133,6 +141,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
         currentTime = respawnTime;
 
         yield break;
+    }
+
+    private void ResetRespawnTime()
+    {
+        respawnTime = startRespawnTime;
     }
 
     public void LeaveRoom()

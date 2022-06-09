@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5122288126245880170}
   - component: {fileID: 1779555720562118545}
   m_Layer: 5
-  m_Name: PlayerListItem
+  m_Name: PlayerListItem (NonVR)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

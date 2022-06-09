@@ -6,6 +6,7 @@
 using UnityEngine;
 using System.Collections;
 using Raycasting;
+using UnityEngine.InputSystem;
 
 /*
  * This class needs a reference to the Spider class and calls the walk and turn functions depending on player input.
@@ -16,28 +17,38 @@ using Raycasting;
 [DefaultExecutionOrder(-1)] // Make sure the players input movement is applied before the spider itself will do a ground check and possibly add gravity
 public class SpiderController : MonoBehaviour {
 
+    [SerializeField] float isFallingCheckTime = 0.25f;
+
     public Spider spider;
 
     [Header("Camera")]
     public SmoothCamera smoothCam;
 
+    bool isFalling = false;
+
     void FixedUpdate() {
         //** Movement **//
         Vector3 input = getInput();
 
-        if (Input.GetKey(KeyCode.LeftShift)) spider.run(input);
-        else spider.walk(input);
+        spider.walk(input);
 
         Quaternion tempCamTargetRotation = smoothCam.getCamTargetRotation();
         Vector3 tempCamTargetPosition = smoothCam.getCamTargetPosition();
         spider.turn(input);
         smoothCam.setTargetRotation(tempCamTargetRotation);
         smoothCam.setTargetPosition(tempCamTargetPosition);
-    }
 
-    void Update() {
-        //Hold down Space to deactivate ground checking. The spider will fall while space is hold.
-        spider.setGroundcheck(!Input.GetKey(KeyCode.Space));
+        if (isFalling)
+        {
+            if (spider.GroundCheckFalling())
+            {
+                isFalling = false;
+
+                spider.setGroundcheck(true);
+
+                CancelInvoke();
+            }
+        }
     }
 
     private Vector3 getInput() {
@@ -48,5 +59,31 @@ public class SpiderController : MonoBehaviour {
         input = fromTo * input;
         float magnitude = input.magnitude;
         return (magnitude <= 1) ? input : input /= magnitude;
+    }
+
+    public void Fall(InputAction.CallbackContext _context)
+    {
+        if (_context.phase == InputActionPhase.Started)
+        {
+            if (spider.IsGrounded())
+            {
+                Invoke("SetFalling", isFallingCheckTime);
+
+                spider.setGroundcheck(false);
+            }
+        }
+        else if (_context.phase == InputActionPhase.Canceled)
+        {
+            isFalling = false;
+
+            spider.setGroundcheck(true);
+
+            CancelInvoke();
+        }
+    }
+
+    private void SetFalling()
+    {
+        isFalling = true;
     }
 }

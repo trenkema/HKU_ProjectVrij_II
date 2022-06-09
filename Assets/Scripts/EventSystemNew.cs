@@ -15,7 +15,10 @@ public enum Event_Type
 
     GAME_WON,
 
-    UPDATE_SCORE
+    UPDATE_SCORE,
+    RESET_RESPAWN_TIME,
+
+    CHANGE_SPECTATOR,
 }
 
 public static class EventSystemNew

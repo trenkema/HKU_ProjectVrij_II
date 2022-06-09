@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
+using TMPro;
 
 public class WebShooter : MonoBehaviour
 {
@@ -15,10 +16,12 @@ public class WebShooter : MonoBehaviour
 
     [SerializeField] Transform webTrailSpawnPoint;
 
+    [SerializeField] TextMeshProUGUI webShootCooldownText;
+
     [Header("Settings")]
     [SerializeField] float webTrailSpeed = 5f;
 
-    [SerializeField] float shootDelay = 1f;
+    [SerializeField] int shootDelay = 1;
 
     bool canShoot = true;
 
@@ -42,7 +45,22 @@ public class WebShooter : MonoBehaviour
 
     IEnumerator DelayWebShooting()
     {
-        yield return new WaitForSeconds(shootDelay);
+        int currentTime = shootDelay;
+
+        webShootCooldownText.text = currentTime.ToString();
+
+        webShootCooldownText.gameObject.SetActive(true);
+
+        while (currentTime > 0)
+        {
+            yield return new WaitForSeconds(1);
+
+            currentTime -= 1;
+
+            webShootCooldownText.text = currentTime.ToString();
+        }
+
+        webShootCooldownText.gameObject.SetActive(false);
 
         canShoot = true;
     }

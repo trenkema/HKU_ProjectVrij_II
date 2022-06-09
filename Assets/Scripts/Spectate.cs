@@ -16,11 +16,9 @@ public class Spectate : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI spiderNameText;
 
-    int spectateID = 0;
-
-    //SmoothCamera spectateCamera;
-
     RopeGenerator[] spiders;
+
+    int spectateID = 0;
 
     bool isSpectating = false;
 
@@ -29,6 +27,8 @@ public class Spectate : MonoBehaviour
         EventSystemNew<bool, bool>.Subscribe(Event_Type.SPIDER_DIED, SpiderDied);
 
         EventSystemNew<bool>.Subscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
+
+        EventSystemNew<int>.Subscribe(Event_Type.CHANGE_SPECTATOR, SwitchSpectator);
     }
 
     private void OnDisable()
@@ -36,6 +36,8 @@ public class Spectate : MonoBehaviour
         EventSystemNew<bool, bool>.Unsubscribe(Event_Type.SPIDER_DIED, SpiderDied);
 
         EventSystemNew<bool>.Unsubscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
+
+        EventSystemNew<int>.Unsubscribe(Event_Type.CHANGE_SPECTATOR, SwitchSpectator);
     }
 
     private void SpiderDied(bool _ownDeath, bool _increaseRespawnTime)
@@ -138,7 +140,7 @@ public class Spectate : MonoBehaviour
         }
     }
 
-    private void SwitchSpectator(int _upDown)
+    public void SwitchSpectator(int _upDown)
     {
         if (isSpectating)
         {

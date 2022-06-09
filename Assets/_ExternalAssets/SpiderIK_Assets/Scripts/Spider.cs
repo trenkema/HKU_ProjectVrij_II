@@ -37,7 +37,7 @@ public class Spider : MonoBehaviour {
 
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
 
-    public Rigidbody rb;
+    Rigidbody rb;
 
     [Header("Debug")]
     public bool showDebug;
@@ -387,6 +387,21 @@ public class Spider : MonoBehaviour {
             }
         }
         return new groundInfo(false, Vector3.up, float.PositiveInfinity, RayType.None);
+    }
+
+    public bool GroundCheckFalling()
+    {
+        if (forwardRay.castRay(out hitInfo, walkableLayer))
+        {
+            return true;
+        }
+
+        if (downRay.castRay(out hitInfo, walkableLayer))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     //** Helper methods**//

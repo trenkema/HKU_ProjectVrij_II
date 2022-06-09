@@ -49,7 +49,7 @@ public class Mouth : MonoBehaviour
             // Update Score
             object[] contentScore = new object[] { player, scoreToEarn };
 
-            RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+            RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
             PhotonNetwork.RaiseEvent(updateScoreEventCode, contentScore, raiseEventOptionsScore, SendOptions.SendReliable);
         }
@@ -72,7 +72,7 @@ public class Mouth : MonoBehaviour
     //        // Update Score
     //        object[] contentScore = new object[] { player, scoreToEarn };
 
-    //        RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+    //        RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
     //        PhotonNetwork.RaiseEvent(updateScoreEventCode, contentScore, raiseEventOptionsScore, SendOptions.SendReliable);
     //    }

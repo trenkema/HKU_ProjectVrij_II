@@ -30,7 +30,10 @@ public class PanelManager : MonoBehaviour
     {
         foreach (var panel in panels)
         {
-            panel.SetActive(false);
+            if (panel != null)
+            {
+                panel.SetActive(false);
+            }
         }
     }
 }

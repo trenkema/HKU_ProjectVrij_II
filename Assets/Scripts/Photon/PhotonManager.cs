@@ -11,27 +11,61 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 {
     public static PhotonManager Instance;
 
-    [SerializeField] TMP_InputField roomNameInputField;
-    [SerializeField] TextMeshProUGUI roomNameText;
-    [SerializeField] TextMeshProUGUI errorText;
+    // HUDS
+    [SerializeField] GameObject hudNonVR;
+    [SerializeField] GameObject hudVR;
+
+    // Non-VR Texts
+    [SerializeField] TMP_InputField roomNameInputFieldNonVR;
+    [SerializeField] TextMeshProUGUI roomNameTextNonVR;
+    [SerializeField] TextMeshProUGUI errorTextNonVR;
+
+    // VR Texts
+    [SerializeField] TextMeshProUGUI roomNameTextVR;
+    [SerializeField] TextMeshProUGUI errorTextVR;
 
     [SerializeField] TMP_InputField playerNameField;
 
-    [SerializeField] GameObject[] mainMenuItemsToLoad;
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject roomMenu;
-    [SerializeField] GameObject errorMenu;
-    [SerializeField] GameObject loadingMenu;
+    [SerializeField] GameObject[] mainMenuItemsToLoadVR;
+    [SerializeField] GameObject[] mainMenuItemsToLoadNonVR;
+
+    // Non-VR Menu's
+    [SerializeField] GameObject mainMenuNonVR;
+    [SerializeField] GameObject roomMenuNonVR;
+    [SerializeField] GameObject errorMenuNonVR;
+    [SerializeField] GameObject loadingMenuNonVR;
+
+    // VR Menu's
+    [SerializeField] GameObject mainMenuVR;
+    [SerializeField] GameObject roomMenuVR;
+    [SerializeField] GameObject errorMenuVR;
+    [SerializeField] GameObject loadingMenuVR;
+
     [SerializeField] PanelManager panelManager;
 
-    [SerializeField] GameObject roomListItemPrefab;
-    [SerializeField] Transform roomListContent;
+    // Non-VR RoomList Stuff
+    [SerializeField] GameObject roomListItemPrefabNonVR;
+    [SerializeField] Transform roomListContentNonVR;
 
-    [SerializeField] GameObject playerListItemPrefab;
-    [SerializeField] Transform playerListContent;
+    // VR RoomList Stuff
+    [SerializeField] GameObject roomListItemPrefabVR;
+    [SerializeField] Transform roomListContentVR;
 
-    [SerializeField] Button startGameButton;
-    [SerializeField] Button leaveGameButton;
+    // Non-VR PlayerList Stuff
+    [SerializeField] GameObject playerListItemPrefabNonVR;
+    [SerializeField] Transform playerListContentNonVR;
+
+    // VR PlayerList Stuff
+    [SerializeField] GameObject playerListItemPrefabVR;
+    [SerializeField] Transform playerListContentVR;
+
+    // Non-VR Buttons
+    [SerializeField] Button startGameButtonNonVR;
+    [SerializeField] Button leaveGameButtonNonVR;
+
+    // VR Buttons
+    [SerializeField] Button startGameButtonVR;
+    [SerializeField] Button leaveGameButtonVR;
 
     [SerializeField] int maxPlayersPerRoom = 2;
 
@@ -52,9 +86,23 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        foreach (var item in mainMenuItemsToLoad)
+        if (GameManager.Instance.isVR)
         {
-            item.SetActive(false);
+            hudNonVR.SetActive(false);
+
+            foreach (var item in mainMenuItemsToLoadVR)
+            {
+                item.SetActive(false);
+            }
+        }
+        else
+        {
+            hudVR.SetActive(false);
+
+            foreach (var item in mainMenuItemsToLoadNonVR)
+            {
+                item.SetActive(false);
+            }
         }
 
         Debug.Log("Connecting To Master");
@@ -102,9 +150,19 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Joined Lobby");
 
-        foreach (var button in mainMenuItemsToLoad)
+        if (GameManager.Instance.isVR)
         {
-            button.SetActive(true);
+            foreach (var item in mainMenuItemsToLoadVR)
+            {
+                item.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (var item in mainMenuItemsToLoadNonVR)
+            {
+                item.SetActive(true);
+            }
         }
 
         if (PlayerPrefs.HasKey("NickName"))
@@ -121,55 +179,112 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
-        if (string.IsNullOrEmpty(roomNameInputField.text))
+        if (GameManager.Instance.isVR)
         {
-            return;
-        }
+            PhotonNetwork.CreateRoom(PhotonNetwork.NickName, new RoomOptions() { MaxPlayers = (byte)maxPlayersPerRoom, PublishUserId = true }, null);
+            panelManager.CloseAllPanels();
 
-        PhotonNetwork.CreateRoom(roomNameInputField.text, new RoomOptions() { MaxPlayers = (byte)maxPlayersPerRoom, PublishUserId = true }, null);
-        panelManager.CloseAllPanels();
-        loadingMenu.SetActive(true);
+            loadingMenuVR.SetActive(true);
+        }
+        else
+        {
+            if (string.IsNullOrEmpty(roomNameInputFieldNonVR.text))
+            {
+                return;
+            }
+
+            PhotonNetwork.CreateRoom(roomNameInputFieldNonVR.text, new RoomOptions() { MaxPlayers = (byte)maxPlayersPerRoom, PublishUserId = true }, null);
+            panelManager.CloseAllPanels();
+
+            loadingMenuNonVR.SetActive(true);
+        }
     }
 
     public void JoinRoom(RoomInfo info)
     {
         PhotonNetwork.JoinRoom(info.Name);
-        loadingMenu.SetActive(true);
+
+        if (GameManager.Instance.isVR)
+        {
+            loadingMenuVR.SetActive(true);
+        }
+        else
+        {
+            loadingMenuNonVR.SetActive(true);
+        }
     }
 
     public override void OnJoinedRoom()
     {
         panelManager.CloseAllPanels();
-        roomMenu.SetActive(true);
-        roomNameText.text = PhotonNetwork.CurrentRoom.Name;
 
-        Player[] players = PhotonNetwork.PlayerList;
-
-        foreach (Transform trans in playerListContent)
+        if (GameManager.Instance.isVR)
         {
-            Destroy(trans);
-        }
+            roomMenuVR.SetActive(true);
 
-        foreach (Player player in players)
+            roomNameTextVR.text = PhotonNetwork.CurrentRoom.Name;
+
+            Player[] players = PhotonNetwork.PlayerList;
+
+            foreach (Transform trans in playerListContentVR)
+            {
+                Destroy(trans);
+            }
+
+            foreach (Player player in players)
+            {
+                Instantiate(playerListItemPrefabVR, playerListContentVR).GetComponent<PlayerListItem>()?.SetUp(player);
+            }
+
+            leaveGameButtonVR.interactable = true;
+            startGameButtonVR.interactable = true;
+            startGameButtonVR.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+        }
+        else
         {
-            Instantiate(playerListItemPrefab, playerListContent).GetComponent<PlayerListItem>()?.SetUp(player);
-        }
+            roomMenuNonVR.SetActive(true);
 
-        leaveGameButton.interactable = true;
-        startGameButton.interactable = true;
-        startGameButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+            roomNameTextNonVR.text = PhotonNetwork.CurrentRoom.Name;
+
+            Player[] players = PhotonNetwork.PlayerList;
+
+            foreach (Transform trans in playerListContentNonVR)
+            {
+                Destroy(trans);
+            }
+
+            foreach (Player player in players)
+            {
+                Instantiate(playerListItemPrefabNonVR, playerListContentNonVR).GetComponent<PlayerListItem>()?.SetUp(player);
+            }
+
+            leaveGameButtonNonVR.interactable = true;
+            startGameButtonNonVR.interactable = true;
+            startGameButtonNonVR.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+        }
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)
     {
-        startGameButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+        startGameButtonNonVR.gameObject.SetActive(PhotonNetwork.IsMasterClient);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         panelManager.CloseAllPanels();
-        errorMenu.SetActive(true);
-        errorText.text = "Room Creation Failed: " + message;
+
+        if (GameManager.Instance.isVR)
+        {
+            errorMenuVR.SetActive(true);
+
+            errorTextVR.text = "Room Creation Failed: " + message;
+        }
+        else
+        {
+            errorMenuNonVR.SetActive(true);
+
+            errorTextNonVR.text = "Room Creation Failed: " + message;
+        }
     }
 
     public void StartGame(string _levelName)
@@ -181,38 +296,83 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LocalPlayer.CustomProperties.Clear();
         PhotonNetwork.LeaveRoom();
-        loadingMenu.SetActive(true);
+
+        if (GameManager.Instance.isVR)
+        {
+            loadingMenuVR.SetActive(true);
+        }
+        else
+        {
+            loadingMenuNonVR.SetActive(true);
+        }
     }
 
     public override void OnLeftRoom()
     {
         panelManager.CloseAllPanels();
-        mainMenu.SetActive(true);
+
+        if (GameManager.Instance.isVR)
+        {
+            mainMenuVR.SetActive(true);
+        }
+        else
+        {
+            mainMenuNonVR.SetActive(true);
+        }
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        // Clear Room List
-        foreach (Transform trans in roomListContent)
+        if (GameManager.Instance.isVR)
         {
-            Destroy(trans.gameObject);
-        }
-
-        // Create Room List
-        foreach (var room in roomList)
-        {
-            if (room.RemovedFromList)
+            // Clear Room List
+            foreach (Transform trans in roomListContentVR)
             {
-                continue;
+                Destroy(trans.gameObject);
             }
 
-            Instantiate(roomListItemPrefab, roomListContent).GetComponent<RoomListItem>()?.SetUp(room);
+            // Create Room List
+            foreach (var room in roomList)
+            {
+                if (room.RemovedFromList)
+                {
+                    continue;
+                }
+
+                Instantiate(roomListItemPrefabVR, roomListContentVR).GetComponent<RoomListItem>()?.SetUp(room);
+            }
+        }
+        else
+        {
+            // Clear Room List
+            foreach (Transform trans in roomListContentNonVR)
+            {
+                Destroy(trans.gameObject);
+            }
+
+            // Create Room List
+            foreach (var room in roomList)
+            {
+                if (room.RemovedFromList)
+                {
+                    continue;
+                }
+
+                Instantiate(roomListItemPrefabNonVR, roomListContentNonVR).GetComponent<RoomListItem>()?.SetUp(room);
+            }
         }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Instantiate(playerListItemPrefab, playerListContent).GetComponent<PlayerListItem>()?.SetUp(newPlayer);
+        if (GameManager.Instance.isVR)
+        {
+            Instantiate(playerListItemPrefabVR, playerListContentVR).GetComponent<PlayerListItem>()?.SetUp(newPlayer);
+        }
+        else
+        {
+            Instantiate(playerListItemPrefabNonVR, playerListContentNonVR).GetComponent<PlayerListItem>()?.SetUp(newPlayer);
+        }
     }
 
     public void QuitGame()

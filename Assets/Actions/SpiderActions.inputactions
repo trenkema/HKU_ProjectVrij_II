@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Run",
+                    "name": "Fall",
                     "type": "Button",
                     "id": "0c9f0496-5227-4102-988c-5815560f90e1",
                     "expectedControlType": "Button",
@@ -36,6 +36,24 @@
                     "name": "WebShoot",
                     "type": "Button",
                     "id": "b4056b3e-1d8f-421a-88d3-85c68eb3a358",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PreviousSpectator",
+                    "type": "Button",
+                    "id": "4574643b-26ad-434d-95f7-6f70a09b0088",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextSpectator",
+                    "type": "Button",
+                    "id": "804d5537-fa56-4d04-b15b-86449824f578",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -72,7 +90,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Run",
+                    "action": "Fall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -83,7 +101,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Run",
+                    "action": "Fall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -172,6 +190,50 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "WebShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca2980ea-2ec1-4d2f-8a5a-980d20363d28",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "NextSpectator",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05225f4a-bcd0-4671-9e73-90432b3283eb",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NextSpectator",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8baef67-53fe-4145-9563-53d70d04462a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "PreviousSpectator",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4249dd2-188f-497f-b268-28391dad7035",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PreviousSpectator",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
