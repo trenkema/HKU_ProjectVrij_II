@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 using Cinemachine;
+using UnityEngine.InputSystem;
 
 public class Spectate : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class Spectate : MonoBehaviour
 
         EventSystemNew<bool>.Subscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
 
-        EventSystemNew<int>.Subscribe(Event_Type.CHANGE_SPECTATOR, SwitchSpectator);
+        //EventSystemNew<int>.Subscribe(Event_Type.CHANGE_SPECTATOR, SwitchSpectator);
     }
 
     private void OnDisable()
@@ -37,7 +38,7 @@ public class Spectate : MonoBehaviour
 
         EventSystemNew<bool>.Unsubscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
 
-        EventSystemNew<int>.Unsubscribe(Event_Type.CHANGE_SPECTATOR, SwitchSpectator);
+        //EventSystemNew<int>.Unsubscribe(Event_Type.CHANGE_SPECTATOR, SwitchSpectator);
     }
 
     private void SpiderDied(bool _ownDeath, bool _increaseRespawnTime)
@@ -140,22 +141,39 @@ public class Spectate : MonoBehaviour
         }
     }
 
-    public void SwitchSpectator(int _upDown)
+    public void PreviousSpectator(InputAction.CallbackContext _context)
     {
-        if (isSpectating)
+        if (_context.started)
         {
-            spectateID += _upDown;
-
-            if (spectateID > PhotonNetwork.PlayerList.Length - 1)
+            if (isSpectating)
             {
-                spectateID = 0;
-            }
-            else if (spectateID < 0)
-            {
-                spectateID = PhotonNetwork.PlayerList.Length - 1;
-            }
+                spectateID--;
 
-            SpiderDied(false, false);
+                if (spectateID < 0)
+                {
+                    spectateID = FindObjectsOfType<RopeGenerator>().Length - 1;
+                }
+
+                SpiderDied(false, false);
+            }
+        }
+    }
+
+    public void NextSpectator(InputAction.CallbackContext _context)
+    {
+        if (_context.started)
+        {
+            if (isSpectating)
+            {
+                spectateID++;
+
+                if (spectateID > FindObjectsOfType<RopeGenerator>().Length - 1)
+                {
+                    spectateID = 0;
+                }
+
+                SpiderDied(false, false);
+            }
         }
     }
 }
