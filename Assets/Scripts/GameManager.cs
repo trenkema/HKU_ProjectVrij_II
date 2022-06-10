@@ -121,6 +121,9 @@ public class GameManager : MonoBehaviour
         {
             playerWonHUDNonVR.SetActive(true);
             playerWonNameTextNonVR.text = _playerName;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
