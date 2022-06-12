@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{5acb95f6-a7ba-4e9a-b566-3123b12c01c9}">
 		<property name="name">
-			<value>SpiderStep2</value>
+			<value>SpiderStep</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -214,7 +214,7 @@
 			<value>-29</value>
 		</property>
 		<property name="highGain">
-			<value>-4.5</value>
+			<value>-10</value>
 		</property>
 		<property name="lowCrossover">
 			<value>700</value>
