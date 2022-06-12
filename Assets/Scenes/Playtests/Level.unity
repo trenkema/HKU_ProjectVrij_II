@@ -13497,7 +13497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353659569}
   m_LocalRotation: {x: 0.5117121, y: -0.09566614, z: -0.1569048, w: 0.8392733}
-  m_LocalPosition: {x: 0.7332, y: 1.1808, z: -0.2656}
+  m_LocalPosition: {x: 0.8878, y: 1.4082, z: -0.3187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13537,7 +13537,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.98902553, g: 1, b: 0.6933962, a: 1}
   m_Intensity: 0.05
-  m_Range: 0.5
+  m_Range: 0.56884927
   m_SpotAngle: 92.552536
   m_InnerSpotAngle: 0
   m_CookieSize: 10
@@ -44006,7 +44006,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameWonEventCode: 3
-  maxScore: 3
   scoreNeededText: {fileID: 427709574}
   leaderboardContainer: {fileID: 1228162557}
   leaderboardItemPrefab: {fileID: 6912293090512989642, guid: ad21807e79de70c4a9723237df474c4c,
@@ -55843,7 +55842,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537339847}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.9775, y: 1.929, z: -0.1019}
+  m_LocalPosition: {x: 1.2113, y: 2.2989, z: -0.126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75108,7 +75107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047854563}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.4796, y: 2.447, z: 1.504}
+  m_LocalPosition: {x: -1.4796, y: 2.923, z: 1.504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78614,7 +78613,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139525283}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.941, y: 1.052, z: 1.9843001}
+  m_LocalPosition: {x: 1.115, y: 1.2672, z: 2.3968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

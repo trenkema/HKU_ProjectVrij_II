@@ -50,20 +50,23 @@ public class ReceiveEvents : MonoBehaviour
             object[] data = (object[])_photonEvent.CustomData;
 
             // Check if the Event is send to me
-            if (PhotonView.Find((int)data[0]).IsMine)
+            if (data[0] != null)
             {
-                EventSystemNew.RaiseEvent(Event_Type.SPIDER_DESTROY_CAMERA);
+                if (PhotonView.Find((int)data[0]).IsMine)
+                {
+                    EventSystemNew.RaiseEvent(Event_Type.SPIDER_DESTROY_CAMERA);
 
-                // Find PhotonView with ViewID Data
-                PhotonNetwork.Destroy(PhotonView.Find((int)data[0]).gameObject);
+                    // Find PhotonView with ViewID Data
+                    PhotonNetwork.Destroy(PhotonView.Find((int)data[0]).gameObject);
 
-                object[] content = new object[] { PV.ViewID };
+                    object[] content = new object[] { PV.ViewID };
 
-                RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+                    RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
 
-                PhotonNetwork.RaiseEvent(spiderDestroyedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+                    PhotonNetwork.RaiseEvent(spiderDestroyedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
 
-                EventSystemNew<bool, bool>.RaiseEvent(Event_Type.SPIDER_DIED, true, (bool)data[1]);
+                    EventSystemNew<bool, bool>.RaiseEvent(Event_Type.SPIDER_DIED, true, (bool)data[1]);
+                }
             }
         }
 
@@ -104,16 +107,19 @@ public class ReceiveEvents : MonoBehaviour
             EventSystemNew<Player, int>.RaiseEvent(Event_Type.UPDATE_SCORE, correctPlayer, (int)data[1]);
         }
 
+        if (eventCode == gameStartedEventCode)
+        {
+            if (!GameManager.Instance.gameStarted)
+            {
+                EventSystemNew.RaiseEvent(Event_Type.GAME_STARTED);
+            }
+        }
+
         if (eventCode == gameWonEventCode)
         {
             object[] data = (object[])_photonEvent.CustomData;
 
             EventSystemNew<string>.RaiseEvent(Event_Type.GAME_WON, (string)data[0]);
-        }
-
-        if (eventCode == gameStartedEventCode)
-        {
-            EventSystemNew.RaiseEvent(Event_Type.GAME_STARTED);
         }
 
         if (eventCode == gameRestartedEventCode)

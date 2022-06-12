@@ -10,8 +10,6 @@ public class Leaderboard : MonoBehaviourPunCallbacks
 {
     [SerializeField] byte gameWonEventCode = 3;
 
-    [SerializeField] int maxScore = 3;
-
     [SerializeField] TextMeshProUGUI scoreNeededText;
 
     [SerializeField] Transform leaderboardContainer;
@@ -20,15 +18,21 @@ public class Leaderboard : MonoBehaviourPunCallbacks
 
     Dictionary<Player, LeaderboardItem> leaderboardItems = new Dictionary<Player, LeaderboardItem>();
 
+    int maxScore = 0;
+
     int ownScore = 0;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
+
         EventSystemNew<Player, int>.Subscribe(Event_Type.UPDATE_SCORE, UpdateScore);
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
+
         EventSystemNew<Player, int>.Unsubscribe(Event_Type.UPDATE_SCORE, UpdateScore);
     }
 
@@ -39,7 +43,12 @@ public class Leaderboard : MonoBehaviourPunCallbacks
             AddLeaderboardItem(player);
         }
 
-        scoreNeededText.text = string.Format("<color=#FF9F00>First to</color> <color=#18FF00>{0}</color> <color=#FF9F00>points</color>", maxScore);
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ScoreNeeded"))
+        {
+            maxScore = (int)PhotonNetwork.CurrentRoom.CustomProperties["ScoreNeeded"];
+
+            scoreNeededText.text = string.Format("<color=#FF9F00>First to</color> <color=#18FF00>{0}</color> <color=#FF9F00>points</color>", maxScore);
+        }
     }
 
     private void AddLeaderboardItem(Player _player)
@@ -53,7 +62,9 @@ public class Leaderboard : MonoBehaviourPunCallbacks
 
     private void RemoveLeaderboardItem(Player _player)
     {
-        Destroy(leaderboardItems[_player]);
+        Destroy(leaderboardItems[_player].gameObject);
+
+        leaderboardItems.Remove(_player);
     }
 
     private void UpdateScore(Player _player, int _addToScore)
@@ -80,7 +91,5 @@ public class Leaderboard : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         RemoveLeaderboardItem(otherPlayer);
-
-        leaderboardItems.Remove(otherPlayer);
     }
 }

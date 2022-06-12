@@ -9,6 +9,8 @@ public class PhotonController : MonoBehaviour
 
     [SerializeField] Component[] componentsToDisable;
 
+    [SerializeField] GameObject[] gameObjectsToDisable;
+
     [SerializeField] PhotonView PV;
 
     private void Start()
@@ -21,6 +23,11 @@ public class PhotonController : MonoBehaviour
             foreach (var component in componentsToDisable)
             {
                 Destroy(component);
+            }
+
+            foreach (var gObject in gameObjectsToDisable)
+            {
+                Destroy(gObject);
             }
 
             return;

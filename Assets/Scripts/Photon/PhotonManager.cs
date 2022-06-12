@@ -67,6 +67,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     [SerializeField] Button startGameButtonVR;
     [SerializeField] Button leaveGameButtonVR;
 
+    // Level Settings
+    [Header("Level Settings Menu")]
+    [SerializeField] GameObject[] settingsButtonsForMasterClientNonVR;
+    [SerializeField] GameObject[] settingsButtonsForMasterClientVR;
+
     [SerializeField] int maxPlayersPerRoom = 2;
 
     private void Awake()
@@ -94,12 +99,22 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             {
                 item.SetActive(false);
             }
+
+            foreach (var item in settingsButtonsForMasterClientVR)
+            {
+                item.SetActive(false);
+            }
         }
         else
         {
             hudVR.SetActive(false);
 
             foreach (var item in mainMenuItemsToLoadNonVR)
+            {
+                item.SetActive(false);
+            }
+
+            foreach (var item in settingsButtonsForMasterClientNonVR)
             {
                 item.SetActive(false);
             }
@@ -239,6 +254,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             leaveGameButtonVR.interactable = true;
             startGameButtonVR.interactable = true;
             startGameButtonVR.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+
+            foreach (var item in settingsButtonsForMasterClientVR)
+            {
+                item.SetActive(PhotonNetwork.IsMasterClient);
+            }
         }
         else
         {
@@ -261,6 +281,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             leaveGameButtonNonVR.interactable = true;
             startGameButtonNonVR.interactable = true;
             startGameButtonNonVR.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+
+            foreach (var item in settingsButtonsForMasterClientNonVR)
+            {
+                item.SetActive(PhotonNetwork.IsMasterClient);
+            }
         }
     }
 
@@ -372,6 +397,28 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         else
         {
             Instantiate(playerListItemPrefabNonVR, playerListContentNonVR).GetComponent<PlayerListItem>()?.SetUp(newPlayer);
+        }
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if (GameManager.Instance.isVR)
+        {
+            foreach (var item in settingsButtonsForMasterClientVR)
+            {
+                item.SetActive(PhotonNetwork.IsMasterClient);
+            }
+
+            startGameButtonVR.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+        }
+        else
+        {
+            foreach (var item in settingsButtonsForMasterClientNonVR)
+            {
+                item.SetActive(PhotonNetwork.IsMasterClient);
+            }
+
+            startGameButtonNonVR.gameObject.SetActive(PhotonNetwork.IsMasterClient);
         }
     }
 

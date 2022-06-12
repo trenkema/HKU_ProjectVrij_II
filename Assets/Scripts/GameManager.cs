@@ -8,7 +8,7 @@ using TMPro;
 
 public enum PlayerTypes { Human, Spiders }
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager Instance { get; private set; }
 
@@ -35,8 +35,10 @@ public class GameManager : MonoBehaviour
 
     public bool gameEnded { private set; get; }
 
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
+
         EventSystemNew<string>.Subscribe(Event_Type.GAME_WON, GameWon);
 
         EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
@@ -44,8 +46,10 @@ public class GameManager : MonoBehaviour
         EventSystemNew.Subscribe(Event_Type.GAME_ENDED, GameEnded);
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
+
         EventSystemNew<string>.Unsubscribe(Event_Type.GAME_WON, GameWon);
 
         EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
@@ -132,5 +136,20 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
 
         gameEnded = true;
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (gameStarted)
+            {
+                object[] content = new object[] { };
+
+                RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+                PhotonNetwork.RaiseEvent(gameStartedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+            }
+        }
     }
 }
