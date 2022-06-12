@@ -36,8 +36,10 @@ public class Mouth : MonoBehaviour
     {
         if (collision.transform.CompareTag(spiderTag) && canScore)
         {
+            Debug.LogError("Score Added");
+
             int viewID = collision.transform.GetComponent<PhotonView>().ViewID;
-            int player = PhotonView.Find(viewID).Owner.ActorNumber;
+            string playerID = PhotonView.Find(viewID).Owner.UserId;
 
             // Destroy Spider
             object[] contentDestroy = new object[] { viewID, false };
@@ -47,7 +49,7 @@ public class Mouth : MonoBehaviour
             PhotonNetwork.RaiseEvent(destroySpiderEventCode, contentDestroy, raiseEventOptionsDestroy, SendOptions.SendReliable);
 
             // Update Score
-            object[] contentScore = new object[] { player, scoreToEarn };
+            object[] contentScore = new object[] { playerID, scoreToEarn };
 
             RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 

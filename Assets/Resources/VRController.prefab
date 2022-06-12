@@ -3789,6 +3789,7 @@ MonoBehaviour:
   - {fileID: 3277509448562250614}
   - {fileID: 3226569219195826307}
   - {fileID: 6928727562445382043}
+  gameObjectsToDisable: []
   PV: {fileID: 6128949153828305977}
 --- !u!1 &7998537451572189218
 GameObject:

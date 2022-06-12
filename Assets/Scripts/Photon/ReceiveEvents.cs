@@ -98,7 +98,7 @@ public class ReceiveEvents : MonoBehaviour
 
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                if (player.ActorNumber == (int)data[0])
+                if (player.UserId == (string)data[0])
                 {
                     correctPlayer = player;
                 }
