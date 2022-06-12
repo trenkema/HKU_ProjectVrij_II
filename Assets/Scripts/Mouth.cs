@@ -4,9 +4,12 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 using ExitGames.Client.Photon;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Mouth : MonoBehaviour
 {
+    [SerializeField] PhotonView PV;
+
     [SerializeField] int scoreToEarn = 1;
 
     [SerializeField] string spiderTag;
@@ -14,6 +17,8 @@ public class Mouth : MonoBehaviour
     [SerializeField] byte destroySpiderEventCode = 1;
 
     [SerializeField] byte updateScoreEventCode = 5;
+
+    Hashtable playerScore = new Hashtable();
 
     bool canScore = true;
 
@@ -34,12 +39,27 @@ public class Mouth : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!PV.IsMine)
+            return;
+
         if (collision.transform.CompareTag(spiderTag) && canScore)
         {
-            Debug.LogError("Score Added");
-
             int viewID = collision.transform.GetComponent<PhotonView>().ViewID;
-            string playerID = PhotonView.Find(viewID).Owner.UserId;
+
+            Player player = PhotonView.Find(viewID).Owner;
+
+            int currentScore = 0;
+
+            if (player.CustomProperties.ContainsKey("Score"))
+            {
+                currentScore = (int)player.CustomProperties["Score"];
+            }
+
+            currentScore += scoreToEarn;
+
+            playerScore["Score"] = currentScore;
+
+            player.SetCustomProperties(playerScore);
 
             // Destroy Spider
             object[] contentDestroy = new object[] { viewID, false };
@@ -49,11 +69,11 @@ public class Mouth : MonoBehaviour
             PhotonNetwork.RaiseEvent(destroySpiderEventCode, contentDestroy, raiseEventOptionsDestroy, SendOptions.SendReliable);
 
             // Update Score
-            object[] contentScore = new object[] { playerID, scoreToEarn };
+            //object[] contentScore = new object[] { playerID, scoreToEarn };
 
-            RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            //RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-            PhotonNetwork.RaiseEvent(updateScoreEventCode, contentScore, raiseEventOptionsScore, SendOptions.SendReliable);
+            //PhotonNetwork.RaiseEvent(updateScoreEventCode, contentScore, raiseEventOptionsScore, SendOptions.SendReliable);
         }
     }
 

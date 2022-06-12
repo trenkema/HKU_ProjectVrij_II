@@ -17,6 +17,8 @@ using UnityEngine.InputSystem;
 [DefaultExecutionOrder(-1)] // Make sure the players input movement is applied before the spider itself will do a ground check and possibly add gravity
 public class SpiderController : MonoBehaviour {
 
+    [Header("Settings")]
+
     [SerializeField] float isFallingCheckTime = 0.25f;
 
     public Spider spider;
@@ -93,6 +95,14 @@ public class SpiderController : MonoBehaviour {
         }
 
         return Vector3.zero;
+    }
+
+    public void Jump(InputAction.CallbackContext _context)
+    {
+        if (_context.phase == InputActionPhase.Started)
+        {
+            spider.Jump();
+        }
     }
 
     public void Fall(InputAction.CallbackContext _context)

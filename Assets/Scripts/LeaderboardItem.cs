@@ -14,7 +14,14 @@ public class LeaderboardItem : MonoBehaviour
     {
         playerNameText.text = _player.NickName + " |";
 
-        scoreText.text = "0";
+        if (_player.CustomProperties.ContainsKey("Score"))
+        {
+            scoreText.text = ((int)_player.CustomProperties["Score"]).ToString();
+        }
+        else
+        {
+            scoreText.text = "0";
+        }
     }
 
     public void UpdateScore(int _score)

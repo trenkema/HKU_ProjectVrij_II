@@ -66038,6 +66038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e129a9a730b6f640ab38bb58eb27bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 1809404392}
   scoreToEarn: 1
   spiderTag: Spider
   destroySpiderEventCode: 1

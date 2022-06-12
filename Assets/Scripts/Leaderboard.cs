@@ -20,8 +20,6 @@ public class Leaderboard : MonoBehaviourPunCallbacks
 
     int maxScore = 0;
 
-    int ownScore = 0;
-
     public override void OnEnable()
     {
         base.OnEnable();
@@ -67,13 +65,11 @@ public class Leaderboard : MonoBehaviourPunCallbacks
         leaderboardItems.Remove(_player);
     }
 
-    private void UpdateScore(Player _player, int _addToScore)
+    private void UpdateScore(Player _player, int _score)
     {
-        ownScore += _addToScore;
+        leaderboardItems[_player].UpdateScore(_score);
 
-        leaderboardItems[_player].UpdateScore(ownScore);
-
-        if (ownScore >= maxScore)
+        if (_score >= maxScore)
         {
             object[] content = new object[] { _player.NickName };
 
@@ -91,5 +87,13 @@ public class Leaderboard : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         RemoveLeaderboardItem(otherPlayer);
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    {
+        if (changedProps.ContainsKey("Score"))
+        {
+            UpdateScore(targetPlayer, (int)changedProps["Score"]);
+        }
     }
 }

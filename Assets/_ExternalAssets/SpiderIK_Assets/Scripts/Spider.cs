@@ -21,7 +21,8 @@ using UnityEngine.InputSystem;
  */
 
 [DefaultExecutionOrder(0)] // Any controller of this spider should have default execution -1
-public class Spider : MonoBehaviour {
+public class Spider : MonoBehaviour
+{
 
     [SerializeField] Animator animator;
 
@@ -120,13 +121,15 @@ public class Spider : MonoBehaviour {
     private RaycastHit hitInfo;
 
     private enum RayType { None, ForwardRay, DownRay };
-    private struct groundInfo {
+    private struct groundInfo
+    {
         public bool isGrounded;
         public Vector3 groundNormal;
         public float distanceToGround;
         public RayType rayType;
 
-        public groundInfo(bool isGrd, Vector3 normal, float dist, RayType m_rayType) {
+        public groundInfo(bool isGrd, Vector3 normal, float dist, RayType m_rayType)
+        {
             isGrounded = isGrd;
             groundNormal = normal;
             distanceToGround = dist;
@@ -152,14 +155,16 @@ public class Spider : MonoBehaviour {
         EventSystemNew<bool>.Unsubscribe(Event_Type.IS_SWINGING, IsSwinging);
     }
 
-    private void Awake() {
+    private void Awake()
+    {
 
         startWalkSpeed = walkSpeed;
         startRunSpeed = runSpeed;
 
         //Make sure the scale is uniform, since otherwise lossy scale will not be accurate.
         float x = transform.localScale.x; float y = transform.localScale.y; float z = transform.localScale.z;
-        if (Mathf.Abs(x - y) > float.Epsilon || Mathf.Abs(x - z) > float.Epsilon || Mathf.Abs(y - z) > float.Epsilon) {
+        if (Mathf.Abs(x - y) > float.Epsilon || Mathf.Abs(x - z) > float.Epsilon || Mathf.Abs(y - z) > float.Epsilon)
+        {
             Debug.LogWarning("The xyz scales of the Spider are not equal. Please make sure they are. The scale of the spider is defaulted to be the Y scale and a lot of values depend on this scale.");
         }
 
@@ -178,7 +183,8 @@ public class Spider : MonoBehaviour {
         bodyDefaultCentroid = transform.InverseTransformPoint(bodyCentroid);
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         //** Ground Check **//
         grdInfo = GroundCheck();
 
@@ -203,31 +209,33 @@ public class Spider : MonoBehaviour {
         lastNormal = transform.up;
 
         //Apply the rotation to the spider
-        if (Quaternion.Angle(transform.rotation,goalrotation)>Mathf.Epsilon) transform.rotation = goalrotation;
+        if (Quaternion.Angle(transform.rotation, goalrotation) > Mathf.Epsilon) transform.rotation = goalrotation;
 
         // Dont apply gravity if close enough to ground
-        if (grdInfo.distanceToGround > getGravityOffDistance()) {
+        if (grdInfo.distanceToGround > getGravityOffDistance())
+        {
             rb.AddForce(-grdInfo.groundNormal * gravityMultiplier * 0.0981f * getScale()); //Important using the groundnormal and not the lerping normal here!
         }
 
-        if (isSwinging)
-        {
-            Vector3 curVelocity = (transform.position - previousPos) / Time.fixedDeltaTime;
+        //if (isSwinging)
+        //{
+        //    Vector3 curVelocity = (transform.position - previousPos) / Time.fixedDeltaTime;
 
-            velocity = Vector3.Lerp(velocity, curVelocity, 0.1f);
+        //    velocity = Vector3.Lerp(velocity, curVelocity, 0.1f);
 
-            previousPos = transform.position;
-        }
+        //    previousPos = transform.position;
+        //}
 
-        if (grdInfo.isGrounded && hasSwung)
-        {
-            hasSwung = false;
+        //if (grdInfo.isGrounded && hasSwung)
+        //{
+        //    hasSwung = false;
 
-            rb.velocity = Vector3.zero;
-        }
+        //    rb.velocity = Vector3.zero;
+        //}
     }
 
-    void Update() {
+    void Update()
+    {
         //** Debug **//
         if (showDebug) drawDebug();
 
@@ -239,7 +247,8 @@ public class Spider : MonoBehaviour {
 
         body.transform.position = bodyCentroid;
 
-        if (legNormalAdjustment) {
+        if (legNormalAdjustment)
+        {
             Vector3 newNormal = GetLegsPlaneNormal();
 
             //Use Global X for  pitch
@@ -255,7 +264,8 @@ public class Spider : MonoBehaviour {
             body.transform.rotation = Quaternion.AngleAxis(angleZ, Z) * body.transform.rotation;
         }
 
-        if (breathing) {
+        if (breathing)
+        {
             float t = (Time.time * 2 * Mathf.PI / breathePeriod) % (2 * Mathf.PI);
             float amplitude = breatheMagnitude * getColliderRadius();
             Vector3 direction = body.TransformDirection(bodyY);
@@ -264,7 +274,8 @@ public class Spider : MonoBehaviour {
         }
 
         // Update the moving status
-        if (transform.hasChanged) {
+        if (transform.hasChanged)
+        {
             isMoving = true;
             transform.hasChanged = false;
         }
@@ -277,6 +288,22 @@ public class Spider : MonoBehaviour {
                 EventSystemNew.RaiseEvent(Event_Type.COLLIDED);
             }
         }
+
+        if (isSwinging)
+        {
+            Vector3 curVelocity = (transform.position - previousPos) / Time.deltaTime;
+
+            velocity = Vector3.Lerp(velocity, curVelocity, 0.1f);
+
+            previousPos = transform.position;
+        }
+
+        if (grdInfo.isGrounded && hasSwung)
+        {
+            hasSwung = false;
+
+            rb.velocity = Vector3.zero;
+        }
     }
 
     public bool IsGrounded()
@@ -284,14 +311,11 @@ public class Spider : MonoBehaviour {
         return grdInfo.isGrounded;
     }
 
-    public void Jump(InputAction.CallbackContext _context)
+    public void Jump()
     {
-        if (_context.phase == InputActionPhase.Started)
+        if (IsGrounded())
         {
-            if (IsGrounded())
-            {
-                rb.AddForce((transform.forward * forwardForce) + (transform.up * upForce));
-            }
+            rb.AddForce((transform.forward * forwardForce) + (transform.up * upForce));
         }
     }
 
@@ -310,23 +334,30 @@ public class Spider : MonoBehaviour {
 
             hasSwung = true;
         }
+        else
+        {
+            previousPos = transform.position;
+        }
     }
 
     //** Movement methods**//
 
-    private void move(Vector3 direction, float speed) {
+    private void move(Vector3 direction, float speed)
+    {
 
         // TODO: Make sure direction is on the XZ plane of spider! For this maybe refactor the logic from input from spidercontroller to this function.
 
         //Only allow direction vector to have a length of 1 or lower
         float magnitude = direction.magnitude;
-        if (magnitude > 1) {
+        if (magnitude > 1)
+        {
             direction = direction.normalized;
             magnitude = 1f;
         }
 
         // Scale the magnitude and Clamp to not move more than down ray radius (Makes sure the ground is not lost due to moving too fast)
-        if (direction != Vector3.zero) {
+        if (direction != Vector3.zero)
+        {
             float directionDamp = Mathf.Pow(Mathf.Clamp(Vector3.Dot(direction / magnitude, transform.forward), 0, 1), 2);
             float distance = 0.0004f * speed * magnitude * directionDamp * getScale();
             distance = Mathf.Clamp(distance, 0, 0.99f * downRayRadius);
@@ -340,11 +371,13 @@ public class Spider : MonoBehaviour {
         transform.position += currentVelocity;
     }
 
-    public void turn(Vector3 goalForward) {
+    public void turn(Vector3 goalForward)
+    {
         //Make sure goalForward is orthogonal to transform up
         goalForward = Vector3.ProjectOnPlane(goalForward, transform.up).normalized;
 
-        if (goalForward == Vector3.zero || Vector3.Angle(goalForward, transform.forward) < Mathf.Epsilon) {
+        if (goalForward == Vector3.zero || Vector3.Angle(goalForward, transform.forward) < Mathf.Epsilon)
+        {
             return;
         }
         goalForward = Vector3.ProjectOnPlane(goalForward, transform.up);
@@ -355,7 +388,8 @@ public class Spider : MonoBehaviour {
     //** Movement methods for public access**//
     // It is advised to call these on a fixed update basis.
 
-    public void walk(Vector3 direction) {
+    public void walk(Vector3 direction)
+    {
         if (direction.magnitude < Mathf.Epsilon)
         {
             if (animator.GetBool("isWalking") == true)
@@ -370,19 +404,24 @@ public class Spider : MonoBehaviour {
         move(direction, walkSpeed);
     }
 
-    public void run(Vector3 direction) {
+    public void run(Vector3 direction)
+    {
         if (direction.magnitude < Mathf.Epsilon) return;
         move(direction, runSpeed);
     }
 
     //** Ground Check Method **//
-    private groundInfo GroundCheck() {
-        if (groundCheckOn) {
-            if (forwardRay.castRay(out hitInfo, walkableLayer)) {
+    private groundInfo GroundCheck()
+    {
+        if (groundCheckOn)
+        {
+            if (forwardRay.castRay(out hitInfo, walkableLayer))
+            {
                 return new groundInfo(true, hitInfo.normal.normalized, Vector3.Distance(transform.TransformPoint(capsuleCollider.center), hitInfo.point) - getColliderRadius(), RayType.ForwardRay);
             }
 
-            if (downRay.castRay(out hitInfo, walkableLayer)) {
+            if (downRay.castRay(out hitInfo, walkableLayer))
+            {
                 return new groundInfo(true, hitInfo.normal.normalized, Vector3.Distance(transform.TransformPoint(capsuleCollider.center), hitInfo.point) - getColliderRadius(), RayType.DownRay);
             }
         }
@@ -410,7 +449,8 @@ public class Spider : MonoBehaviour {
     * Returns the rotation with specified right and up direction   
     * May have to make more error catches here. Whatif not orthogonal?
     */
-    private Quaternion getLookRotation(Vector3 right, Vector3 up) {
+    private Quaternion getLookRotation(Vector3 right, Vector3 up)
+    {
         if (up == Vector3.zero || right == Vector3.zero) return Quaternion.identity;
         // If vectors are parallel return identity
         float angle = Vector3.Angle(right, up);
@@ -422,8 +462,10 @@ public class Spider : MonoBehaviour {
     //** Torso adjust methods for more realistic movement **//
 
     // Calculate the centroid (center of gravity) given by all end effector positions of the legs
-    private Vector3 getLegsCentroid() {
-        if (legs == null || legs.Length == 0) {
+    private Vector3 getLegsCentroid()
+    {
+        if (legs == null || legs.Length == 0)
+        {
             Debug.LogError("Cant calculate leg centroid, legs not assigned.");
             return body.transform.position;
         }
@@ -431,7 +473,8 @@ public class Spider : MonoBehaviour {
         // Calculate the centroid of legs position
         Vector3 newCentroid = Vector3.zero;
         float k = 0;
-        for (int i = 0; i < legs.Length; i++) {
+        for (int i = 0; i < legs.Length; i++)
+        {
             newCentroid += legs[i].getEndEffector().position;
             k++;
         }
@@ -449,9 +492,11 @@ public class Spider : MonoBehaviour {
     }
 
     // Calculate the normal of the plane defined by leg positions, so we know how to rotate the body
-    private Vector3 GetLegsPlaneNormal() {
+    private Vector3 GetLegsPlaneNormal()
+    {
 
-        if (legs == null) {
+        if (legs == null)
+        {
             Debug.LogError("Cant calculate normal, legs not assigned.");
             return transform.up;
         }
@@ -462,7 +507,8 @@ public class Spider : MonoBehaviour {
         Vector3 toEnd;
         Vector3 currentTangent;
 
-        for (int i = 0; i < legs.Length; i++) {
+        for (int i = 0; i < legs.Length; i++)
+        {
             //normal += legWeight * legs[i].getTarget().normal;
             toEnd = legs[i].getEndEffector().position - transform.position;
             currentTangent = Vector3.ProjectOnPlane(toEnd, transform.up);
@@ -476,64 +522,79 @@ public class Spider : MonoBehaviour {
 
 
     //** Getters **//
-    public float getScale() {
+    public float getScale()
+    {
         return transform.lossyScale.y;
     }
 
-    public bool getIsMoving() {
+    public bool getIsMoving()
+    {
         return isMoving;
     }
 
-    public Vector3 getCurrentVelocityPerSecond() {
+    public Vector3 getCurrentVelocityPerSecond()
+    {
         return currentVelocity / Time.fixedDeltaTime;
     }
 
-    public Vector3 getCurrentVelocityPerFixedFrame() {
+    public Vector3 getCurrentVelocityPerFixedFrame()
+    {
         return currentVelocity;
     }
-    public Vector3 getGroundNormal() {
+    public Vector3 getGroundNormal()
+    {
         return grdInfo.groundNormal;
     }
 
-    public Vector3 getLastNormal() {
+    public Vector3 getLastNormal()
+    {
         return lastNormal;
     }
 
-    public float getColliderRadius() {
+    public float getColliderRadius()
+    {
         return getScale() * capsuleCollider.radius;
     }
 
-    public float getNonScaledColliderRadius() {
+    public float getNonScaledColliderRadius()
+    {
         return capsuleCollider.radius;
     }
 
-    public float getColliderLength() {
+    public float getColliderLength()
+    {
         return getScale() * capsuleCollider.height;
     }
 
-    public Vector3 getColliderCenter() {
+    public Vector3 getColliderCenter()
+    {
         return transform.TransformPoint(capsuleCollider.center);
     }
 
-    public Vector3 getColliderBottomPoint() {
+    public Vector3 getColliderBottomPoint()
+    {
         return transform.TransformPoint(capsuleCollider.center - capsuleCollider.radius * new Vector3(0, 1, 0));
     }
 
-    public Vector3 getDefaultCentroid() {
+    public Vector3 getDefaultCentroid()
+    {
         return transform.TransformPoint(bodyDefaultCentroid);
     }
 
-    public float getGravityOffDistance() {
+    public float getGravityOffDistance()
+    {
         return gravityOffDistance * getColliderRadius();
     }
 
     //** Setters **//
-    public void setGroundcheck(bool b) {
+    public void setGroundcheck(bool b)
+    {
         groundCheckOn = b;
     }
 
     //** Debug Methods **//
-    private void drawDebug() {
+    private void drawDebug()
+    {
         //Draw the two Sphere Rays
         downRay.draw(Color.green);
         forwardRay.draw(Color.blue);
@@ -553,7 +614,8 @@ public class Spider : MonoBehaviour {
     }
 
 #if UNITY_EDITOR
-    void OnDrawGizmosSelected() {
+    void OnDrawGizmosSelected()
+    {
 
         if (!showDebug) return;
         if (UnityEditor.EditorApplication.isPlaying) return;

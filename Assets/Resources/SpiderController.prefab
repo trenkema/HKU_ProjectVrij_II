@@ -114,8 +114,8 @@ MonoBehaviour:
     m_ActionName: PlayerControls/Run[/Keyboard/shift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3522027600439065312}
-        m_TargetAssemblyTypeName: Spider, Assembly-CSharp
+      - m_Target: {fileID: 974648722269106508}
+        m_TargetAssemblyTypeName: SpiderController, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
         m_Arguments:

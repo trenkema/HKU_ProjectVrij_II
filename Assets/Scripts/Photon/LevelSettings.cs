@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LevelSettings : MonoBehaviourPunCallbacks
 {
@@ -20,7 +21,7 @@ public class LevelSettings : MonoBehaviourPunCallbacks
 
     int currentScoreNeeded;
 
-    ExitGames.Client.Photon.Hashtable customLevelProperties = new ExitGames.Client.Photon.Hashtable();
+    Hashtable customLevelProperties = new Hashtable();
 
     public void ChangeMinutes(int _upDown)
     {
