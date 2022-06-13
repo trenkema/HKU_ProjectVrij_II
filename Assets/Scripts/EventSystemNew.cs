@@ -3,14 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
 
-public enum Sound_Type
-{
-    WebImpact,
-    WebTrail,
-
-    SpiderStep
-}
-
 public enum Event_Type
 {
     SPIDER_DESTROY_CAMERA,

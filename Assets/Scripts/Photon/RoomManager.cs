@@ -14,9 +14,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public static RoomManager Instance;
 
     [Header("Setup")]
-    [SerializeField] byte respawnSpiderEventCode = 2;
-    [SerializeField] byte gameRestartedEventCode = 8;
-
     [SerializeField] TextMeshProUGUI respawnTimeText;
     [SerializeField] int respawnTime = 5;
     [SerializeField] int respawnTimeIncrease = 5;
@@ -141,7 +138,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-        PhotonNetwork.RaiseEvent(respawnSpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent((int)Event_Code.RespawnSpider, content, raiseEventOptions, SendOptions.SendReliable);
 
         if (_increaseRespawnTime)
         {
@@ -176,7 +173,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-        PhotonNetwork.RaiseEvent(gameRestartedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent((int)Event_Code.GameRestarted, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
     public override void OnLeftRoom()

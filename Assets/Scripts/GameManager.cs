@@ -12,9 +12,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager Instance { get; private set; }
 
-    [SerializeField] byte gameStartedEventCode = 6;
-    [SerializeField] byte gameEndedEventCode = 7;
-
     [SerializeField] GameObject[] objectsToDisableForVR;
     [SerializeField] GameObject[] objectsToDisableForNonVR;
 
@@ -88,11 +85,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            object[] content = new object[] { };
-
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-
-            PhotonNetwork.RaiseEvent(gameStartedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+            if (!gameStarted && !gameEnded)
+            {
+                StartGame();
+            }
         }
     }
 
@@ -102,7 +98,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-        PhotonNetwork.RaiseEvent(gameStartedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent((int)Event_Code.GameStarted, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
     private void GameStarted()
@@ -148,7 +144,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-                PhotonNetwork.RaiseEvent(gameStartedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+                PhotonNetwork.RaiseEvent((int)Event_Code.GameStarted, content, raiseEventOptions, SendOptions.SendReliable);
             }
         }
     }

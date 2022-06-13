@@ -9,8 +9,6 @@ public class Web : MonoBehaviour
 {
     [SerializeField] int timeToDestroyWeb = 5;
 
-    [SerializeField] byte soundEventCode = 8;
-
     PhotonView PV;
 
     private void Awake()
@@ -24,7 +22,7 @@ public class Web : MonoBehaviour
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-            PhotonNetwork.RaiseEvent(soundEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent((int)Event_Code.SoundTrigger, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
 

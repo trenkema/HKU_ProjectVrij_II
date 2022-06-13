@@ -6,19 +6,22 @@ using Photon.Realtime;
 using Photon.Pun;
 using FMOD.Studio;
 
+public enum Event_Code
+{
+    DestroySpider,
+    SpiderDestroyed,
+    RespawnSpider,
+    UpdateScore,
+
+    GameStarted,
+    GameWon,
+    GameRestarted,
+
+    SoundTrigger
+}
+
 public class ReceiveEvents : MonoBehaviour
 {
-    [Header("Event Codes")]
-    [SerializeField] byte destroySpiderEventCode = 1;
-    [SerializeField] byte respawnSpiderEventCode = 2;
-    [SerializeField] byte gameWonEventCode = 3;
-    [SerializeField] byte spiderDestroyedEventCode = 4;
-    [SerializeField] byte updateScoreEventCode = 5;
-    [SerializeField] byte gameStartedEventCode = 6;
-    [SerializeField] byte gameRestartedEventCode = 7;
-
-    [SerializeField] byte soundEventCode = 8;
-
     PhotonView PV;
 
     private void OnEnable()
@@ -48,7 +51,7 @@ public class ReceiveEvents : MonoBehaviour
     {
         byte eventCode = _photonEvent.Code;
 
-        if (eventCode == destroySpiderEventCode)
+        if (eventCode == (int)Event_Code.DestroySpider)
         {
             object[] data = (object[])_photonEvent.CustomData;
 
@@ -66,19 +69,19 @@ public class ReceiveEvents : MonoBehaviour
 
                     RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
 
-                    PhotonNetwork.RaiseEvent(spiderDestroyedEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+                    PhotonNetwork.RaiseEvent((int)Event_Code.SpiderDestroyed, content, raiseEventOptions, SendOptions.SendReliable);
 
                     EventSystemNew<bool, bool>.RaiseEvent(Event_Type.SPIDER_DIED, true, (bool)data[1]);
                 }
             }
         }
 
-        if (eventCode == spiderDestroyedEventCode)
+        if (eventCode == (int)Event_Code.SpiderDestroyed)
         {
             EventSystemNew<bool, bool>.RaiseEvent(Event_Type.SPIDER_DIED, false, false);
         }
 
-        if (eventCode == respawnSpiderEventCode)
+        if (eventCode == (int)Event_Code.RespawnSpider)
         {
             object[] data = (object[])_photonEvent.CustomData;
 
@@ -93,7 +96,7 @@ public class ReceiveEvents : MonoBehaviour
             }
         }
 
-        if (eventCode == updateScoreEventCode)
+        if (eventCode == (int)Event_Code.UpdateScore)
         {
             object[] data = (object[])_photonEvent.CustomData;
 
@@ -110,7 +113,7 @@ public class ReceiveEvents : MonoBehaviour
             EventSystemNew<Player, int>.RaiseEvent(Event_Type.UPDATE_SCORE, correctPlayer, (int)data[1]);
         }
 
-        if (eventCode == gameStartedEventCode)
+        if (eventCode == (int)Event_Code.GameStarted)
         {
             if (!GameManager.Instance.gameStarted)
             {
@@ -118,14 +121,14 @@ public class ReceiveEvents : MonoBehaviour
             }
         }
 
-        if (eventCode == gameWonEventCode)
+        if (eventCode == (int)Event_Code.GameWon)
         {
             object[] data = (object[])_photonEvent.CustomData;
 
             EventSystemNew<string>.RaiseEvent(Event_Type.GAME_WON, (string)data[0]);
         }
 
-        if (eventCode == gameRestartedEventCode)
+        if (eventCode == (int)Event_Code.GameRestarted)
         {
             if (PhotonNetwork.IsMasterClient)
             {
@@ -135,7 +138,7 @@ public class ReceiveEvents : MonoBehaviour
             }
         }
 
-        if (eventCode == soundEventCode)
+        if (eventCode == (int)Event_Code.SoundTrigger)
         {
             object[] data = (object[])_photonEvent.CustomData;
 

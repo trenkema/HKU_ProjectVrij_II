@@ -9,8 +9,6 @@ public class MeleeWeapon : MonoBehaviour
 {
     [SerializeField] string spiderTag;
 
-    [SerializeField] byte destroySpiderEventCode = 1;
-
     PhotonView PV;
 
     bool canKill = true;
@@ -53,7 +51,7 @@ public class MeleeWeapon : MonoBehaviour
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-            PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
 }

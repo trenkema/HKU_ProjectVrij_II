@@ -340,7 +340,7 @@ public class IKStepper : MonoBehaviour {
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-            PhotonNetwork.RaiseEvent(8, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent((int)Event_Code.SoundTrigger, content, raiseEventOptions, SendOptions.SendReliable);
         }
         ////SOUND
         //spiderWalkSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderStep");

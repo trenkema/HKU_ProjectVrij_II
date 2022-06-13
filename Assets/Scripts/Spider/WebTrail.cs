@@ -12,8 +12,6 @@ public class WebTrail : MonoBehaviour
 
     [SerializeField] float destroyTime = 3;
 
-    [SerializeField] byte soundEventCode = 8;
-
     PhotonView PV;
 
     bool isDestroyed = false;
@@ -29,7 +27,7 @@ public class WebTrail : MonoBehaviour
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-            PhotonNetwork.RaiseEvent(soundEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent((int)Event_Code.SoundTrigger, content, raiseEventOptions, SendOptions.SendReliable);
 
             StartCoroutine(DestroyTrail());
         }

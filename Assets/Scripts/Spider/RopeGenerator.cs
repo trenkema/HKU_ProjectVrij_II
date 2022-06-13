@@ -7,8 +7,6 @@ using ExitGames.Client.Photon;
 
 public class RopeGenerator : MonoBehaviour
 {
-    [SerializeField] byte destroySpiderEventCode = 1;
-
     [SerializeField] float forwardForce = 1;
     [SerializeField] float upwardForce = 1f;
 
@@ -146,7 +144,7 @@ public class RopeGenerator : MonoBehaviour
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-            PhotonNetwork.RaiseEvent(destroySpiderEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
 

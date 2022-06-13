@@ -8,8 +8,6 @@ using TMPro;
 
 public class Leaderboard : MonoBehaviourPunCallbacks
 {
-    [SerializeField] byte gameWonEventCode = 3;
-
     [SerializeField] TextMeshProUGUI scoreNeededText;
 
     [SerializeField] Transform leaderboardContainer;
@@ -75,7 +73,7 @@ public class Leaderboard : MonoBehaviourPunCallbacks
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-            PhotonNetwork.RaiseEvent(gameWonEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent((int)Event_Code.GameWon, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
 

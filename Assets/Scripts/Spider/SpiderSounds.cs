@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
 
+public enum Sound_Type
+{
+    WebImpact,
+    WebTrail,
+
+    SpiderStep
+}
+
 public class SpiderSounds : MonoBehaviour
 {
     // Web Trail

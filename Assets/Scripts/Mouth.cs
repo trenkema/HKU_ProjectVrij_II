@@ -14,10 +14,6 @@ public class Mouth : MonoBehaviour
 
     [SerializeField] string spiderTag;
 
-    [SerializeField] byte destroySpiderEventCode = 1;
-
-    [SerializeField] byte updateScoreEventCode = 5;
-
     Hashtable playerScore = new Hashtable();
 
     bool canScore = true;
@@ -66,37 +62,7 @@ public class Mouth : MonoBehaviour
 
             RaiseEventOptions raiseEventOptionsDestroy = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-            PhotonNetwork.RaiseEvent(destroySpiderEventCode, contentDestroy, raiseEventOptionsDestroy, SendOptions.SendReliable);
-
-            // Update Score
-            //object[] contentScore = new object[] { playerID, scoreToEarn };
-
-            //RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-
-            //PhotonNetwork.RaiseEvent(updateScoreEventCode, contentScore, raiseEventOptionsScore, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, contentDestroy, raiseEventOptionsDestroy, SendOptions.SendReliable);
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag(spiderTag) && canScore)
-    //    {
-    //        int viewID = other.GetComponent<PhotonView>().ViewID;
-    //        int player = PhotonView.Find(viewID).Owner.ActorNumber;
-
-    //        // Destroy Spider
-    //        object[] contentDestroy = new object[] { viewID, false };
-
-    //        RaiseEventOptions raiseEventOptionsDestroy = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-
-    //        PhotonNetwork.RaiseEvent(destroySpiderEventCode, contentDestroy, raiseEventOptionsDestroy, SendOptions.SendReliable);
-
-    //        // Update Score
-    //        object[] contentScore = new object[] { player, scoreToEarn };
-
-    //        RaiseEventOptions raiseEventOptionsScore = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-
-    //        PhotonNetwork.RaiseEvent(updateScoreEventCode, contentScore, raiseEventOptionsScore, SendOptions.SendReliable);
-    //    }
-    //}
 }
