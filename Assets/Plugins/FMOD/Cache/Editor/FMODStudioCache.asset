@@ -558,6 +558,57 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1000
+--- !u!114 &-3179880821084512487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Fireplace
+  m_EditorClassIdentifier: 
+  Path: event:/Fireplace
+  Guid:
+    Data1: -1379090968
+    Data2: 1184306428
+    Data3: 1502404772
+    Data4: -1179702322
+  Banks:
+  - {fileID: 7840883475139166289}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 8
+  Length: 112778
+--- !u!114 &-2597868086939371165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Crawl/RPM
+  m_EditorClassIdentifier: 
+  Name: RPM
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 2272601954
+    data2: 3169889173
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2016388767075808027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +633,34 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1729170059268202591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crawl
+  m_EditorClassIdentifier: 
+  Path: event:/Crawl
+  Guid:
+    Data1: -24867117
+    Data2: 1153676934
+    Data3: 2059419281
+    Data4: -340543632
+  Banks:
+  - {fileID: 7840883475139166289}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2597868086939371165}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -711,12 +790,14 @@ MonoBehaviour:
   - {fileID: 4780112522627066667}
   - {fileID: 2344730112435422214}
   - {fileID: 9141662053641068750}
+  - {fileID: -1729170059268202591}
+  - {fileID: -3179880821084512487}
   EditorParameters: []
   MasterBanks:
   - {fileID: 7840883475139166289}
   StringsBanks:
   - {fileID: 6432839231735122152}
-  cacheTime: 637907127004677228
+  cacheTime: 637907143892394068
   cacheVersion: 131591
 --- !u!114 &2234557871336590916
 MonoBehaviour:
@@ -1081,10 +1162,10 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637907127004677228
+  lastModified: 637907143892394068
   FileSizes:
   - Name: Desktop
-    Value: 2072
+    Value: 2204
   Exists: 1
 --- !u!114 &6662192655557101339
 MonoBehaviour:
@@ -1182,10 +1263,10 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637907127004667228
+  lastModified: 637907143892334052
   FileSizes:
   - Name: Desktop
-    Value: 4125408
+    Value: 5601472
   Exists: 1
 --- !u!114 &8185239452862957790
 MonoBehaviour:
