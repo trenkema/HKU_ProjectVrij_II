@@ -43,7 +43,7 @@ public class SpiderSounds : MonoBehaviour
         if (_soundType == Sound_Type.SpiderStep)
         {
             walkSoundEffect = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderStep");
-            walkSoundEffect.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            walkSoundEffect.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(_target));
             walkSoundEffect.start();
         }
     }
