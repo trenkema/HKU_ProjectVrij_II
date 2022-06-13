@@ -66,15 +66,27 @@ public class WebTrail : MonoBehaviour
 
                     //SOUND
 
-                    spiderTrailSoundEffect.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    PV.RPC("RPC_SyncWebImpactSound", RpcTarget.All);
 
-                    spiderTrailSound = FMODUnity.RuntimeManager.CreateInstance("event:/WebCollider");
-                    spiderTrailSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-                    spiderTrailSound.start();
+                    //spiderTrailSoundEffect.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+                    //spiderTrailSound = FMODUnity.RuntimeManager.CreateInstance("event:/WebCollider");
+                    //spiderTrailSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                    //spiderTrailSound.start();
 
                     spawnedWeb = PhotonNetwork.Instantiate(webPrefabName, transform.position, Quaternion.identity);
                 }
             }
         }
+    }
+
+    [PunRPC]
+    public void RPC_SyncWebImpactSound()
+    {
+        spiderTrailSoundEffect.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+        spiderTrailSound = FMODUnity.RuntimeManager.CreateInstance("event:/WebCollider");
+        spiderTrailSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        spiderTrailSound.start();
     }
 }
