@@ -15,15 +15,25 @@ ModelImporter:
       name: Poster2_MAT
     second: {fileID: 2100000, guid: ba3c03a44c4c1504da785dd8e5cc64c5, type: 2}
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Poster3_MAT
+    second: {fileID: 2100000, guid: 1c4c4f0dff40f9641a9858982650eef4, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Dino1_Texture
-    second: {fileID: 2800000, guid: 04fdda9ffd10276418c8796cb71b166f, type: 3}
+    second: {fileID: 2800000, guid: d671baaaf2369bb4cb7359a887cf4d79, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Dino2_Texture
-    second: {fileID: 2800000, guid: a1a78c25857bd2744a6e2db12024f98b, type: 3}
+    second: {fileID: 2800000, guid: 018003d8ca0c5c548908986c85f21e89, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Dino3_Texture
+    second: {fileID: 2800000, guid: 65145fd1255da6541b37a60fb3e3983b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
