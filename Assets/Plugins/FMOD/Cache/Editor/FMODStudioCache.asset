@@ -108,6 +108,33 @@ MonoBehaviour:
   MinDistance: 0.6
   MaxDistance: 20
   Length: 4625
+--- !u!114 &-6675411920619201380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CityAmbience
+  m_EditorClassIdentifier: 
+  Path: event:/CityAmbience
+  Guid:
+    Data1: 518676759
+    Data2: 1160718221
+    Data3: -2054195560
+    Data4: -125318498
+  Banks:
+  - {fileID: 7840883475139166289}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-6654038201005732990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +208,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 42885
+  Length: 70666
 --- !u!114 &-5991316354506874361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,33 +585,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1000
---- !u!114 &-3179880821084512487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Fireplace
-  m_EditorClassIdentifier: 
-  Path: event:/Fireplace
-  Guid:
-    Data1: -1379090968
-    Data2: 1184306428
-    Data3: 1502404772
-    Data4: -1179702322
-  Banks:
-  - {fileID: 7840883475139166289}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 8
-  Length: 112778
 --- !u!114 &-2597868086939371165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,14 +791,42 @@ MonoBehaviour:
   - {fileID: 2344730112435422214}
   - {fileID: 9141662053641068750}
   - {fileID: -1729170059268202591}
-  - {fileID: -3179880821084512487}
+  - {fileID: -6675411920619201380}
+  - {fileID: 1434642343594149452}
   EditorParameters: []
   MasterBanks:
   - {fileID: 7840883475139166289}
   StringsBanks:
   - {fileID: 6432839231735122152}
-  cacheTime: 637907143892394068
+  cacheTime: 637907183882317913
   cacheVersion: 131591
+--- !u!114 &1434642343594149452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OutdoorAmbience 2
+  m_EditorClassIdentifier: 
+  Path: event:/OutdoorAmbience 2
+  Guid:
+    Data1: -786943387
+    Data2: 1102659135
+    Data3: 1969834664
+    Data4: 1911036157
+  Banks:
+  - {fileID: 7840883475139166289}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 37100
 --- !u!114 &2234557871336590916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1162,10 +1190,10 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637907143892394068
+  lastModified: 637907183882317913
   FileSizes:
   - Name: Desktop
-    Value: 2204
+    Value: 2238
   Exists: 1
 --- !u!114 &6662192655557101339
 MonoBehaviour:
@@ -1263,10 +1291,10 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637907143892334052
+  lastModified: 637907183882252908
   FileSizes:
   - Name: Desktop
-    Value: 5601472
+    Value: 4210400
   Exists: 1
 --- !u!114 &8185239452862957790
 MonoBehaviour:

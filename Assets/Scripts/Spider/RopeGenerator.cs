@@ -170,6 +170,11 @@ public class RopeGenerator : MonoBehaviour
 
         StartCoroutine(DeleteRope());
 
+        //SOUND
+        spiderHangSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+        StartCoroutine(DeleteRope());
+
         isCurrentlySwinging = false;
     }
 

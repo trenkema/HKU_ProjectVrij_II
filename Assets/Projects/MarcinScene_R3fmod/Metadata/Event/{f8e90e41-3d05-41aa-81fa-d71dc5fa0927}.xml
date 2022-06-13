@@ -61,7 +61,7 @@
 			<value>true</value>
 		</property>
 		<property name="maxVoices">
-			<value>3</value>
+			<value>1</value>
 		</property>
 		<property name="dopplerEnabled">
 			<value>true</value>
@@ -185,6 +185,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{177e8f58-fa38-4da7-ab67-99dc91bff92f}">
 		<relationship name="effects">
+			<destination>{3a7e5b38-f23d-4edd-a925-e91c9745a6dd}</destination>
 			<destination>{43267414-e938-4d28-97b0-914e6c694456}</destination>
 			<destination>{b66eab0e-3410-4ec7-a331-757c76b2a040}</destination>
 		</relationship>
@@ -260,6 +261,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f35ebd6a-43ef-46df-9259-5a83e5aa1a11}" />
+	<object class="ThreeEQEffect" id="{3a7e5b38-f23d-4edd-a925-e91c9745a6dd}">
+		<property name="midGain">
+			<value>-2.5</value>
+		</property>
+		<property name="highGain">
+			<value>-9.5</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{43267414-e938-4d28-97b0-914e6c694456}" />
 	<object class="SpatialiserEffect" id="{b66eab0e-3410-4ec7-a331-757c76b2a040}">
 		<property name="minimumDistance">

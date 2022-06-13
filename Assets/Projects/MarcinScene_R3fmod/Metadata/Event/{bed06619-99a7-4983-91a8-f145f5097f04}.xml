@@ -99,6 +99,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{809e693b-3488-4c30-9ab0-3ce7729aff9a}">
+		<property name="volume">
+			<value>-15</value>
+		</property>
 		<relationship name="automators">
 			<destination>{fe904566-955d-4a40-8197-9f579bf2f495}</destination>
 		</relationship>
