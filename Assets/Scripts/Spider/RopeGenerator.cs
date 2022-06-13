@@ -42,6 +42,10 @@ public class RopeGenerator : MonoBehaviour
 
     [SerializeField] float distanceBetweenPoints = 1f;
 
+    //SOUND
+    private FMOD.Studio.EventInstance spiderPullSound;
+    private FMOD.Studio.EventInstance spiderHangSound;
+
     List<GameObject> ropePoints = new List<GameObject>();
 
     List<GameObject> endPoints = new List<GameObject>();
@@ -120,6 +124,14 @@ public class RopeGenerator : MonoBehaviour
                 canSwing = false;
 
                 RaycastRope();
+
+                //SOUND
+                spiderPullSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderPull");
+                spiderPullSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                spiderPullSound.start();
+                spiderHangSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderHang");
+                spiderHangSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                spiderHangSound.start();
             }
         }
 

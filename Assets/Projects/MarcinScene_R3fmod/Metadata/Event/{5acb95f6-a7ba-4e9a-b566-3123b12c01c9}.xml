@@ -64,7 +64,7 @@
 			<value>true</value>
 		</property>
 		<property name="dopplerScale">
-			<value>165</value>
+			<value>74</value>
 		</property>
 		<property name="minimumDistance">
 			<value>1.80000007</value>
@@ -73,7 +73,7 @@
 			<value>15</value>
 		</property>
 		<property name="triggerCooldown">
-			<value>20</value>
+			<value>10</value>
 		</property>
 	</object>
 	<object class="MarkerTrack" id="{05c5f3b9-0dbc-4008-9d20-d080a4755349}" />
@@ -92,7 +92,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{d2662a21-aec9-4d18-8fb0-4f6066f3035a}">
 		<property name="volume">
-			<value>-19.5</value>
+			<value>-15</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{9835528a-a254-420c-865b-bf2b0494c791}</destination>
@@ -111,6 +111,12 @@
 	</object>
 	<object class="MixerBusPanner" id="{d2aa1c4a-1b1a-4c97-9ed5-d30f55b5a6f0}" />
 	<object class="MultiSound" id="{f0cb0de5-c6b8-45f5-b658-14313e3a4651}">
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>35.5</value>
+		</property>
 		<property name="isAsync">
 			<value>true</value>
 		</property>
@@ -122,12 +128,6 @@
 		</property>
 		<property name="maxVoices">
 			<value>1</value>
-		</property>
-		<property name="volume">
-			<value>6</value>
-		</property>
-		<property name="pitch">
-			<value>-7.5</value>
 		</property>
 		<property name="playCount">
 			<value>3</value>
@@ -142,7 +142,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{184c5c77-88fc-4e0c-af1e-a19da56ea612}">
 		<property name="volume">
-			<value>-23.5</value>
+			<value>-0.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 2</value>
@@ -159,18 +159,18 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{9835528a-a254-420c-865b-bf2b0494c791}">
 		<relationship name="effects">
-			<destination>{64b93bc7-4f2a-480c-bb4b-aae29dfc101f}</destination>
 			<destination>{c97f6418-e3d5-4a73-b3de-714a57624f09}</destination>
 			<destination>{7cbca5fb-291f-4254-950e-bd34eb2828b4}</destination>
+			<destination>{64b93bc7-4f2a-480c-bb4b-aae29dfc101f}</destination>
 			<destination>{58b7271e-1392-4218-8ced-de79028a169a}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8b7daefd-07b7-458f-aa11-a5c2684a11bf}">
 		<property name="surroundPanDirection">
-			<value>-2.08256531</value>
+			<value>-1.61353898</value>
 		</property>
 		<property name="surroundPanExtent">
-			<value>93.8400726</value>
+			<value>41.3756104</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{cb1aea5e-7ad3-4462-9232-83b4462a9fc3}" />
@@ -192,7 +192,7 @@
 	</object>
 	<object class="SingleSound" id="{21223aa8-ed29-47e6-bf25-bc012276a03c}">
 		<property name="startOffset">
-			<value>50</value>
+			<value>73.5</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{61cdccbb-cfb0-447a-b294-e953e10d9a2b}</destination>
@@ -200,7 +200,7 @@
 			<destination>{3551d74a-2b48-4db0-862a-a5ccf0447dbd}</destination>
 		</relationship>
 		<relationship name="audioFile">
-			<destination>{e96d9f80-b4f7-458e-9989-15000f68be3b}</destination>
+			<destination>{60330613-20fc-4c8b-ac3d-59487e89bac9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{0e93b841-7d58-4209-825a-bbdb6e4edfe6}">
@@ -209,23 +209,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{1530f5c0-29bd-4661-b61d-b6eb9f184469}" />
-	<object class="ThreeEQEffect" id="{64b93bc7-4f2a-480c-bb4b-aae29dfc101f}">
-		<property name="midGain">
-			<value>-80</value>
-		</property>
-		<property name="highGain">
-			<value>-0.5</value>
-		</property>
-		<property name="lowCrossover">
-			<value>700</value>
-		</property>
-		<property name="highCrossover">
-			<value>4400</value>
-		</property>
-		<property name="crossoverSlope">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="CompressorEffect" id="{c97f6418-e3d5-4a73-b3de-714a57624f09}">
 		<property name="threshold">
 			<value>-33</value>
@@ -244,10 +227,24 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{7cbca5fb-291f-4254-950e-bd34eb2828b4}" />
-	<object class="SpatialiserEffect" id="{58b7271e-1392-4218-8ced-de79028a169a}">
-		<property name="distanceRolloffType">
-			<value>2</value>
+	<object class="ThreeEQEffect" id="{64b93bc7-4f2a-480c-bb4b-aae29dfc101f}">
+		<property name="midGain">
+			<value>-29</value>
 		</property>
+		<property name="highGain">
+			<value>-13.5</value>
+		</property>
+		<property name="lowCrossover">
+			<value>700</value>
+		</property>
+		<property name="highCrossover">
+			<value>4400</value>
+		</property>
+		<property name="crossoverSlope">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="SpatialiserEffect" id="{58b7271e-1392-4218-8ced-de79028a169a}">
 		<property name="minimumDistance">
 			<value>1.80000007</value>
 		</property>
@@ -260,7 +257,7 @@
 			<value>startOffset</value>
 		</property>
 		<property name="amount">
-			<value>30.5</value>
+			<value>19</value>
 		</property>
 	</object>
 	<object class="ADSRModulator" id="{ea2c96af-7ef3-4584-8e40-90c753e373de}">
@@ -277,10 +274,16 @@
 			<value>0</value>
 		</property>
 		<property name="decayTime">
-			<value>200</value>
+			<value>2600</value>
+		</property>
+		<property name="decayShape">
+			<value>-0.675192654</value>
 		</property>
 		<property name="sustainValue">
 			<value>-80</value>
+		</property>
+		<property name="releaseTime">
+			<value>660</value>
 		</property>
 		<property name="finalValue">
 			<value>-80</value>
