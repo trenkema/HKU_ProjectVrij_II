@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Raycasting;
 
+using Photon.Realtime;
+using Photon.Pun;
+using ExitGames.Client.Photon;
+
 /*
  * This class requires an IKChain to function and supplies it with the ability to perform steps.
  * It contains all the logic in order for the IKChain to perform realistic steps to actual geometrical surface points.
@@ -25,6 +29,8 @@ using Raycasting;
 public class IKStepper : MonoBehaviour {
 
     public Spider spider;
+
+    [SerializeField] PhotonView PV;
 
     [Header("Debug")]
     public bool showDebug;
@@ -328,10 +334,18 @@ public class IKStepper : MonoBehaviour {
 
         if (!ikChain.getTarget().grounded) return true;
 
-        //SOUND
-        spiderWalkSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderStep");
-        spiderWalkSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-        spiderWalkSound.start();
+        if (PV.IsMine)
+        {
+            object[] content = new object[] { (int)Sound_Type.SpiderStep, PV.ViewID, true };
+
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+            PhotonNetwork.RaiseEvent(8, content, raiseEventOptions, SendOptions.SendReliable);
+        }
+        ////SOUND
+        //spiderWalkSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderStep");
+        //spiderWalkSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(spider.gameObject));
+        //spiderWalkSound.start();
 
         if (timeSinceLastStep < stepCooldown) return false;
 

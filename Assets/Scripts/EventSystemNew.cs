@@ -6,7 +6,9 @@ using FMOD.Studio;
 public enum Sound_Type
 {
     WebImpact,
-    WebTrail
+    WebTrail,
+
+    SpiderStep
 }
 
 public enum Event_Type

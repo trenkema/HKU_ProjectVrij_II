@@ -9,27 +9,24 @@ public class SpiderWalk : MonoBehaviour
     void Start()
     {
     }
+
     void PlaySound(string path)
     {
-        void Update()
-        {
-            spiderRunningSound = FMODUnity.RuntimeManager.CreateInstance(path);
-            spiderRunningSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-            spiderRunningSound.start();
+        spiderRunningSound = FMODUnity.RuntimeManager.CreateInstance(path);
+        spiderRunningSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        spiderRunningSound.start();
 
 
-            //spiderRunningSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderRun");
-            //spiderRunningSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        //spiderRunningSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderRun");
+        //spiderRunningSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
 
-            //     if (Input.GetButtonDown("LeftShift")) spiderRunningSound.start();
+        //     if (Input.GetButtonDown("LeftShift")) spiderRunningSound.start();
 
-            //      if (Input.GetButtonUp("LeftShift")) spiderRunningSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-
-        }
+        //      if (Input.GetButtonUp("LeftShift")) spiderRunningSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
         FMODUnity.RuntimeManager.PlayOneShot(path, GetComponent<Transform>().position);
     }
 
     // Update is called once per frame
-    
+
 }

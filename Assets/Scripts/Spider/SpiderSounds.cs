@@ -9,6 +9,8 @@ public class SpiderSounds : MonoBehaviour
     private EventInstance trailSoundEffect;
     private EventInstance webImpactSoundEffect;
 
+    private EventInstance walkSoundEffect;
+
     private void OnEnable()
     {
         EventSystemNew<Sound_Type, GameObject, bool>.Subscribe(Event_Type.TRIGGER_SOUND, TriggerSound);
@@ -36,6 +38,13 @@ public class SpiderSounds : MonoBehaviour
             trailSoundEffect = FMODUnity.RuntimeManager.CreateInstance("event:/WebEffect");
             trailSoundEffect.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(_target));
             trailSoundEffect.start();
+        }
+
+        if (_soundType == Sound_Type.SpiderStep)
+        {
+            walkSoundEffect = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderStep");
+            walkSoundEffect.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            walkSoundEffect.start();
         }
     }
 }
