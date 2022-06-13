@@ -4,6 +4,7 @@ using UnityEngine;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun;
+using FMOD.Studio;
 
 public class ReceiveEvents : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class ReceiveEvents : MonoBehaviour
     [SerializeField] byte updateScoreEventCode = 5;
     [SerializeField] byte gameStartedEventCode = 6;
     [SerializeField] byte gameRestartedEventCode = 7;
+
+    [SerializeField] byte soundEventCode = 8;
 
     PhotonView PV;
 
@@ -130,6 +133,15 @@ public class ReceiveEvents : MonoBehaviour
 
                 PhotonNetwork.LoadLevel((string)data[0]);
             }
+        }
+
+        if (eventCode == soundEventCode)
+        {
+            object[] data = (object[])_photonEvent.CustomData;
+
+            int soundTypeInt = (int)data[0];
+
+            EventSystemNew<Sound_Type, GameObject, bool>.RaiseEvent(Event_Type.TRIGGER_SOUND, (Sound_Type)soundTypeInt, PhotonView.Find((int)data[1]).gameObject, (bool)data[2]);
         }
     }
 }

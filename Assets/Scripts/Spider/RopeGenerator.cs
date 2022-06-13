@@ -124,14 +124,6 @@ public class RopeGenerator : MonoBehaviour
                 canSwing = false;
 
                 RaycastRope();
-
-                //SOUND
-                spiderPullSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderPull");
-                spiderPullSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-                spiderPullSound.start();
-                spiderHangSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderHang");
-                spiderHangSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-                spiderHangSound.start();
             }
         }
 
@@ -194,6 +186,14 @@ public class RopeGenerator : MonoBehaviour
 
     private void GenerateRope(Vector3 _endPointTransform)
     {
+        //SOUND
+        spiderPullSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderPull");
+        spiderPullSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        spiderPullSound.start();
+        spiderHangSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderHang");
+        spiderHangSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        spiderHangSound.start();
+
         // Rope Generation End to Start
 
         Vector3 newEndPointTransform = _endPointTransform + ropeOffset;

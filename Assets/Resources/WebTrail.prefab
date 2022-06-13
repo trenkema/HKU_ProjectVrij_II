@@ -82,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   webPrefabName: Web
   destroyTime: 1
+  soundEventCode: 8
 --- !u!114 &669192346168029125
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
 using Photon.Pun;
+using ExitGames.Client.Photon;
+using FMOD.Studio;
 
 public class WebTrail : MonoBehaviour
 {
@@ -9,12 +12,7 @@ public class WebTrail : MonoBehaviour
 
     [SerializeField] float destroyTime = 3;
 
-    //SOUND
-
-    private FMOD.Studio.EventInstance spiderTrailSound;
-    private FMOD.Studio.EventInstance spiderTrailSoundEffect;
-
-    GameObject spawnedWeb;
+    [SerializeField] byte soundEventCode = 8;
 
     PhotonView PV;
 
@@ -24,13 +22,15 @@ public class WebTrail : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
 
-        //SOUND
-        spiderTrailSoundEffect = FMODUnity.RuntimeManager.CreateInstance("event:/WebEffect");
-        spiderTrailSoundEffect.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-        spiderTrailSoundEffect.start();
-
         if (PV.IsMine)
         {
+            //SOUND
+            object[] content = new object[] { (int)Sound_Type.WebTrail, PV.ViewID, true };
+
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+            PhotonNetwork.RaiseEvent(soundEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+
             StartCoroutine(DestroyTrail());
         }
     }
@@ -62,31 +62,11 @@ public class WebTrail : MonoBehaviour
                 {
                     isDestroyed = true;
 
+                    PhotonNetwork.Instantiate(webPrefabName, transform.position, Quaternion.identity);
+
                     PhotonNetwork.Destroy(gameObject);
-
-                    //SOUND
-
-                    PV.RPC("RPC_SyncWebImpactSound", RpcTarget.All);
-
-                    //spiderTrailSoundEffect.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-
-                    //spiderTrailSound = FMODUnity.RuntimeManager.CreateInstance("event:/WebCollider");
-                    //spiderTrailSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-                    //spiderTrailSound.start();
-
-                    spawnedWeb = PhotonNetwork.Instantiate(webPrefabName, transform.position, Quaternion.identity);
                 }
             }
         }
-    }
-
-    [PunRPC]
-    public void RPC_SyncWebImpactSound()
-    {
-        spiderTrailSoundEffect.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-
-        spiderTrailSound = FMODUnity.RuntimeManager.CreateInstance("event:/WebCollider");
-        spiderTrailSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-        spiderTrailSound.start();
     }
 }
