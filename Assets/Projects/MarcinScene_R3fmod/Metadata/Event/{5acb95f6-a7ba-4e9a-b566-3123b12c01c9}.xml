@@ -58,19 +58,13 @@
 	</object>
 	<object class="EventAutomatableProperties" id="{0a6b1706-046c-46cb-aa2d-7a1b4c55e006}">
 		<property name="maxVoices">
-			<value>1</value>
+			<value>3</value>
 		</property>
 		<property name="dopplerEnabled">
 			<value>true</value>
 		</property>
-		<property name="dopplerScale">
-			<value>74</value>
-		</property>
 		<property name="minimumDistance">
-			<value>1.80000007</value>
-		</property>
-		<property name="maximumDistance">
-			<value>15</value>
+			<value>0.900000036</value>
 		</property>
 		<property name="triggerCooldown">
 			<value>10</value>
@@ -92,7 +86,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{d2662a21-aec9-4d18-8fb0-4f6066f3035a}">
 		<property name="volume">
-			<value>-15</value>
+			<value>-13.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{9835528a-a254-420c-865b-bf2b0494c791}</destination>
@@ -165,14 +159,7 @@
 			<destination>{58b7271e-1392-4218-8ced-de79028a169a}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{8b7daefd-07b7-458f-aa11-a5c2684a11bf}">
-		<property name="surroundPanDirection">
-			<value>-1.61353898</value>
-		</property>
-		<property name="surroundPanExtent">
-			<value>41.3756104</value>
-		</property>
-	</object>
+	<object class="MixerBusPanner" id="{8b7daefd-07b7-458f-aa11-a5c2684a11bf}" />
 	<object class="MixerBusFader" id="{cb1aea5e-7ad3-4462-9232-83b4462a9fc3}" />
 	<object class="RandomizerModulator" id="{92cced73-2f3d-46b5-9511-85c0a6627b3f}">
 		<property name="nameOfPropertyBeingModulated">
@@ -232,7 +219,7 @@
 			<value>-29</value>
 		</property>
 		<property name="highGain">
-			<value>-13.5</value>
+			<value>-16.5</value>
 		</property>
 		<property name="lowCrossover">
 			<value>700</value>
@@ -246,10 +233,7 @@
 	</object>
 	<object class="SpatialiserEffect" id="{58b7271e-1392-4218-8ced-de79028a169a}">
 		<property name="minimumDistance">
-			<value>1.80000007</value>
-		</property>
-		<property name="maximumDistance">
-			<value>15</value>
+			<value>0.900000036</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{61cdccbb-cfb0-447a-b294-e953e10d9a2b}">
