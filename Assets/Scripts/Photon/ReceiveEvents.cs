@@ -141,7 +141,7 @@ public class ReceiveEvents : MonoBehaviour
 
             int soundTypeInt = (int)data[0];
 
-            if (PhotonView.Find((int)data[1]).gameObject != null)
+            if (PhotonView.Find((int)data[1]) != null)
             {
                 EventSystemNew<Sound_Type, GameObject, bool>.RaiseEvent(Event_Type.TRIGGER_SOUND, (Sound_Type)soundTypeInt, PhotonView.Find((int)data[1]).gameObject, (bool)data[2]);
             }
