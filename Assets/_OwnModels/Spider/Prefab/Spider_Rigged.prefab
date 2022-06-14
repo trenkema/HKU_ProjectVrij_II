@@ -3542,6 +3542,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseballCap_Ingame
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0f7d6161c09c9c41a5865ba22505d61,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f7d6161c09c9c41a5865ba22505d61, type: 3}
 --- !u!4 &4550258305805974154 stripped

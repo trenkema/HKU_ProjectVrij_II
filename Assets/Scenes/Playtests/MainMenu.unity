@@ -14841,7 +14841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 0.5882353}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -15495,7 +15495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Don't Get\n Caught!"
+  m_text: Swing-in!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89d7688abe0af0042839fa18990e728d, type: 2}
   m_sharedMaterial: {fileID: 1814716933830139015, guid: 89d7688abe0af0042839fa18990e728d,
