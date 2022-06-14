@@ -4532,8 +4532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b0c542673bc1b4aa05a84b03a0c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnSpiderEventCode: 2
-  gameRestartedEventCode: 8
   respawnTimeText: {fileID: 221373468}
   respawnTime: 4
   respawnTimeIncrease: 2
@@ -44007,7 +44005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcce68ac887cba640af77840a14f8310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameWonEventCode: 3
   scoreNeededText: {fileID: 427709574}
   leaderboardContainer: {fileID: 1228162557}
   leaderboardItemPrefab: {fileID: 6912293090512989642, guid: ad21807e79de70c4a9723237df474c4c,
@@ -66042,8 +66039,6 @@ MonoBehaviour:
   PV: {fileID: 1809404392}
   scoreToEarn: 1
   spiderTag: Spider
-  destroySpiderEventCode: 1
-  updateScoreEventCode: 5
 --- !u!114 &1809404390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68373,8 +68368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bfd5d176467b44e89748bc0987761e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartedEventCode: 6
-  gameEndedEventCode: 7
   objectsToDisableForVR:
   - {fileID: 1444786228}
   - {fileID: 1540895942}
@@ -68395,7 +68388,7 @@ MonoBehaviour:
   - {fileID: 927399490}
   leftHandPalmCollider: {fileID: 0}
   rightHandPalmCollider: {fileID: 0}
-  isVR: 0
+  isVR: 1
 --- !u!4 &1879717086
 Transform:
   m_ObjectHideFlags: 0
@@ -80353,4 +80346,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spiderTag: Spider
-  destroySpiderEventCode: 1

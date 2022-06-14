@@ -1131,6 +1131,8 @@ GameObject:
   - component: {fileID: 3226569219197135154}
   - component: {fileID: 3226569219197135165}
   - component: {fileID: 5086634710640887093}
+  - component: {fileID: 1825486574915276913}
+  - component: {fileID: 618715748752018633}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1327,6 +1329,49 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &1825486574915276913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3226569219197135152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+--- !u!114 &618715748752018633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3226569219197135152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 823577363
+      Data2: 1332817023
+      Data3: -1123670631
+      Data4: -2107997025
+    Path: event:/MysteriousMusicVR
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3226569219277437400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,10 +3618,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e129a9a730b6f640ab38bb58eb27bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 0}
   scoreToEarn: 3
   spiderTag: Spider
-  destroySpiderEventCode: 1
-  updateScoreEventCode: 5
 --- !u!1 &5095256558305565802
 GameObject:
   m_ObjectHideFlags: 0
@@ -3850,10 +3894,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e129a9a730b6f640ab38bb58eb27bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 0}
   scoreToEarn: 1
   spiderTag: Spider
-  destroySpiderEventCode: 1
-  updateScoreEventCode: 5
 --- !u!1 &8214280454196436777
 GameObject:
   m_ObjectHideFlags: 0
