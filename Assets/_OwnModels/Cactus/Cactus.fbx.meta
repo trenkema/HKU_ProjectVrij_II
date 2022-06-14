@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5f7c3cf06cf838c4aaad0e3d7aa5c215
+guid: 873b3e31dfdc83945a9b17145fa6af09
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -8,7 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cactus_Mat
-    second: {fileID: 2100000, guid: f73f428b83bd81548b52a925deab4c60, type: 2}
+    second: {fileID: 2100000, guid: 757125a991f726842a65d47c3309e00a, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cactus_Cactus_Mat_AlbedoTransparency
+    second: {fileID: 2800000, guid: d4c9034c5dab90a4e842bc882f028ebc, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
