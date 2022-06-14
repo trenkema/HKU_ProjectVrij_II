@@ -3167,9 +3167,12 @@ GameObject:
   - component: {fileID: 2059377557813265927}
   - component: {fileID: 4755670782678666468}
   - component: {fileID: 2589912353427137587}
+  - component: {fileID: 3254033537237873219}
+  - component: {fileID: 3518928111226082835}
   - component: {fileID: 127058389811818652}
   - component: {fileID: 2728775439532156639}
   - component: {fileID: 6332434669677768168}
+  - component: {fileID: 8462545090377098042}
   m_Layer: 15
   m_Name: SpiderController
   m_TagString: Spider
@@ -3358,7 +3361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bffc1017359fb24da72936bce61f689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroySpiderEventCode: 1
   forwardForce: 5
   upwardForce: 4
   cam: {fileID: 2059377558581881328}
@@ -3377,6 +3379,66 @@ MonoBehaviour:
   ropeOffset: {x: 0, y: -0.025, z: 0}
   ropeSize: 0.05
   distanceBetweenPoints: 0.15
+--- !u!114 &3254033537237873219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059377557813265921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 935920020
+      Data2: 1230911658
+      Data3: 1251432383
+      Data4: 644706712
+    Path: event:/SpiderDeath
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &3518928111226082835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059377557813265921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1508262426
+      Data2: 1216759713
+      Data3: 690301061
+      Data4: 2001240849
+    Path: event:/SpiderDeathMusic
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &127058389811818652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3423,6 +3485,36 @@ CapsuleCollider:
   m_Height: 0.022
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8462545090377098042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059377557813265921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 207902696
+      Data2: 1198052683
+      Data3: 427971215
+      Data4: 1554763972
+    Path: event:/SpiderLand2
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2059377557833229412
 GameObject:
   m_ObjectHideFlags: 0
