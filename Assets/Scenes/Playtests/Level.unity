@@ -79578,6 +79578,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardForce: -300
+  rotationSpeed: 1000
+  blades: {fileID: 6718444504516041382}
 --- !u!135 &3027821295438771650
 SphereCollider:
   m_ObjectHideFlags: 0
