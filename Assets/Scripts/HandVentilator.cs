@@ -17,7 +17,10 @@ public class HandVentilator : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        other.attachedRigidbody.AddForce(transform.forward * forwardForce);
-        //Debug.Log(other.attachedRigidbody);
+        if (gameObject.tag != "Player")
+        {
+            other.attachedRigidbody.AddForce(transform.forward * forwardForce);
+            //Debug.Log(other.attachedRigidbody);
+        }
     }
 }

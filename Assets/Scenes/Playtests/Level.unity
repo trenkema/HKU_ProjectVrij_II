@@ -79558,6 +79558,7 @@ GameObject:
   - component: {fileID: 3027821295438771654}
   - component: {fileID: 3027821295438771650}
   - component: {fileID: 3027821295438771649}
+  - component: {fileID: 3027821295438771655}
   m_Layer: 6
   m_Name: HandventilatorLang
   m_TagString: Untagged
@@ -79649,6 +79650,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 9169599096414305721, guid: b1858caa07e46f54f869c0894a2d8a8c, type: 3}
+--- !u!135 &3027821295438771655
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027821295438771648}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.09
+  m_Center: {x: 0, y: 0.08, z: 0}
 --- !u!33 &3230598631497244874
 MeshFilter:
   m_ObjectHideFlags: 0
