@@ -9,6 +9,8 @@ public class SpiderCosmetics : MonoBehaviour
 
     [SerializeField] PhotonView PV;
 
+    int hatInt = 0;
+
     private void Start()
     {
         foreach (var item in hatCosmetics)
@@ -16,7 +18,10 @@ public class SpiderCosmetics : MonoBehaviour
             item.SetActive(false);
         }
 
-        int hatInt = (int)PV.Owner.CustomProperties["Hat"];
+        if (PV.Owner.CustomProperties.ContainsKey("Hat"))
+        {
+            hatInt = (int)PV.Owner.CustomProperties["Hat"];
+        }
 
         hatCosmetics[hatInt].SetActive(true);
     }

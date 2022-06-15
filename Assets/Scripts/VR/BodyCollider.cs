@@ -16,16 +16,23 @@ public class BodyCollider : MonoBehaviour
 
     [SerializeField] Transform target;
 
+    [SerializeField] float cameraOffsetY = -0.25f;
+
+    [SerializeField] bool useCameraOffset = false;
+
     private void Start()
     {
-        StartCoroutine(SetOffset());
+        if (useCameraOffset)
+        {
+            StartCoroutine(SetOffset());
+        }
     }
 
     private IEnumerator SetOffset()
     {
         yield return new WaitForSeconds(0.5f);
 
-        cameraOffset.localPosition = new Vector3(cameraOffset.localPosition.x, -0.25f, cameraOffset.localPosition.z);
+        cameraOffset.localPosition = new Vector3(cameraOffset.localPosition.x, cameraOffsetY, cameraOffset.localPosition.z);
     }
 
     private void Update()

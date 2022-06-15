@@ -1099,6 +1099,8 @@ MonoBehaviour:
   cameraOffset: {fileID: 3226569219045431905}
   controller: {fileID: 5158901967760395996}
   target: {fileID: 142089033380553641}
+  cameraOffsetY: -0.25
+  useCameraOffset: 0
 --- !u!143 &5158901967760395996
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2460,7 +2462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3226569220227604295}
   m_LocalRotation: {x: -2.1175824e-22, y: -4.2632564e-14, z: -2.4158453e-13, w: 1}
-  m_LocalPosition: {x: 0, y: -0.125, z: -0.2}
+  m_LocalPosition: {x: 0, y: -0.25, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

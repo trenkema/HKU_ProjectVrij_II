@@ -42,9 +42,7 @@ public class PlayerListItem : MonoBehaviourPunCallbacks
         }
         else
         {
-            playerHashtable["Hat"] = 0;
-
-            _player.SetCustomProperties(playerHashtable);
+            hatIndex = 0;
         }
 
         hatCosmetics[hatIndex].SetActive(true);

@@ -64,5 +64,10 @@ namespace RootMotion.Demos
                 VRIKCalibrator.RecalibrateScale(ik, data, scaleMlp);
             }
         }
+
+        public void CalibrateAll()
+        {
+            data = VRIKCalibrator.Calibrate(ik, centerEyeAnchor, leftHandAnchor, rightHandAnchor, headAnchorPositionOffset, headAnchorRotationOffset, handAnchorPositionOffset, handAnchorRotationOffset, scaleMlp);
+        }
     }
 }
