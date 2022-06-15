@@ -68498,7 +68498,7 @@ MonoBehaviour:
   - {fileID: 927399490}
   leftHandPalmCollider: {fileID: 0}
   rightHandPalmCollider: {fileID: 0}
-  isVR: 1
+  isVR: 0
 --- !u!4 &1879717086
 Transform:
   m_ObjectHideFlags: 0
