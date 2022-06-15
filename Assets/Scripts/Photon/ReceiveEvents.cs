@@ -156,10 +156,7 @@ public class ReceiveEvents : MonoBehaviour
         {
             object[] data = (object[])_photonEvent.CustomData;
 
-            if (PhotonView.Find((int)data[1]) != null)
-            {
-                EventSystemNew<float, bool>.RaiseEvent(Event_Type.SYNC_TIMER, (float)data[0], (bool)data[1]);
-            }
+            EventSystemNew<float, bool>.RaiseEvent(Event_Type.SYNC_TIMER, (float)data[0], (bool)data[1]);
         }
     }
 }
