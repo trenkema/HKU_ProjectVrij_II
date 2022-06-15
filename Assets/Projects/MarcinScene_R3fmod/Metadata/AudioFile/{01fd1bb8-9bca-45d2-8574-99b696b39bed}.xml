@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{01fd1bb8-9bca-45d2-8574-99b696b39bed}">
+		<property name="assetPath">
+			<value>Suflu_-_Drum_Hits_-_Clap_-_025.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.22501133786848074</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f66b6c2d-4252-4ec0-8944-ed549e18c1e0}</destination>
+		</relationship>
+	</object>
+</objects>
