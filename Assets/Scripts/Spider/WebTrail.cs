@@ -8,6 +8,8 @@ using FMOD.Studio;
 
 public class WebTrail : MonoBehaviour
 {
+    [SerializeField] LayerMask layersToCollideWith;
+
     [SerializeField] string webPrefabName;
 
     [SerializeField] float destroyTime = 3;
@@ -52,7 +54,7 @@ public class WebTrail : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Player")
+        if (IsInLayerMask(collision.gameObject, layersToCollideWith))
         {
             if (PV.IsMine)
             {
@@ -66,5 +68,10 @@ public class WebTrail : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool IsInLayerMask(GameObject obj, LayerMask layerMask)
+    {
+        return ((layerMask.value & (1 << obj.layer)) > 0);
     }
 }

@@ -27,6 +27,9 @@ public class PlayerListItem : MonoBehaviourPunCallbacks
         if (player == PhotonNetwork.LocalPlayer)
             playerNameText.color = ownPlayerTextColor;
 
+        if (hatCosmetics.Length == 0)
+            return;
+
         // Hats
         foreach (var item in hatCosmetics)
         {
@@ -81,6 +84,9 @@ public class PlayerListItem : MonoBehaviourPunCallbacks
     {
         if (changedProps.ContainsKey("Hat"))
         {
+            if (hatCosmetics.Length == 0)
+                return;
+
             if (targetPlayer == player)
             {
                 hatIndex = (int)targetPlayer.CustomProperties["Hat"];

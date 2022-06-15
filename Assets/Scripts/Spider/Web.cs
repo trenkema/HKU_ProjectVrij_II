@@ -23,19 +23,15 @@ public class Web : MonoBehaviour
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
             PhotonNetwork.RaiseEvent((int)Event_Code.SoundTrigger, content, raiseEventOptions, SendOptions.SendReliable);
-        }
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(WaitToDestroy());
+            StartCoroutine(WaitToDestroy());
+        }
     }
 
     IEnumerator WaitToDestroy()
     {
         yield return new WaitForSeconds(timeToDestroyWeb);
 
-        Destroy(this.gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 }

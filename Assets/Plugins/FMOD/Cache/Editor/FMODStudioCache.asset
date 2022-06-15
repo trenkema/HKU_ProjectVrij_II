@@ -159,6 +159,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6411003646093031806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VRDrop
+  m_EditorClassIdentifier: 
+  Path: event:/VRDrop
+  Guid:
+    Data1: 1515120360
+    Data2: 1076000636
+    Data3: -1591737974
+    Data4: 685572917
+  Banks:
+  - {fileID: 2125891509223075880}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 945
 --- !u!114 &-6092498612494254044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +213,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 111826
+--- !u!114 &-5909161654463151342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VRGrabSound
+  m_EditorClassIdentifier: 
+  Path: event:/VRGrabSound
+  Guid:
+    Data1: 1378402133
+    Data2: 1292055955
+    Data3: -1991353727
+    Data4: -228640118
+  Banks:
+  - {fileID: 2125891509223075880}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 945
 --- !u!114 &-5656641630978941515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +348,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 37100
+--- !u!114 &-4474720996936417348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VRFingerStretch
+  m_EditorClassIdentifier: 
+  Path: event:/VRFingerStretch
+  Guid:
+    Data1: 1386231600
+    Data2: 1177820911
+    Data3: 1177079702
+    Data4: 843115519
+  Banks:
+  - {fileID: 2125891509223075880}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1078
 --- !u!114 &-4319736334834348461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +483,33 @@ MonoBehaviour:
   MinDistance: 0.6
   MaxDistance: 20
   Length: 4625
+--- !u!114 &-2093771941720320970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VRSpiderDeath
+  m_EditorClassIdentifier: 
+  Path: event:/VRSpiderDeath
+  Guid:
+    Data1: 2126205220
+    Data2: 1218072947
+    Data3: 1201174456
+    Data4: 952394644
+  Banks:
+  - {fileID: 2125891509223075880}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1708
 --- !u!114 &-1832838271387250002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +537,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1000
+--- !u!114 &-1234273004268568633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VRMeleSwing
+  m_EditorClassIdentifier: 
+  Path: event:/VRMeleSwing
+  Guid:
+    Data1: 1289103091
+    Data2: 1237818043
+    Data3: 1472107428
+    Data4: 1290027104
+  Banks:
+  - {fileID: 2125891509223075880}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &-1085525162180193897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,18 +752,18 @@ MonoBehaviour:
   - {fileID: 8082803747697245173}
   - {fileID: 2109625751584680204}
   - {fileID: -4319736334834348461}
-  - {fileID: 1478332754311365863}
-  - {fileID: 373142332260805675}
-  - {fileID: 4743016153782852700}
-  - {fileID: -8787524263888086708}
-  - {fileID: 2282475997366369794}
-  - {fileID: -400932125917470023}
+  - {fileID: -2093771941720320970}
+  - {fileID: 8812069121896471379}
+  - {fileID: -4474720996936417348}
+  - {fileID: -5909161654463151342}
+  - {fileID: -6411003646093031806}
+  - {fileID: -1234273004268568633}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2125891509223075880}
   StringsBanks:
   - {fileID: 3560560424411451938}
-  cacheTime: 637908874945822723
+  cacheTime: 637908929323504422
   cacheVersion: 131591
 --- !u!114 &373142332260805675
 MonoBehaviour:
@@ -804,7 +939,7 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637908874945752710
+  lastModified: 637908929323484428
   FileSizes:
   - Name: Desktop
     Value: 4982432
@@ -905,7 +1040,7 @@ MonoBehaviour:
   Path: Assets/Projects/MarcinScene_R3fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637908874945822723
+  lastModified: 637908929323504422
   FileSizes:
   - Name: Desktop
     Value: 2704
@@ -1290,6 +1425,33 @@ MonoBehaviour:
   MinDistance: 0.90000004
   MaxDistance: 20
   Length: 2375
+--- !u!114 &8812069121896471379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VRMeleHit
+  m_EditorClassIdentifier: 
+  Path: event:/VRMeleHit
+  Guid:
+    Data1: -1140383957
+    Data2: 1139367552
+    Data3: 1877950876
+    Data4: 239481693
+  Banks:
+  - {fileID: 2125891509223075880}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4942
 --- !u!114 &9201483481108704263
 MonoBehaviour:
   m_ObjectHideFlags: 0

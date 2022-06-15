@@ -17,11 +17,11 @@ TagManager:
   - Grabbable
   - Body
   - Hands
-  - Grabbed
+  - 
   - Ground
   - LightPassing
   - WebSwing
-  - PlayerHead
+  - 
   - PlayerBody
   - Spider
   - 
@@ -36,10 +36,10 @@ TagManager:
   - 
   - 
   - 
-  - HandPlayer
-  - HandHolding
-  - Grabbing
-  - Releasing
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

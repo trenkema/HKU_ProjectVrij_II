@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HandVentilator : MonoBehaviour
 {
+    [SerializeField] LayerMask layersToInteractWith;
 
     [SerializeField] float forwardForce = 1f;
     [SerializeField] float rotationSpeed = 100f;
@@ -17,10 +18,17 @@ public class HandVentilator : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (gameObject.tag != "Player")
+        if (IsInLayerMask(other.gameObject, layersToInteractWith))
         {
-            other.attachedRigidbody.AddForce(transform.forward * forwardForce);
-            //Debug.Log(other.attachedRigidbody);
+            if (other.TryGetComponent(out Rigidbody rb))
+            {
+                rb.AddForce(transform.forward * forwardForce);
+            }
         }
+    }
+
+    public bool IsInLayerMask(GameObject obj, LayerMask layerMask)
+    {
+        return ((layerMask.value & (1 << obj.layer)) > 0);
     }
 }

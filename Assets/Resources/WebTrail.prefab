@@ -80,6 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8f434751a8f114eb3d01f74be952bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layersToCollideWith:
+    serializedVersion: 2
+    m_Bits: 16449
   webPrefabName: Web
   destroyTime: 1
 --- !u!114 &669192346168029125
