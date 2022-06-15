@@ -88,7 +88,7 @@ public class LevelTimer : MonoBehaviourPunCallbacks
 
                             RaiseEventOptions raiseEventOptionsWon = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
 
-                            PhotonNetwork.RaiseEvent((int)Event_Code.SyncTimer, contentWon, raiseEventOptionsWon, SendOptions.SendReliable);
+                            PhotonNetwork.RaiseEvent((int)Event_Code.GameWon, contentWon, raiseEventOptionsWon, SendOptions.SendReliable);
                         }
                     }
                 }
