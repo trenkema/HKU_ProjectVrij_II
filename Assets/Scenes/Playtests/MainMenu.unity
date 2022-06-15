@@ -23526,7 +23526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minutesText: {fileID: 1587880543}
   scoreText: {fileID: 197709151}
-  minMinutes: 3
+  minMinutes: 1
   maxMinutes: 7
   minScoreNeeded: 3
   maxScoreNeeded: 10

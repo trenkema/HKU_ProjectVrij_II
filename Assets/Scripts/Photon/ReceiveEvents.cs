@@ -17,7 +17,9 @@ public enum Event_Code
     GameWon,
     GameRestarted,
 
-    SoundTrigger
+    SoundTrigger,
+
+    SyncTimer
 }
 
 public class ReceiveEvents : MonoBehaviour
@@ -147,6 +149,16 @@ public class ReceiveEvents : MonoBehaviour
             if (PhotonView.Find((int)data[1]) != null)
             {
                 EventSystemNew<Sound_Type, GameObject, bool>.RaiseEvent(Event_Type.TRIGGER_SOUND, (Sound_Type)soundTypeInt, PhotonView.Find((int)data[1]).gameObject, (bool)data[2]);
+            }
+        }
+
+        if (eventCode == (int)Event_Code.SyncTimer)
+        {
+            object[] data = (object[])_photonEvent.CustomData;
+
+            if (PhotonView.Find((int)data[1]) != null)
+            {
+                EventSystemNew<float, bool>.RaiseEvent(Event_Type.SYNC_TIMER, (float)data[0], (bool)data[1]);
             }
         }
     }

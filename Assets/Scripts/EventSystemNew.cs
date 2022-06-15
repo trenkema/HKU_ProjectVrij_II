@@ -22,7 +22,9 @@ public enum Event_Type
 
     CHANGE_SPECTATOR,
 
-    TRIGGER_SOUND
+    TRIGGER_SOUND,
+
+    SYNC_TIMER
 }
 
 public static class EventSystemNew
