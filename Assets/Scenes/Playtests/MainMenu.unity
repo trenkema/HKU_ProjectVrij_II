@@ -23496,7 +23496,7 @@ MonoBehaviour:
   playerWonNameTextsVR: []
   leftHandPalmCollider: {fileID: 0}
   rightHandPalmCollider: {fileID: 0}
-  isVR: 0
+  isVR: 1
 --- !u!4 &1278974578
 Transform:
   m_ObjectHideFlags: 0
@@ -33304,7 +33304,7 @@ PrefabInstance:
     - target: {fileID: 8455353212253240646, guid: 775a455ce9197924ca0f09095c945a67,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 775a455ce9197924ca0f09095c945a67, type: 3}
@@ -39740,6 +39740,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7352382564750996208, guid: 775a455ce9197924ca0f09095c945a67,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 775a455ce9197924ca0f09095c945a67,
         type: 3}
       propertyPath: m_Name
@@ -40377,6 +40382,11 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 775a455ce9197924ca0f09095c945a67,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7352382564750996208, guid: 775a455ce9197924ca0f09095c945a67,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 775a455ce9197924ca0f09095c945a67,

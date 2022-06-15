@@ -86,7 +86,7 @@ public class LevelTimer : MonoBehaviourPunCallbacks
                             // Game Won
                             object[] contentWon = new object[] { player.NickName };
 
-                            RaiseEventOptions raiseEventOptionsWon = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+                            RaiseEventOptions raiseEventOptionsWon = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
                             PhotonNetwork.RaiseEvent((int)Event_Code.GameWon, contentWon, raiseEventOptionsWon, SendOptions.SendReliable);
                         }
