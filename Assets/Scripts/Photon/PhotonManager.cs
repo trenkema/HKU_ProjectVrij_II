@@ -235,11 +235,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         if (GameManager.Instance.isVR)
         {
-            Hashtable vrProperties = new Hashtable();
+            var hash = PhotonNetwork.LocalPlayer.CustomProperties;
 
-            vrProperties["isVR"] = true;
+            hash["isVR"] = true;
 
-            PhotonNetwork.LocalPlayer.SetCustomProperties(vrProperties);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 
             roomMenuVR.SetActive(true);
 

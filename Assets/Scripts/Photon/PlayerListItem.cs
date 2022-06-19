@@ -13,8 +13,6 @@ public class PlayerListItem : MonoBehaviourPunCallbacks
 
     [SerializeField] GameObject[] hatCosmetics;
 
-    Hashtable playerHashtable = new Hashtable();
-
     Player player;
 
     int hatIndex = 0;
@@ -59,9 +57,11 @@ public class PlayerListItem : MonoBehaviourPunCallbacks
                 hatIndex = 0;
             }
 
-            playerHashtable["Hat"] = hatIndex;
+            var hash = player.CustomProperties;
 
-            player.SetCustomProperties(playerHashtable);
+            hash["Hat"] = hatIndex;
+
+            player.SetCustomProperties(hash);
         }
     }
 

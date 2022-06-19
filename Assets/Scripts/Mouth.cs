@@ -14,8 +14,6 @@ public class Mouth : MonoBehaviour
 
     [SerializeField] string spiderTag;
 
-    Hashtable playerScore = new Hashtable();
-
     bool canScore = true;
 
     private void OnEnable()
@@ -53,9 +51,11 @@ public class Mouth : MonoBehaviour
 
             currentScore += scoreToEarn;
 
-            playerScore["Score"] = currentScore;
+            var hash = player.CustomProperties;
 
-            player.SetCustomProperties(playerScore);
+            hash["Score"] = currentScore;
+
+            player.SetCustomProperties(hash);
 
             // Destroy Spider
             object[] contentDestroy = new object[] { viewID, false };
