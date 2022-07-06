@@ -3620,9 +3620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e129a9a730b6f640ab38bb58eb27bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 0}
-  scoreToEarn: 3
-  spiderTag: Spider
+  pointsToEarn: 0
 --- !u!1 &5095256558305565802
 GameObject:
   m_ObjectHideFlags: 0
@@ -3834,7 +3832,6 @@ MonoBehaviour:
   - {fileID: 5158901967760395996}
   - {fileID: 3277509448562250614}
   - {fileID: 3226569219195826307}
-  - {fileID: 6928727562445382043}
   gameObjectsToDisable: []
   PV: {fileID: 6128949153828305977}
 --- !u!1 &7998537451572189218
@@ -3850,7 +3847,7 @@ GameObject:
   - component: {fileID: 6928727562445382043}
   m_Layer: 14
   m_Name: HeadCollider
-  m_TagString: Untagged
+  m_TagString: SpiderEarnPoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3896,9 +3893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e129a9a730b6f640ab38bb58eb27bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 6128949153828305977}
-  scoreToEarn: 1
-  spiderTag: Spider
+  pointsToEarn: 1
 --- !u!1 &8214280454196436777
 GameObject:
   m_ObjectHideFlags: 0

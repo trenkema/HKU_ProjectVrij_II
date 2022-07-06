@@ -3174,6 +3174,7 @@ GameObject:
   - component: {fileID: 2728775439532156639}
   - component: {fileID: 6332434669677768168}
   - component: {fileID: 8462545090377098042}
+  - component: {fileID: 3876751351951920891}
   m_Layer: 15
   m_Name: SpiderController
   m_TagString: Spider
@@ -3516,6 +3517,21 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &3876751351951920891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059377557813265921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928a344bc4c75414dae744d4b87e8f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PV: {fileID: 4755670782678666468}
+  scoreToEarn: 1
+  spiderEarnPointsTag: SpiderEarnPoints
 --- !u!1 &2059377557833229412
 GameObject:
   m_ObjectHideFlags: 0
@@ -6160,6 +6176,7 @@ MonoBehaviour:
   - {fileID: 3522027600439065312}
   - {fileID: 974648722269106508}
   - {fileID: 2383843247202239363}
+  - {fileID: 3876751351951920891}
   gameObjectsToDisable:
   - {fileID: 1288730541945288215}
   - {fileID: 3777555452190476919}
