@@ -29,7 +29,8 @@ public class Spectate : MonoBehaviour
 
         EventSystemNew<bool>.Subscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
 
-        //EventSystemNew<int>.Subscribe(Event_Type.CHANGE_SPECTATOR, SwitchSpectator);
+        // Input Events
+        EventSystemNew<int>.Subscribe(Event_Type.ChangeSpectator, ChangeSpectator);
     }
 
     private void OnDisable()
@@ -38,7 +39,8 @@ public class Spectate : MonoBehaviour
 
         EventSystemNew<bool>.Unsubscribe(Event_Type.SPIDER_RESPAWNED, SpiderRespawned);
 
-        //EventSystemNew<int>.Unsubscribe(Event_Type.CHANGE_SPECTATOR, SwitchSpectator);
+        // Input Events
+        EventSystemNew<int>.Unsubscribe(Event_Type.ChangeSpectator, ChangeSpectator);
     }
 
     private void SpiderDied(bool _ownDeath, bool _increaseRespawnTime)
@@ -141,39 +143,22 @@ public class Spectate : MonoBehaviour
         }
     }
 
-    public void PreviousSpectator(InputAction.CallbackContext _context)
+    private void ChangeSpectator(int _previousOrNext)
     {
-        if (_context.started)
+        if (isSpectating)
         {
-            if (isSpectating)
+            spectateID += _previousOrNext;
+
+            if (spectateID < 0)
             {
-                spectateID--;
-
-                if (spectateID < 0)
-                {
-                    spectateID = FindObjectsOfType<RopeGenerator>().Length - 1;
-                }
-
-                SpiderDied(false, false);
+                spectateID = FindObjectsOfType<RopeGenerator>().Length - 1;
             }
-        }
-    }
-
-    public void NextSpectator(InputAction.CallbackContext _context)
-    {
-        if (_context.started)
-        {
-            if (isSpectating)
+            else if (spectateID > FindObjectsOfType<RopeGenerator>().Length - 1)
             {
-                spectateID++;
-
-                if (spectateID > FindObjectsOfType<RopeGenerator>().Length - 1)
-                {
-                    spectateID = 0;
-                }
-
-                SpiderDied(false, false);
+                spectateID = 0;
             }
+
+            SpiderDied(false, false);
         }
     }
 }

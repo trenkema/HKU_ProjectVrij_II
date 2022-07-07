@@ -28,6 +28,11 @@ public class Web : MonoBehaviour
         }
     }
 
+    public void DestroyWeb()
+    {
+
+    }
+
     IEnumerator WaitToDestroy()
     {
         yield return new WaitForSeconds(timeToDestroyWeb);

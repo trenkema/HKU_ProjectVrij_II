@@ -8,70 +8,20 @@ using FMOD.Studio;
 
 public class WebTrail : MonoBehaviour
 {
-    [SerializeField] LayerMask layersToCollideWith;
-
     [SerializeField] string webPrefabName;
 
-    [SerializeField] float destroyTime = 3;
+    [SerializeField] PhotonView PV;
 
-    PhotonView PV;
-
-    bool isDestroyed = false;
-
-    void Awake()
+    public void CreateWeb()
     {
-        PV = GetComponent<PhotonView>();
-
         if (PV.IsMine)
         {
-            //SOUND
-            object[] content = new object[] { (int)Sound_Type.WebTrail, PV.ViewID, true };
-
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-
-            PhotonNetwork.RaiseEvent((int)Event_Code.SoundTrigger, content, raiseEventOptions, SendOptions.SendReliable);
-
-            StartCoroutine(DestroyTrail());
-        }
-    }
-
-    IEnumerator DestroyTrail()
-    {
-        yield return new WaitForSeconds(destroyTime);
-
-        if (!isDestroyed)
-        {
-            isDestroyed = true;
-
-            PhotonNetwork.Destroy(gameObject);
+            PhotonNetwork.Instantiate(webPrefabName, transform.position, Quaternion.identity);
         }
     }
 
     public void Setup(Collider PlayerCollider)
     {
         Physics.IgnoreCollision(PlayerCollider, GetComponent<Collider>());
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (IsInLayerMask(collision.gameObject, layersToCollideWith))
-        {
-            if (PV.IsMine)
-            {
-                if (!isDestroyed)
-                {
-                    isDestroyed = true;
-
-                    PhotonNetwork.Instantiate(webPrefabName, transform.position, Quaternion.identity);
-
-                    PhotonNetwork.Destroy(gameObject);
-                }
-            }
-        }
-    }
-
-    public bool IsInLayerMask(GameObject obj, LayerMask layerMask)
-    {
-        return ((layerMask.value & (1 << obj.layer)) > 0);
     }
 }

@@ -11,7 +11,12 @@ GameObject:
   - component: {fileID: 3972968882701733503}
   - component: {fileID: 6877996138689543381}
   - component: {fileID: 2633319022581248682}
+  - component: {fileID: 8129486832174699345}
   - component: {fileID: 4243265428724414321}
+  - component: {fileID: 4747340473139564592}
+  - component: {fileID: 4907994382566777300}
+  - component: {fileID: 6862320316127509825}
+  - component: {fileID: 5339022723796117012}
   - component: {fileID: 669192346168029125}
   - component: {fileID: 998454599117814815}
   - component: {fileID: 4240472964065316968}
@@ -68,6 +73,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &8129486832174699345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671468536380351165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65702f71c5dcd034592ab032ae8edd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInstantiated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6862320316127509825}
+        m_TargetAssemblyTypeName: TriggerSound, Assembly-CSharp
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4243265428724414321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,11 +112,122 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8f434751a8f114eb3d01f74be952bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layersToCollideWith:
+  webPrefabName: Web
+  PV: {fileID: 669192346168029125}
+--- !u!114 &4747340473139564592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671468536380351165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53dc556559281004f99d4d4d9fc6391b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4243265428724414321}
+        m_TargetAssemblyTypeName: WebTrail, Assembly-CSharp
+        m_MethodName: CreateWeb
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4907994382566777300}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: StopTimerEarly
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5339022723796117012}
+        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
+        m_MethodName: NetworkDestroy
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6671468536380351165}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  intEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  layerMask:
     serializedVersion: 2
     m_Bits: 16449
-  webPrefabName: Web
-  destroyTime: 1
+--- !u!114 &4907994382566777300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671468536380351165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0cf0fa59ea2fc41834adb78db48784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  triggerOnEarly: 0
+  onTimerEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5339022723796117012}
+        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
+        m_MethodName: NetworkDestroy
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6671468536380351165}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6862320316127509825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671468536380351165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96248dd2506ca864cb2e38963b81b5ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PV: {fileID: 669192346168029125}
+  soundType: 1
+--- !u!114 &5339022723796117012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671468536380351165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da1de2f6d008974aac36f0399791788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PV: {fileID: 669192346168029125}
+  checkPVOwner: 1
 --- !u!114 &669192346168029125
 MonoBehaviour:
   m_ObjectHideFlags: 0

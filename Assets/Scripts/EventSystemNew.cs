@@ -5,13 +5,13 @@ using FMOD.Studio;
 
 public enum Event_Type
 {
+    // In-Game Events
     SPIDER_DESTROY_CAMERA,
     SPIDER_DIED,
     SPIDER_RESPAWNED,
 
     IS_SWINGING,
     COLLIDED,
-
     CAN_SWING,
 
     GAME_STARTED,
@@ -24,7 +24,16 @@ public enum Event_Type
 
     TRIGGER_SOUND,
 
-    SYNC_TIMER
+    SYNC_TIMER,
+
+    // Input Events
+    Move,
+    Jump,
+    Shoot,
+    Swing,
+    Fall,
+    ChangeSpectator,
+    Respawn
 }
 
 public static class EventSystemNew

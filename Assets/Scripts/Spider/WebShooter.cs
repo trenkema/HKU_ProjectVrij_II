@@ -29,27 +29,33 @@ public class WebShooter : MonoBehaviour
 
     bool canShoot = true;
 
-    public void ShootWeb(InputAction.CallbackContext _context)
+    private void OnEnable()
     {
-        if (_context.phase == InputActionPhase.Started)
+        EventSystemNew.Subscribe(Event_Type.Shoot, ShootWeb);
+    }
+
+    private void OnDisable()
+    {
+        EventSystemNew.Unsubscribe(Event_Type.Shoot, ShootWeb);
+    }
+
+    public void ShootWeb()
+    {
+        if (canShoot)
         {
-            if (canShoot)
-            {
-                canShoot = false;
+            canShoot = false;
 
-                GameObject webTrail = PhotonNetwork.Instantiate(webTrailPrefabName, webTrailSpawnPoint.position, spiderCamera.transform.rotation);
+            GameObject webTrail = PhotonNetwork.Instantiate(webTrailPrefabName, webTrailSpawnPoint.position, spiderCamera.transform.rotation);
 
-                webTrail.GetComponent<WebTrail>().Setup(spiderCollider);
-                webTrail.GetComponent<Rigidbody>().velocity = spiderCamera.transform.forward * webTrailSpeed;
+            webTrail.GetComponent<WebTrail>().Setup(spiderCollider);
+            webTrail.GetComponent<Rigidbody>().velocity = spiderCamera.transform.forward * webTrailSpeed;
 
-                StartCoroutine(DelayWebShooting());
+            StartCoroutine(DelayWebShooting());
 
-                //SOUND
-
-                spiderShootSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderShoot");
-                spiderShootSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-                spiderShootSound.start();
-            }
+            // SOUND
+            spiderShootSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderShoot");
+            spiderShootSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            spiderShootSound.start();
         }
     }
 

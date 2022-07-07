@@ -65,10 +65,11 @@ public class RopeGenerator : MonoBehaviour
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.COLLIDED, DestroyRope);
-
         EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
-
         EventSystemNew.Subscribe(Event_Type.GAME_ENDED, GameEnded);
+
+        // Input Events
+        EventSystemNew<bool>.Subscribe(Event_Type.Swing, Swing);
 
         if (GameManager.Instance.gameStarted && !GameManager.Instance.gameEnded)
         {
@@ -83,10 +84,11 @@ public class RopeGenerator : MonoBehaviour
     private void OnDisable()
     {
         EventSystemNew.Unsubscribe(Event_Type.COLLIDED, DestroyRope);
-
         EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
-
         EventSystemNew.Unsubscribe(Event_Type.GAME_ENDED, GameEnded);
+
+        // Input Events
+        EventSystemNew<bool>.Unsubscribe(Event_Type.Swing, Swing);
     }
 
     private void OnDestroy()
@@ -115,21 +117,6 @@ public class RopeGenerator : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButtonDown(1) && canSwing)
-        {
-            if (!spiderScript.IsGrounded())
-            {
-                canSwing = false;
-
-                RaycastRope();
-            }
-        }
-
-        if (Input.GetMouseButtonUp(1) && endPoints.Count > 0)
-        {
-            DestroyRope();
-        }
-
         if (isCurrentlySwinging)
         {
             if (Input.GetKey(KeyCode.W))
@@ -148,6 +135,20 @@ public class RopeGenerator : MonoBehaviour
         }
     }
 
+    private void Swing(bool _isSwinging)
+    {
+        if (_isSwinging && canSwing && !spiderScript.IsGrounded())
+        {
+            canSwing = false;
+
+            RaycastRope();
+        }
+        else if (!_isSwinging && endPoints.Count > 0)
+        {
+            DestroyRope();
+        }
+    }
+
     private void DestroyRope()
     {
         if (!PV.IsMine)
@@ -163,8 +164,6 @@ public class RopeGenerator : MonoBehaviour
         //SOUND
         spiderHangSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
-        StartCoroutine(DeleteRope());
-
         isCurrentlySwinging = false;
     }
 
@@ -174,6 +173,8 @@ public class RopeGenerator : MonoBehaviour
 
         if (Physics.Raycast(startPoint.position, startPoint.forward, out rayHit, maxDistance, raycastLayers, QueryTriggerInteraction.Ignore))
         {
+            Debug.Log("GENERATING ROPE");
+
             GenerateRope(rayHit.point);
         }
         else

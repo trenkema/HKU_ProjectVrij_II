@@ -9,7 +9,7 @@ public class MeleeWeapon : MonoBehaviour
 {
     [SerializeField] string spiderTag;
 
-    PhotonView PV;
+    [SerializeField] PhotonView PV;
 
     bool canKill = true;
 
@@ -21,11 +21,6 @@ public class MeleeWeapon : MonoBehaviour
     private void OnDisable()
     {
         EventSystemNew<string>.Unsubscribe(Event_Type.GAME_WON, GameWon);
-    }
-
-    private void Awake()
-    {
-        PV = GetComponent<PhotonView>();
     }
 
     private void Start()

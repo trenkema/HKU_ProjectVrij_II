@@ -42,22 +42,22 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PreviousSpectator",
+                    "name": "Swing",
                     "type": "Button",
-                    "id": "4574643b-26ad-434d-95f7-6f70a09b0088",
+                    "id": "da3ad3af-94fb-43dd-b224-ef34068115a2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "NextSpectator",
-                    "type": "Button",
+                    "name": "ChangeSpectator",
+                    "type": "Value",
                     "id": "804d5537-fa56-4d04-b15b-86449824f578",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -194,46 +194,46 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "ca2980ea-2ec1-4d2f-8a5a-980d20363d28",
-                    "path": "<Keyboard>/e",
+                    "name": "Q & E",
+                    "id": "1318f181-b9d9-40e5-ae04-ceeb75f34ac3",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "NextSpectator",
-                    "isComposite": false,
+                    "groups": "",
+                    "action": "ChangeSpectator",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "05225f4a-bcd0-4671-9e73-90432b3283eb",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "NextSpectator",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c8baef67-53fe-4145-9563-53d70d04462a",
+                    "name": "left",
+                    "id": "20853e5c-bbe8-44d4-b232-6e678ee6e2be",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "PreviousSpectator",
+                    "action": "ChangeSpectator",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "8571d04f-f229-436b-85e1-cfa1af9a4b19",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "ChangeSpectator",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "f4249dd2-188f-497f-b268-28391dad7035",
-                    "path": "<Gamepad>/leftShoulder",
+                    "id": "de143a65-ffae-4879-a9bb-c4821d8e0f4a",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PreviousSpectator",
+                    "groups": "KeyboardMouse",
+                    "action": "Swing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

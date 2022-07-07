@@ -33,8 +33,11 @@ public class SpiderController : MonoBehaviour {
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
-
         EventSystemNew.Subscribe(Event_Type.GAME_ENDED, GameEnded);
+
+        // Input Events
+        EventSystemNew.Subscribe(Event_Type.Jump, Jump);
+        EventSystemNew<bool>.Subscribe(Event_Type.Fall, Fall);
 
         if (GameManager.Instance.gameStarted && !GameManager.Instance.gameEnded)
         {
@@ -53,8 +56,11 @@ public class SpiderController : MonoBehaviour {
     private void OnDisable()
     {
         EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
-
         EventSystemNew.Unsubscribe(Event_Type.GAME_ENDED, GameEnded);
+
+        // Input Events
+        EventSystemNew.Unsubscribe(Event_Type.Jump, Jump);
+        EventSystemNew<bool>.Unsubscribe(Event_Type.Fall, Fall);
     }
 
     void FixedUpdate() {
@@ -97,26 +103,21 @@ public class SpiderController : MonoBehaviour {
         return Vector3.zero;
     }
 
-    public void Jump(InputAction.CallbackContext _context)
+    #region Input Events
+    private void Jump()
     {
-        if (_context.phase == InputActionPhase.Started)
-        {
-            spider.Jump();
-        }
+        spider.Jump();
     }
 
-    public void Fall(InputAction.CallbackContext _context)
+    private void Fall(bool _isFalling)
     {
-        if (_context.phase == InputActionPhase.Started)
+        if (_isFalling && spider.IsGrounded())
         {
-            if (spider.IsGrounded())
-            {
-                Invoke("SetFalling", isFallingCheckTime);
+            Invoke("SetFalling", isFallingCheckTime);
 
-                spider.setGroundcheck(false);
-            }
+            spider.setGroundcheck(false);
         }
-        else if (_context.phase == InputActionPhase.Canceled)
+        else if (!_isFalling)
         {
             isFalling = false;
 
@@ -125,6 +126,7 @@ public class SpiderController : MonoBehaviour {
             CancelInvoke();
         }
     }
+    #endregion
 
     private void SetFalling()
     {
