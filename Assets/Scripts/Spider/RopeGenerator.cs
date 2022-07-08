@@ -129,6 +129,11 @@ public class RopeGenerator : MonoBehaviour
 
     private void Swing(bool _isSwinging)
     {
+        if (!PV.IsMine)
+        {
+            return;
+        }
+
         if (_isSwinging && canSwing && !spiderScript.IsGrounded())
         {
             canSwing = false;
@@ -143,6 +148,11 @@ public class RopeGenerator : MonoBehaviour
 
     private void RopeForwardState(bool _isPressed)
     {
+        if (!PV.IsMine)
+        {
+            return;
+        }
+
         isForwardPressed = _isPressed;
     }
 
