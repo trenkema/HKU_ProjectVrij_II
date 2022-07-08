@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 727d66794e3da064a9313d2dfbede900,
+  m_LightingDataAsset: {fileID: 112000000, guid: 8c3302ef5bf236346b423d047e7a6af5,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 20afb1389c918dc4492536622f1971f6,
     type: 2}
@@ -198,7 +198,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &10923921
 PrefabInstance:
@@ -3746,30 +3746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b0c542673bc1b4aa05a84b03a0c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnTimeText: {fileID: 221373468}
-  respawnTime: 4
-  respawnTimeIncrease: 2
-  maxRespawnTime: 10
   eventReceiverPrefabName: EventReceiver
-  spiderInputHandlerPrefab: {fileID: 0}
   mainMenuScene: MainMenu
-  playerPrefab: VRController
-  spiderPrefab: SpiderController
-  playerSpawnPoints:
-  - {fileID: 1444253321}
-  - {fileID: 1632980941}
-  - {fileID: 457641883}
-  spiderSpawnPoints:
-  - {fileID: 409538663}
-  - {fileID: 1675139082}
-  - {fileID: 996124802}
-  - {fileID: 450856451}
-  - {fileID: 1315587484}
-  - {fileID: 94390655}
-  startHUDSVR:
-  - {fileID: 838753105}
-  - {fileID: 529599610}
-  - {fileID: 2098332337}
 --- !u!4 &118467300
 Transform:
   m_ObjectHideFlags: 0
@@ -4882,7 +4860,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &150239837
 PrefabInstance:
@@ -8492,7 +8470,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &247371347
 PrefabInstance:
@@ -24756,6 +24734,71 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02158036, y: 0.22399552, z: 0.16463546}
   m_Center: {x: 0.000000059604645, y: 0.11199776, z: -0.000000059604645}
+--- !u!1 &824376708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 824376710}
+  - component: {fileID: 824376709}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &824376709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824376708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8040556d4fb1630459cf6b4f809e6cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTimeText: {fileID: 221373468}
+  respawnTime: 5
+  respawnTimeIncrease: 5
+  maxRespawnTime: 15
+  playerPrefab: VRController
+  spiderPrefab: SpiderController
+  startHUDSVR:
+  - {fileID: 838753105}
+  - {fileID: 529599610}
+  - {fileID: 2098332337}
+  playerSpawnPoints:
+  - {fileID: 1444253321}
+  - {fileID: 1632980941}
+  - {fileID: 457641883}
+  spiderSpawnPoints:
+  - {fileID: 409538663}
+  - {fileID: 1675139082}
+  - {fileID: 996124802}
+  - {fileID: 450856451}
+  - {fileID: 1315587484}
+  - {fileID: 94390655}
+--- !u!4 &824376710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824376708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &832596958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44192,7 +44235,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1421199936
 PrefabInstance:
@@ -49989,7 +50032,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1586473220
 PrefabInstance:
@@ -54359,7 +54402,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1718555126
 MonoBehaviour:
@@ -59479,6 +59522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bfd5d176467b44e89748bc0987761e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isVR: 0
   objectsToDisableForVR:
   - {fileID: 1444786228}
   - {fileID: 1540895942}
@@ -59498,7 +59542,6 @@ MonoBehaviour:
   - {fileID: 927399490}
   leftHandPalmCollider: {fileID: 0}
   rightHandPalmCollider: {fileID: 0}
-  isVR: 0
 --- !u!4 &1879717086
 Transform:
   m_ObjectHideFlags: 0
@@ -59512,7 +59555,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1880335203
 PrefabInstance:
@@ -68268,8 +68311,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32768
   forwardForce: -300
-  rotationSpeed: 1000
-  blades: {fileID: 6718444504516041382}
 --- !u!135 &3027821295438771650
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -68728,6 +68769,7 @@ GameObject:
   - component: {fileID: 3547667568381689405}
   - component: {fileID: 3340167402254984758}
   - component: {fileID: 3258886244914164126}
+  - component: {fileID: 6718444504516041383}
   m_Layer: 6
   m_Name: Wieken
   m_TagString: Untagged
@@ -68735,6 +68777,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6718444504516041383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718444504516041382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe324c9c43dba934aaa634d3bb31e712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 100
 --- !u!33 &9159997926524685868
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -68939,7 +68994,7 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 1751447298}
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1

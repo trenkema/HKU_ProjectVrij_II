@@ -5,13 +5,13 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-public class NetworkDestroyObject : MonoBehaviour
+public class DestroyObject : MonoBehaviour
 {
     [SerializeField] private PhotonView PV;
 
     bool isDestroyed = false;
 
-    public void NetworkDestroy(GameObject _objectToDestroy)
+    public void Destroy(GameObject _objectToDestroy)
     {
         if (!isDestroyed)
         {
@@ -26,7 +26,7 @@ public class NetworkDestroyObject : MonoBehaviour
         }
     }
 
-    public void NetworkDestroy(int _photonViewID)
+    public void Destroy(int _photonViewID)
     {
         if (!isDestroyed)
         {

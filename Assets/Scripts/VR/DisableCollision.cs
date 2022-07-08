@@ -28,8 +28,6 @@ public class DisableCollision : MonoBehaviour
         {
             foreach (Collider collider in collidersToDisable)
             {
-                Debug.Log("Ruben is kaulo lekker!");
-
                 //handColliderLeft.enabled = false;
                 //handColliderRight.enabled = false;
 
@@ -49,8 +47,6 @@ public class DisableCollision : MonoBehaviour
         {
             foreach (Collider collider in collidersToDisable)
             {
-                Debug.Log("TEST");
-
                 //handColliderLeft.enabled = true;
                 //handColliderRight.enabled = true;
 

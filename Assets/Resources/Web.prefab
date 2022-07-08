@@ -85,7 +85,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3154248278558852658}
         m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
-        m_MethodName: NetworkDestroy
+        m_MethodName: Destroy
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1713319239842790587}
@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: -4722940256823036999}
-  checkPVOwner: 1
 --- !u!114 &74178293053124908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96248dd2506ca864cb2e38963b81b5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: -4722940256823036999}
   soundType: 0
+  PV: {fileID: -4722940256823036999}
 --- !u!114 &-4722940256823036999
 MonoBehaviour:
   m_ObjectHideFlags: 0

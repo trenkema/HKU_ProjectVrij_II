@@ -36,7 +36,10 @@ public class Leaderboard : MonoBehaviourPunCallbacks
     {
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-            AddLeaderboardItem(player);
+            if (!player.CustomProperties.ContainsKey("isVR"))
+            {
+                AddLeaderboardItem(player);
+            }
         }
 
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ScoreNeeded"))

@@ -24,6 +24,8 @@ public class SpiderController : MonoBehaviour {
 
     [SerializeField] float isFallingCheckTime = 0.25f;
 
+    [SerializeField] private float smoothInputSpeed = 0.2f;
+
     public Spider spider;
 
     [Header("Camera")]
@@ -32,6 +34,8 @@ public class SpiderController : MonoBehaviour {
     [SerializeField] private PhotonView PV;
 
     Vector2 moveInput = Vector2.zero;
+    Vector2 currentInputVector = Vector2.zero;
+    Vector2 smoothInputVelocity = Vector2.zero;
 
     bool isFalling = false;
 
@@ -78,11 +82,11 @@ public class SpiderController : MonoBehaviour {
         //** Movement **//
         Vector3 input = getInput();
 
-        spider.walk(input);
+        spider.walk(input, moveInput);
 
         Quaternion tempCamTargetRotation = smoothCam.getCamTargetRotation();
         Vector3 tempCamTargetPosition = smoothCam.getCamTargetPosition();
-        spider.turn(input);
+        spider.turn(input, moveInput);
         smoothCam.setTargetRotation(tempCamTargetRotation);
         smoothCam.setTargetPosition(tempCamTargetPosition);
 
@@ -102,9 +106,11 @@ public class SpiderController : MonoBehaviour {
     private Vector3 getInput() {
         if (canMove)
         {
+            currentInputVector = Vector2.SmoothDamp(currentInputVector, moveInput, ref smoothInputVelocity, smoothInputSpeed);
+
             Vector3 up = spider.transform.up;
             Vector3 right = spider.transform.right;
-            Vector3 input = Vector3.ProjectOnPlane(smoothCam.getCameraTarget().forward, up).normalized * moveInput.y + (Vector3.ProjectOnPlane(smoothCam.getCameraTarget().right, up).normalized * moveInput.x);
+            Vector3 input = Vector3.ProjectOnPlane(smoothCam.getCameraTarget().forward, up).normalized * currentInputVector.y + (Vector3.ProjectOnPlane(smoothCam.getCameraTarget().right, up).normalized * currentInputVector.x);
             Quaternion fromTo = Quaternion.AngleAxis(Vector3.SignedAngle(up, spider.getGroundNormal(), right), right);
             input = fromTo * input;
             float magnitude = input.magnitude;
@@ -115,15 +121,6 @@ public class SpiderController : MonoBehaviour {
     }
 
     #region Input Events
-    private void ForceRespawn()
-    {
-        object[] content = new object[] { PV.ViewID, false };
-
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-
-        PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, content, raiseEventOptions, SendOptions.SendReliable);
-    }
-
     private void Move(float _x, float _y)
     {
         moveInput = new Vector2(_x, _y);
@@ -150,6 +147,15 @@ public class SpiderController : MonoBehaviour {
 
             CancelInvoke();
         }
+    }
+
+    private void ForceRespawn()
+    {
+        object[] content = new object[] { PV.ViewID, false };
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+        PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, content, raiseEventOptions, SendOptions.SendReliable);
     }
     #endregion
 

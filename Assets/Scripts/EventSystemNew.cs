@@ -10,10 +10,12 @@ public enum Event_Type
     SPIDER_DIED,
     SPIDER_RESPAWNED,
 
+    // Spider Events
     IS_SWINGING,
     COLLIDED,
     CAN_SWING,
 
+    // Game States
     GAME_STARTED,
     GAME_WON,
     GAME_ENDED,
@@ -25,6 +27,10 @@ public enum Event_Type
     TRIGGER_SOUND,
 
     SYNC_TIMER,
+
+    // Spawning
+    SPAWN_PLAYER,
+    SPAWN_SPIDER,
 
     // Input Events
     Move,

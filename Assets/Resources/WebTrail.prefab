@@ -155,8 +155,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 5339022723796117012}
-        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
-        m_MethodName: NetworkDestroy
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
+        m_MethodName: Destroy
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6671468536380351165}
@@ -191,8 +191,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5339022723796117012}
-        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
-        m_MethodName: NetworkDestroy
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
+        m_MethodName: Destroy
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6671468536380351165}

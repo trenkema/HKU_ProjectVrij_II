@@ -12,10 +12,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager Instance { get; private set; }
 
+    [SerializeField] bool _isVR = false;
+
     [SerializeField] GameObject[] objectsToDisableForVR;
     [SerializeField] GameObject[] objectsToDisableForNonVR;
-
-    [SerializeField] GameObject[] objectsToEnableForNonVROnStart;
 
     [SerializeField] GameObject playerWonHUDNonVR;
     [SerializeField] TextMeshProUGUI playerWonNameTextNonVR;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Collider leftHandPalmCollider;
     public Collider rightHandPalmCollider;
 
-    public bool isVR;
+    public bool isVR { get { return _isVR; } }
 
     public bool gameStarted { private set; get; }
 

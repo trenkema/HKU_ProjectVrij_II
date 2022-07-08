@@ -47,8 +47,8 @@ public class SpiderNPCController : MonoBehaviour {
         updateCoordinateSystem();
 
         Vector3 input = getRandomDirection() * getRandomBinaryValue(0, 1, 0.4f);
-        spider.walk(input);
-        spider.turn(input);
+        //spider.walk(input);
+        //spider.turn(input);
 
         if (showDebug) Debug.DrawLine(spider.transform.position, spider.transform.position + input * 0.1f *spider.getScale(), Color.cyan,Time.fixedDeltaTime);
     }

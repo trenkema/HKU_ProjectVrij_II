@@ -3044,10 +3044,11 @@ MonoBehaviour:
   upForce: 100
   jumpKey: 32
   showDebug: 0
-  walkSpeed: 9
+  walkSpeed: 8
   runSpeed: 8
   turnSpeed: 4
   walkDrag: 0.75
+  stopMagnitude: 0.35
   capsuleCollider: {fileID: 6332434669677768168}
   gravityMultiplier: 4
   groundNormalAdjustSpeed: 6
@@ -3074,7 +3075,7 @@ MonoBehaviour:
   legNormalAdjustment: 1
   legNormalSpeed: 10
   legNormalWeight: 0.1
-  breathing: 1
+  breathing: 0
   breathePeriod: 10
   breatheMagnitude: 0.1
   forwardRayLength: 0.4
@@ -3094,9 +3095,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFallingCheckTime: 0.25
+  smoothInputSpeed: 0.2
   spider: {fileID: 3522027600439065312}
   smoothCam: {fileID: 7728275695507245035}
-  PV: {fileID: 0}
+  PV: {fileID: 4755670782678666468}
 --- !u!114 &2383843247202239363
 MonoBehaviour:
   m_ObjectHideFlags: 0

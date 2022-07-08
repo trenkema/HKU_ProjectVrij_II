@@ -55,6 +55,8 @@ public class Spider : MonoBehaviour
     public float turnSpeed;
     [Range(0.001f, 1)]
     public float walkDrag;
+    [Range(0, 1)]
+    public float stopMagnitude;
 
     [Header("Grounding")]
     public CapsuleCollider capsuleCollider;
@@ -379,12 +381,12 @@ public class Spider : MonoBehaviour
         transform.position += currentVelocity;
     }
 
-    public void turn(Vector3 goalForward)
+    public void turn(Vector3 goalForward, Vector2 moveInput)
     {
         //Make sure goalForward is orthogonal to transform up
         goalForward = Vector3.ProjectOnPlane(goalForward, transform.up).normalized;
 
-        if (goalForward == Vector3.zero || Vector3.Angle(goalForward, transform.forward) < Mathf.Epsilon)
+        if (goalForward == Vector3.zero || Vector3.Angle(goalForward, transform.forward) < Mathf.Epsilon || moveInput == Vector2.zero)
         {
             return;
         }
@@ -396,9 +398,9 @@ public class Spider : MonoBehaviour
     //** Movement methods for public access**//
     // It is advised to call these on a fixed update basis.
 
-    public void walk(Vector3 direction)
+    public void walk(Vector3 direction, Vector2 moveInput)
     {
-        if (direction.magnitude < Mathf.Epsilon)
+        if (direction.magnitude < stopMagnitude && moveInput == Vector2.zero)
         {
             if (animator.GetBool("isWalking") == true)
                 animator.SetBool("isWalking", false);
@@ -410,12 +412,6 @@ public class Spider : MonoBehaviour
             animator.SetBool("isWalking", true);
 
         move(direction, walkSpeed);
-    }
-
-    public void run(Vector3 direction)
-    {
-        if (direction.magnitude < Mathf.Epsilon) return;
-        move(direction, runSpeed);
     }
 
     //** Ground Check Method **//
