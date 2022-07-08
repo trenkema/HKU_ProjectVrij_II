@@ -7,6 +7,9 @@ using UnityEngine;
 using System.Collections;
 using Raycasting;
 using UnityEngine.InputSystem;
+using Photon.Realtime;
+using Photon.Pun;
+using ExitGames.Client.Photon;
 
 /*
  * This class needs a reference to the Spider class and calls the walk and turn functions depending on player input.
@@ -26,6 +29,10 @@ public class SpiderController : MonoBehaviour {
     [Header("Camera")]
     public SmoothCamera smoothCam;
 
+    [SerializeField] private PhotonView PV;
+
+    Vector2 moveInput = Vector2.zero;
+
     bool isFalling = false;
 
     bool canMove = false;
@@ -36,8 +43,10 @@ public class SpiderController : MonoBehaviour {
         EventSystemNew.Subscribe(Event_Type.GAME_ENDED, GameEnded);
 
         // Input Events
+        EventSystemNew<float, float>.Subscribe(Event_Type.Move, Move);
         EventSystemNew.Subscribe(Event_Type.Jump, Jump);
         EventSystemNew<bool>.Subscribe(Event_Type.Fall, Fall);
+        EventSystemNew.Subscribe(Event_Type.ForceRespawn, ForceRespawn);
 
         if (GameManager.Instance.gameStarted && !GameManager.Instance.gameEnded)
         {
@@ -59,8 +68,10 @@ public class SpiderController : MonoBehaviour {
         EventSystemNew.Unsubscribe(Event_Type.GAME_ENDED, GameEnded);
 
         // Input Events
+        EventSystemNew<float, float>.Unsubscribe(Event_Type.Move, Move);
         EventSystemNew.Unsubscribe(Event_Type.Jump, Jump);
         EventSystemNew<bool>.Unsubscribe(Event_Type.Fall, Fall);
+        EventSystemNew.Unsubscribe(Event_Type.ForceRespawn, ForceRespawn);
     }
 
     void FixedUpdate() {
@@ -93,7 +104,7 @@ public class SpiderController : MonoBehaviour {
         {
             Vector3 up = spider.transform.up;
             Vector3 right = spider.transform.right;
-            Vector3 input = Vector3.ProjectOnPlane(smoothCam.getCameraTarget().forward, up).normalized * Input.GetAxis("Vertical") + (Vector3.ProjectOnPlane(smoothCam.getCameraTarget().right, up).normalized * Input.GetAxis("Horizontal"));
+            Vector3 input = Vector3.ProjectOnPlane(smoothCam.getCameraTarget().forward, up).normalized * moveInput.y + (Vector3.ProjectOnPlane(smoothCam.getCameraTarget().right, up).normalized * moveInput.x);
             Quaternion fromTo = Quaternion.AngleAxis(Vector3.SignedAngle(up, spider.getGroundNormal(), right), right);
             input = fromTo * input;
             float magnitude = input.magnitude;
@@ -104,6 +115,20 @@ public class SpiderController : MonoBehaviour {
     }
 
     #region Input Events
+    private void ForceRespawn()
+    {
+        object[] content = new object[] { PV.ViewID, false };
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+        PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+
+    private void Move(float _x, float _y)
+    {
+        moveInput = new Vector2(_x, _y);
+    }
+
     private void Jump()
     {
         spider.Jump();

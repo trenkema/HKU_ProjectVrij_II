@@ -100,6 +100,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  PV: {fileID: 669192346168029125}
 --- !u!114 &4243265428724414321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +172,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16449
+  PV: {fileID: 669192346168029125}
 --- !u!114 &4907994382566777300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +202,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  PV: {fileID: 669192346168029125}
 --- !u!114 &6862320316127509825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,8 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96248dd2506ca864cb2e38963b81b5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 669192346168029125}
   soundType: 1
+  PV: {fileID: 669192346168029125}
 --- !u!114 &5339022723796117012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 669192346168029125}
-  checkPVOwner: 1
 --- !u!114 &669192346168029125
 MonoBehaviour:
   m_ObjectHideFlags: 0

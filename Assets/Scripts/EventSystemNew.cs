@@ -33,7 +33,8 @@ public enum Event_Type
     Swing,
     Fall,
     ChangeSpectator,
-    Respawn
+    ForceRespawn,
+    RopeForward
 }
 
 public static class EventSystemNew

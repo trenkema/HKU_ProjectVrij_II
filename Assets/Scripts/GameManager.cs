@@ -83,17 +83,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             if (!gameStarted && !gameEnded)
             {
                 StartGame();
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LeaveRoom();
         }
     }
 

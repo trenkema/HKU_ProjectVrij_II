@@ -3096,6 +3096,7 @@ MonoBehaviour:
   isFallingCheckTime: 0.25
   spider: {fileID: 3522027600439065312}
   smoothCam: {fileID: 7728275695507245035}
+  PV: {fileID: 0}
 --- !u!114 &2383843247202239363
 MonoBehaviour:
   m_ObjectHideFlags: 0

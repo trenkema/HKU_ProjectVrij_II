@@ -9,15 +9,13 @@ public class NetworkDestroyObject : MonoBehaviour
 {
     [SerializeField] private PhotonView PV;
 
-    [SerializeField] private bool checkPVOwner = false;
-
     bool isDestroyed = false;
 
     public void NetworkDestroy(GameObject _objectToDestroy)
     {
         if (!isDestroyed)
         {
-            if (checkPVOwner && !PV.IsMine)
+            if (!PV.IsMine)
             {
                 return;
             }
@@ -32,7 +30,7 @@ public class NetworkDestroyObject : MonoBehaviour
     {
         if (!isDestroyed)
         {
-            if (checkPVOwner && !PV.IsMine)
+            if (!PV.IsMine)
             {
                 return;
             }
@@ -46,6 +44,11 @@ public class NetworkDestroyObject : MonoBehaviour
 
     public void OutOfBorder(int _photonViewID)
     {
+        if (!PV.IsMine)
+        {
+            return;
+        }
+
         object[] content = new object[] { _photonViewID, false };
 
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };

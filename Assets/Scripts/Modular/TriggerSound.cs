@@ -7,20 +7,22 @@ using ExitGames.Client.Photon;
 
 public class TriggerSound : MonoBehaviour
 {
-    [SerializeField] private PhotonView PV;
-
     [SerializeField] private Sound_Type soundType;
+
+    [SerializeField] private PhotonView PV;
 
     public void Trigger()
     {
-        if (PV.IsMine)
+        if (!PV.IsMine)
         {
-            //SOUND
-            object[] content = new object[] { (int)soundType, PV.ViewID, true };
-
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-
-            PhotonNetwork.RaiseEvent((int)Event_Code.SoundTrigger, content, raiseEventOptions, SendOptions.SendReliable);
+            return;
         }
+
+        //SOUND
+        object[] content = new object[] { (int)soundType, PV.ViewID, true };
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+        PhotonNetwork.RaiseEvent((int)Event_Code.SoundTrigger, content, raiseEventOptions, SendOptions.SendReliable);
     }
 }

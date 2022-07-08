@@ -10,8 +10,15 @@ public class CollisionOverlap : MonoBehaviour
     [SerializeField] IntEvent intEvent = new IntEvent();
     [SerializeField] private LayerMask layerMask = new LayerMask();
 
+    [SerializeField] private PhotonView PV;
+
     private void OnCollisionEnter(Collision collision)
     {
+        if (!PV.IsMine)
+        {
+            return;
+        }
+
         if (IsInLayerMask(collision.gameObject, layerMask))
         {
             onTrigger?.Invoke();

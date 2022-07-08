@@ -60,6 +60,8 @@ public class RopeGenerator : MonoBehaviour
 
     bool isCurrentlySwinging = false;
 
+    bool isForwardPressed = false;
+
     bool canMove = false;
 
     private void OnEnable()
@@ -70,6 +72,7 @@ public class RopeGenerator : MonoBehaviour
 
         // Input Events
         EventSystemNew<bool>.Subscribe(Event_Type.Swing, Swing);
+        EventSystemNew<bool>.Subscribe(Event_Type.RopeForward, RopeForwardState);
 
         if (GameManager.Instance.gameStarted && !GameManager.Instance.gameEnded)
         {
@@ -89,6 +92,7 @@ public class RopeGenerator : MonoBehaviour
 
         // Input Events
         EventSystemNew<bool>.Unsubscribe(Event_Type.Swing, Swing);
+        EventSystemNew<bool>.Unsubscribe(Event_Type.RopeForward, RopeForwardState);
     }
 
     private void OnDestroy()
@@ -117,21 +121,9 @@ public class RopeGenerator : MonoBehaviour
             return;
         }
 
-        if (isCurrentlySwinging)
+        if (isCurrentlySwinging && isForwardPressed)
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                lastRopePointRB.AddForce((cam.transform.forward * forwardForce) + (cam.transform.up * upwardForce));
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            object[] content = new object[] { PV.ViewID, false };
-
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-
-            PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, content, raiseEventOptions, SendOptions.SendReliable);
+            lastRopePointRB.AddForce((cam.transform.forward * forwardForce) + (cam.transform.up * upwardForce));
         }
     }
 
@@ -147,6 +139,11 @@ public class RopeGenerator : MonoBehaviour
         {
             DestroyRope();
         }
+    }
+
+    private void RopeForwardState(bool _isPressed)
+    {
+        isForwardPressed = _isPressed;
     }
 
     private void DestroyRope()
@@ -173,8 +170,6 @@ public class RopeGenerator : MonoBehaviour
 
         if (Physics.Raycast(startPoint.position, startPoint.forward, out rayHit, maxDistance, raycastLayers, QueryTriggerInteraction.Ignore))
         {
-            Debug.Log("GENERATING ROPE");
-
             GenerateRope(rayHit.point);
         }
         else
