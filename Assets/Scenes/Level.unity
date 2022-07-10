@@ -10874,11 +10874,14 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
-  intEvent:
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1561046896}
-        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
+      - m_Target: {fileID: 335373661}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
         m_MethodName: OutOfBorder
         m_Mode: 0
         m_Arguments:
@@ -10889,6 +10892,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
   layerMask:
     serializedVersion: 2
     m_Bits: 32768
@@ -22735,10 +22741,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 752018919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4801e660130e954fa60b9da4e85ba05, type: 3}
+  m_Script: {fileID: 11500000, guid: 4793bd6e46806ff43a847c41f22b0195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud: {fileID: 804092727}
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 804092727}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 804092727}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gObjEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 131072
+  PV: {fileID: 0}
 --- !u!1 &752528251
 GameObject:
   m_ObjectHideFlags: 0
@@ -23601,10 +23646,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 784065599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4801e660130e954fa60b9da4e85ba05, type: 3}
+  m_Script: {fileID: 11500000, guid: 4793bd6e46806ff43a847c41f22b0195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud: {fileID: 730326450}
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 730326450}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 730326450}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gObjEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 131072
+  PV: {fileID: 0}
 --- !u!1 &786381734
 GameObject:
   m_ObjectHideFlags: 0
@@ -24765,7 +24849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnTimeText: {fileID: 221373468}
   respawnTime: 5
-  respawnTimeIncrease: 5
+  respawnTimeIncrease: 2
   maxRespawnTime: 15
   playerPrefab: VRController
   spiderPrefab: SpiderController
@@ -37480,6 +37564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3849404105794684587, guid: 5b99f53fe6b04ce4cb2e6988422ee42f,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849404105794684587, guid: 5b99f53fe6b04ce4cb2e6988422ee42f,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -38651,11 +38740,14 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
-  intEvent:
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1561046896}
-        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
+      - m_Target: {fileID: 335373661}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
         m_MethodName: OutOfBorder
         m_Mode: 0
         m_Arguments:
@@ -38666,6 +38758,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
   layerMask:
     serializedVersion: 2
     m_Bits: 32768
@@ -41585,10 +41680,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 1346512887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4801e660130e954fa60b9da4e85ba05, type: 3}
+  m_Script: {fileID: 11500000, guid: 4793bd6e46806ff43a847c41f22b0195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud: {fileID: 1911336080}
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1911336080}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1911336080}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gObjEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 131072
+  PV: {fileID: 0}
 --- !u!1001 &1346613925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48996,11 +49130,14 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
-  intEvent:
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1561046896}
-        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
+      - m_Target: {fileID: 335373661}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
         m_MethodName: OutOfBorder
         m_Mode: 0
         m_Arguments:
@@ -49011,6 +49148,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
   layerMask:
     serializedVersion: 2
     m_Bits: 32768
@@ -55828,11 +55968,14 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
-  intEvent:
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1561046896}
-        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
+      - m_Target: {fileID: 335373661}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
         m_MethodName: OutOfBorder
         m_Mode: 0
         m_Arguments:
@@ -55843,6 +55986,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
   layerMask:
     serializedVersion: 2
     m_Bits: 32768
@@ -56525,11 +56671,14 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
-  intEvent:
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1561046896}
-        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
+      - m_Target: {fileID: 335373661}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
         m_MethodName: OutOfBorder
         m_Mode: 0
         m_Arguments:
@@ -56540,6 +56689,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
   layerMask:
     serializedVersion: 2
     m_Bits: 32768
@@ -56722,11 +56874,14 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
-  intEvent:
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1561046896}
-        m_TargetAssemblyTypeName: NetworkDestroyObject, Assembly-CSharp
+      - m_Target: {fileID: 335373661}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
         m_MethodName: OutOfBorder
         m_Mode: 0
         m_Arguments:
@@ -56737,6 +56892,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
   layerMask:
     serializedVersion: 2
     m_Bits: 32768
@@ -59532,7 +59690,6 @@ MonoBehaviour:
   - {fileID: 149444263}
   - {fileID: 1641631590}
   - {fileID: 512259830}
-  objectsToEnableForNonVROnStart: []
   playerWonHUDNonVR: {fileID: 1540895942}
   playerWonNameTextNonVR: {fileID: 2113631299}
   playerWonHUDVR: {fileID: 512259830}
@@ -68260,6 +68417,7 @@ GameObject:
   - component: {fileID: 9159997926524685876}
   - component: {fileID: 9159997926524685878}
   - component: {fileID: 9159997926524685879}
+  - component: {fileID: 9159997926524685881}
   - component: {fileID: 9159997926524685880}
   m_Layer: 6
   m_Name: Fly Buzzer (Melee Weapon)
@@ -68280,7 +68438,6 @@ GameObject:
   - component: {fileID: 3027821295438771653}
   - component: {fileID: 3027821295438771654}
   - component: {fileID: 3027821295438771650}
-  - component: {fileID: 3027821295438771649}
   - component: {fileID: 3027821295438771655}
   - component: {fileID: 3027821295438771657}
   - component: {fileID: 3027821295438771656}
@@ -68288,6 +68445,8 @@ GameObject:
   - component: {fileID: 3027821295438771660}
   - component: {fileID: 3027821295438771659}
   - component: {fileID: 3027821295438771661}
+  - component: {fileID: 3027821295438771663}
+  - component: {fileID: 3027821295438771662}
   m_Layer: 6
   m_Name: HandventilatorLang
   m_TagString: Untagged
@@ -68295,22 +68454,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3027821295438771649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3027821295438771648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc158ab964c50a49b7ffe05df10d5ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layersToInteractWith:
-    serializedVersion: 2
-    m_Bits: 32768
-  forwardForce: -300
 --- !u!135 &3027821295438771650
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -68610,6 +68753,60 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &3027821295438771662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027821295438771648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437763ea506410e40831743ede32e10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: -300
+  PV: {fileID: 3027821295438771658}
+--- !u!114 &3027821295438771663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027821295438771648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4793bd6e46806ff43a847c41f22b0195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3027821295438771662}
+        m_TargetAssemblyTypeName: AddForce, Assembly-CSharp
+        m_MethodName: AddForwardForceToRB
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 32768
+  PV: {fileID: 3027821295438771658}
 --- !u!33 &3230598631497244874
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -69038,8 +69235,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 2990348058256843869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee5d70010b8baa34580fd6cfad0c6e1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2da1de2f6d008974aac36f0399791788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spiderTag: Spider
+  PV: {fileID: 9159997926524685875}
+--- !u!114 &9159997926524685881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990348058256843869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53dc556559281004f99d4d4d9fc6391b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9159997926524685880}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
+        m_MethodName: DestroySpider
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 32768
   PV: {fileID: 9159997926524685875}

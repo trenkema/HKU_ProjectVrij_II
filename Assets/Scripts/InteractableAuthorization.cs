@@ -9,14 +9,16 @@ public class InteractableAuthorization : MonoBehaviour
 
     private void Start()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
+
         if (GameManager.Instance.isVR)
         {
-            if (!PhotonNetwork.IsMasterClient)
+            foreach (var photonView in photonViewsToTakeOver)
             {
-                foreach (var photonView in photonViewsToTakeOver)
-                {
-                    photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
-                }
+                photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
             }
         }
     }

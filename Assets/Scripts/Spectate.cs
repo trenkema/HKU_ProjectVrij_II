@@ -43,22 +43,6 @@ public class Spectate : MonoBehaviour
         EventSystemNew<int>.Unsubscribe(Event_Type.ChangeSpectator, ChangeSpectator);
     }
 
-    private void SpiderDied(bool _ownDeath, bool _increaseRespawnTime)
-    {
-        if (_ownDeath)
-        {
-            spectateID = 0;
-
-            spectateHUD.SetActive(true);
-
-            isSpectating = true;
-
-            spiders = FindObjectsOfType<RopeGenerator>();
-        }
-
-        SetSpectating();
-    }
-
     private void SetSpectating()
     {
         if (!isSpectating)
@@ -89,15 +73,6 @@ public class Spectate : MonoBehaviour
         }
     }
 
-    private void NoSpidersAlive()
-    {
-        spectateCamera.gameObject.SetActive(false);
-        noSpectatorsCamera.gameObject.SetActive(true);
-        cam.gameObject.SetActive(true);
-
-        spiderNameText.text = "Nobody";
-    }
-
     private void SetSpectateTarget()
     {
         noSpectatorsCamera.gameObject.SetActive(false);
@@ -109,6 +84,50 @@ public class Spectate : MonoBehaviour
         cam.gameObject.SetActive(true);
 
         spiderNameText.text = spiders[spectateID].GetComponent<PhotonView>().Controller.NickName;
+    }
+
+    private void ChangeSpectator(int _previousOrNext)
+    {
+        if (isSpectating)
+        {
+            spectateID += _previousOrNext;
+
+            if (spectateID < 0)
+            {
+                spectateID = FindObjectsOfType<RopeGenerator>().Length - 1;
+            }
+            else if (spectateID > FindObjectsOfType<RopeGenerator>().Length - 1)
+            {
+                spectateID = 0;
+            }
+
+            SpiderDied(false, false);
+        }
+    }
+
+    private void SpiderDied(bool _ownDeath, bool _increaseRespawnTime)
+    {
+        if (_ownDeath)
+        {
+            spectateID = 0;
+
+            spectateHUD.SetActive(true);
+
+            isSpectating = true;
+
+            spiders = FindObjectsOfType<RopeGenerator>();
+        }
+
+        SetSpectating();
+    }
+
+    private void NoSpidersAlive()
+    {
+        spectateCamera.gameObject.SetActive(false);
+        noSpectatorsCamera.gameObject.SetActive(true);
+        cam.gameObject.SetActive(true);
+
+        spiderNameText.text = "Nobody";
     }
 
     private void SpiderRespawned(bool _ownRespawn)
@@ -130,25 +149,6 @@ public class Spectate : MonoBehaviour
         }
         else
         {
-            SpiderDied(false, false);
-        }
-    }
-
-    private void ChangeSpectator(int _previousOrNext)
-    {
-        if (isSpectating)
-        {
-            spectateID += _previousOrNext;
-
-            if (spectateID < 0)
-            {
-                spectateID = FindObjectsOfType<RopeGenerator>().Length - 1;
-            }
-            else if (spectateID > FindObjectsOfType<RopeGenerator>().Length - 1)
-            {
-                spectateID = 0;
-            }
-
             SpiderDied(false, false);
         }
     }

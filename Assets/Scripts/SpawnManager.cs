@@ -28,18 +28,6 @@ public class SpawnManager : MonoBehaviour
 
     int startRespawnTime;
 
-    private void Awake()
-    {
-        currentTime = respawnTime;
-
-        startRespawnTime = respawnTime;
-
-        foreach (var item in startHUDSVR)
-        {
-            item.SetActive(false);
-        }
-    }
-
     private void OnEnable()
     {
         EventSystemNew.Subscribe(Event_Type.SPAWN_PLAYER, SpawnPlayer);
@@ -52,6 +40,18 @@ public class SpawnManager : MonoBehaviour
         EventSystemNew.Unsubscribe(Event_Type.SPAWN_PLAYER, SpawnPlayer);
         EventSystemNew.Unsubscribe(Event_Type.SPAWN_SPIDER, SpawnSpider);
         EventSystemNew<bool, bool>.Unsubscribe(Event_Type.SPIDER_DIED, SpiderDied);
+    }
+
+    private void Awake()
+    {
+        currentTime = respawnTime;
+
+        startRespawnTime = respawnTime;
+
+        foreach (var item in startHUDSVR)
+        {
+            item.SetActive(false);
+        }
     }
 
     private void SpawnPlayer()

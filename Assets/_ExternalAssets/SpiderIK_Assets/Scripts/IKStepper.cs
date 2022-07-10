@@ -342,10 +342,6 @@ public class IKStepper : MonoBehaviour {
 
             PhotonNetwork.RaiseEvent((int)Event_Code.SoundTrigger, content, raiseEventOptions, SendOptions.SendReliable);
         }
-        ////SOUND
-        //spiderWalkSound = FMODUnity.RuntimeManager.CreateInstance("event:/SpiderStep");
-        //spiderWalkSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(spider.gameObject));
-        //spiderWalkSound.start();
 
         if (timeSinceLastStep < stepCooldown) return false;
 

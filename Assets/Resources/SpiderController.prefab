@@ -2998,7 +2998,8 @@ GameObject:
   - component: {fileID: 2728775439532156639}
   - component: {fileID: 6332434669677768168}
   - component: {fileID: 8462545090377098042}
-  - component: {fileID: 3876751351951920891}
+  - component: {fileID: 5073811925196541321}
+  - component: {fileID: 2382786919862942768}
   m_Layer: 15
   m_Name: SpiderController
   m_TagString: Spider
@@ -3344,7 +3345,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &3876751351951920891
+--- !u!114 &5073811925196541321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3353,12 +3354,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 2059377557813265921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928a344bc4c75414dae744d4b87e8f61, type: 3}
+  m_Script: {fileID: 11500000, guid: 53dc556559281004f99d4d4d9fc6391b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2382786919862942768}
+        m_TargetAssemblyTypeName: AddPoints, Assembly-CSharp
+        m_MethodName: SetPoints
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gObjEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 16384
+  PV: {fileID: 4755670782678666468}
+--- !u!114 &2382786919862942768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059377557813265921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d89a2c9c68c8a94eaccf051093b7b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 4755670782678666468}
-  scoreToEarn: 1
-  spiderEarnPointsTag: SpiderEarnPoints
 --- !u!1 &2059377557833229412
 GameObject:
   m_ObjectHideFlags: 0
@@ -5606,8 +5645,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
-  m_fontSizeBase: 75
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5742,8 +5781,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 125
-  m_fontSizeBase: 125
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5880,8 +5919,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6002,9 +6041,7 @@ MonoBehaviour:
   - {fileID: 3522027600439065312}
   - {fileID: 974648722269106508}
   - {fileID: 2383843247202239363}
-  - {fileID: 3876751351951920891}
   gameObjectsToDisable:
-  - {fileID: 0}
   - {fileID: 3777555452190476919}
   - {fileID: 8002606571124352995}
   - {fileID: 3279600700123277109}

@@ -1015,7 +1015,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3226569219045431905}
-  - {fileID: 3226569220032989449}
   - {fileID: 3226569219277437401}
   - {fileID: 142089033380553641}
   m_Father: {fileID: 2082527347915767766}
@@ -1406,7 +1405,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3226569219195826305}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3226569219277437412
 MonoBehaviour:
@@ -1929,50 +1928,6 @@ Transform:
   m_Father: {fileID: 3226569219706897502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3226569220032989455
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3226569220032989449}
-  - component: {fileID: 3226569220032989448}
-  m_Layer: 0
-  m_Name: XR Interaction Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &3226569220032989449
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3226569220032989455}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11613755, y: 1.3174016, z: 2.1848934}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3226569219195826305}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3226569220032989448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3226569220032989455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3226569220047089543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,7 +3575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e129a9a730b6f640ab38bb58eb27bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsToEarn: 0
+  _points: 0
 --- !u!1 &5095256558305565802
 GameObject:
   m_ObjectHideFlags: 0
@@ -3844,7 +3799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4932013479662461276}
   - component: {fileID: 8701947034374875862}
-  - component: {fileID: 6928727562445382043}
+  - component: {fileID: 296562210963935074}
   m_Layer: 14
   m_Name: HeadCollider
   m_TagString: SpiderEarnPoints
@@ -3881,7 +3836,7 @@ CapsuleCollider:
   m_Height: 0.45
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &6928727562445382043
+--- !u!114 &296562210963935074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3893,7 +3848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e129a9a730b6f640ab38bb58eb27bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsToEarn: 1
+  _points: 1
 --- !u!1 &8214280454196436777
 GameObject:
   m_ObjectHideFlags: 0
@@ -4577,7 +4532,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2de84c948fcc438448873dff1784aea5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2de84c948fcc438448873dff1784aea5,
         type: 3}

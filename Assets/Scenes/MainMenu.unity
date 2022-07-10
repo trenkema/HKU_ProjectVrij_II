@@ -14457,7 +14457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!114 &765900430
 MonoBehaviour:
@@ -20345,7 +20345,7 @@ MonoBehaviour:
   hudNonVR: {fileID: 21667336}
   hudVR: {fileID: 1226061702}
   roomNameInputFieldNonVR: {fileID: 58432218}
-  roomNameTextNonVR: {fileID: 1732565387}
+  roomNameTextNonVR: {fileID: 1575282627}
   errorTextNonVR: {fileID: 1191305022}
   roomNameTextVR: {fileID: 871378637}
   errorTextVR: {fileID: 382521965}
@@ -23270,6 +23270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bfd5d176467b44e89748bc0987761e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isVR: 0
   objectsToDisableForVR:
   - {fileID: 21667336}
   - {fileID: 2051221988}
@@ -23278,14 +23279,12 @@ MonoBehaviour:
   - {fileID: 1226061702}
   - {fileID: 108348391}
   - {fileID: 130528986}
-  objectsToEnableForNonVROnStart: []
   playerWonHUDNonVR: {fileID: 0}
   playerWonNameTextNonVR: {fileID: 0}
   playerWonHUDVR: {fileID: 0}
   playerWonNameTextsVR: []
   leftHandPalmCollider: {fileID: 0}
   rightHandPalmCollider: {fileID: 0}
-  isVR: 0
 --- !u!4 &1278974578
 Transform:
   m_ObjectHideFlags: 0
@@ -23315,7 +23314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minutesText: {fileID: 1587880543}
   scoreText: {fileID: 197709151}
-  minMinutes: 3
+  minMinutes: 1
   maxMinutes: 7
   minScoreNeeded: 3
   maxScoreNeeded: 10

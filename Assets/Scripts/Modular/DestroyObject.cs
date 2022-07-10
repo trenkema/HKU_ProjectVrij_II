@@ -9,9 +9,9 @@ public class DestroyObject : MonoBehaviour
 {
     [SerializeField] private PhotonView PV;
 
-    bool isDestroyed = false;
+    private bool isDestroyed = false;
 
-    public void Destroy(GameObject _objectToDestroy)
+    public void Destroy(GameObject _gObj)
     {
         if (!isDestroyed)
         {
@@ -22,37 +22,41 @@ public class DestroyObject : MonoBehaviour
 
             isDestroyed = true;
 
-            PhotonNetwork.Destroy(_objectToDestroy);
+            PhotonNetwork.Destroy(_gObj);
         }
     }
 
-    public void Destroy(int _photonViewID)
-    {
-        if (!isDestroyed)
-        {
-            if (!PV.IsMine)
-            {
-                return;
-            }
-
-            isDestroyed = true;
-
-            GameObject gObj = PhotonView.Find(_photonViewID).gameObject;
-            PhotonNetwork.Destroy(gObj);
-        }
-    }
-
-    public void OutOfBorder(int _photonViewID)
+    public void DestroySpider(GameObject _gObj)
     {
         if (!PV.IsMine)
         {
             return;
         }
 
-        object[] content = new object[] { _photonViewID, false };
+        if (_gObj.TryGetComponent(out PhotonView photonView))
+        {
+            object[] content = new object[] { photonView.ViewID, true };
 
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
-        PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, content, raiseEventOptions, SendOptions.SendReliable);
+        }
+    }
+
+    public void OutOfBorder(GameObject _gObj)
+    {
+        if (!PV.IsMine)
+        {
+            return;
+        }
+
+        if (_gObj.TryGetComponent(out PhotonView photonView))
+        {
+            object[] content = new object[] { photonView.ViewID, false };
+
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+            PhotonNetwork.RaiseEvent((int)Event_Code.DestroySpider, content, raiseEventOptions, SendOptions.SendReliable);
+        }
     }
 }

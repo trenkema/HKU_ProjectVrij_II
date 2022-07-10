@@ -166,7 +166,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  intEvent:
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  gObjEventExit:
     m_PersistentCalls:
       m_Calls: []
   layerMask:

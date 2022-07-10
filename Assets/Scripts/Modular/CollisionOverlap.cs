@@ -7,7 +7,9 @@ using Photon.Pun;
 public class CollisionOverlap : MonoBehaviour
 {
     [SerializeField] private UnityEvent onTrigger = new UnityEvent();
-    [SerializeField] IntEvent intEvent = new IntEvent();
+    [SerializeField] private UnityEvent onTriggerExit = new UnityEvent();
+    [SerializeField] private UnityEvent<GameObject> gObjEvent = new UnityEvent<GameObject>();
+    [SerializeField] private UnityEvent<GameObject> gObjEventExit = new UnityEvent<GameObject>();
     [SerializeField] private LayerMask layerMask = new LayerMask();
 
     [SerializeField] private PhotonView PV;
@@ -23,14 +25,26 @@ public class CollisionOverlap : MonoBehaviour
         {
             onTrigger?.Invoke();
 
-            if (collision.transform.TryGetComponent(out PhotonView PV))
-            {
-                intEvent?.Invoke(PV.ViewID);
-            }
+            gObjEvent?.Invoke(collision.gameObject);
         }
     }
 
-    public bool IsInLayerMask(GameObject obj, LayerMask layerMask)
+    private void OnCollisionExit(Collision collision)
+    {
+        if (!PV.IsMine)
+        {
+            return;
+        }
+
+        if (IsInLayerMask(collision.gameObject, layerMask))
+        {
+            onTriggerExit?.Invoke();
+
+            gObjEventExit?.Invoke(collision.gameObject);
+        }
+    }
+
+    private bool IsInLayerMask(GameObject obj, LayerMask layerMask)
     {
         return ((layerMask.value & (1 << obj.layer)) > 0);
     }
