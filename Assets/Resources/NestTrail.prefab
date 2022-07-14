@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 998454599117814815}
   - component: {fileID: 4240472964065316968}
   m_Layer: 0
-  m_Name: WebTrail
+  m_Name: NestTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   webPrefabName: Web
-  nestPrefabName: 
+  nestPrefabName: Nest
   PV: {fileID: 669192346168029125}
 --- !u!114 &4747340473139564592
 MonoBehaviour:
@@ -133,7 +133,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4243265428724414321}
         m_TargetAssemblyTypeName: WebTrail, Assembly-CSharp
-        m_MethodName: CreateWeb
+        m_MethodName: CreateNest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -354,7 +354,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5daffd924f4d0494c83ce461ca913878, type: 2}
+  - {fileID: 2100000, guid: be5bedb9f42770549af7600305d316fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

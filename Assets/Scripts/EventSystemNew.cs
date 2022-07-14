@@ -16,6 +16,7 @@ public enum Event_Type
     CAN_SWING,
 
     // Game States
+    PRE_GAME,
     GAME_STARTED,
     GAME_WON,
     GAME_ENDED,

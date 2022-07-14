@@ -10,6 +10,8 @@ public class WebTrail : MonoBehaviour
 {
     [SerializeField] string webPrefabName;
 
+    [SerializeField] string nestPrefabName;
+
     [SerializeField] PhotonView PV;
 
     public void CreateWeb()
@@ -17,6 +19,14 @@ public class WebTrail : MonoBehaviour
         if (PV.IsMine)
         {
             PhotonNetwork.Instantiate(webPrefabName, transform.position, Quaternion.identity);
+        }
+    }
+
+    public void CreateNest()
+    {
+        if (PV.IsMine)
+        {
+            PhotonNetwork.Instantiate(nestPrefabName, transform.position, Quaternion.identity);
         }
     }
 

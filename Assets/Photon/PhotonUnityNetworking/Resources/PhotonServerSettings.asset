@@ -51,6 +51,7 @@ MonoBehaviour:
   - RPC_MouthEntered
   - RPC_DestroySpider
   - RPC_SyncWebImpactSound
+  - RPC_AddForwardForceToRB
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

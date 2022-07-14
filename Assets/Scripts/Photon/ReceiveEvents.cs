@@ -13,6 +13,7 @@ public enum Event_Code
     RespawnSpider,
     UpdateScore,
 
+    PreGame,
     GameStarted,
     GameWon,
     GameRestarted,
@@ -115,6 +116,14 @@ public class ReceiveEvents : MonoBehaviour
             EventSystemNew<Player, int>.RaiseEvent(Event_Type.UPDATE_SCORE, correctPlayer, (int)data[1]);
         }
 
+        if (eventCode == (int)Event_Code.PreGame)
+        {
+            if (!GameManager.Instance.preGame)
+            {
+                EventSystemNew.RaiseEvent(Event_Type.PRE_GAME);
+            }
+        }
+
         if (eventCode == (int)Event_Code.GameStarted)
         {
             if (!GameManager.Instance.gameStarted)
@@ -156,7 +165,7 @@ public class ReceiveEvents : MonoBehaviour
         {
             object[] data = (object[])_photonEvent.CustomData;
 
-            EventSystemNew<float, bool>.RaiseEvent(Event_Type.SYNC_TIMER, (float)data[0], (bool)data[1]);
+            EventSystemNew<float, bool, bool>.RaiseEvent(Event_Type.SYNC_TIMER, (float)data[0], (bool)data[1], (bool)data[2]);
         }
     }
 }

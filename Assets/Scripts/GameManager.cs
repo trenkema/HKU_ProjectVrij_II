@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public bool isVR { get { return _isVR; } }
 
+    public bool preGame { private set; get; }
+
     public bool gameStarted { private set; get; }
 
     public bool gameEnded { private set; get; }
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnEnable()
     {
         base.OnEnable();
+
+        EventSystemNew.Subscribe(Event_Type.PRE_GAME, PreGameStarted);
 
         EventSystemNew<string>.Subscribe(Event_Type.GAME_WON, GameWon);
 
@@ -46,6 +50,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnDisable()
     {
         base.OnDisable();
+
+        EventSystemNew.Unsubscribe(Event_Type.PRE_GAME, PreGameStarted);
 
         EventSystemNew<string>.Unsubscribe(Event_Type.GAME_WON, GameWon);
 
@@ -85,7 +91,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            if (!gameStarted && !gameEnded)
+            if (!preGame)
+            {
+                StartPreGame();
+
+                return;
+            }
+
+            if (!gameStarted && !gameEnded && preGame)
             {
                 StartGame();
             }
@@ -105,6 +118,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 
         PhotonNetwork.RaiseEvent((int)Event_Code.GameStarted, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+    
+    public void StartPreGame()
+    {
+        object[] content = new object[] { };
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+        PhotonNetwork.RaiseEvent((int)Event_Code.PreGame, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+
+    private void PreGameStarted()
+    {
+        preGame = true;
     }
 
     private void GameStarted()

@@ -11,7 +11,7 @@ public class OnStartGame : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
+        EventSystemNew.Subscribe(Event_Type.PRE_GAME, GameStarted);
 
         EventSystemNew.Subscribe(Event_Type.GAME_ENDED, GameEnded);
 
@@ -45,7 +45,7 @@ public class OnStartGame : MonoBehaviour
 
     private void OnDisable()
     {
-        EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
+        EventSystemNew.Unsubscribe(Event_Type.PRE_GAME, GameStarted);
 
         EventSystemNew.Unsubscribe(Event_Type.GAME_ENDED, GameEnded);
     }

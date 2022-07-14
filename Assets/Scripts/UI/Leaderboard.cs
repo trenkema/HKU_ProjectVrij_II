@@ -61,9 +61,12 @@ public class Leaderboard : MonoBehaviourPunCallbacks
 
     private void RemoveLeaderboardItem(Player _player)
     {
-        Destroy(leaderboardItems[_player].gameObject);
+        if (leaderboardItems.ContainsKey(_player))
+        {
+            Destroy(leaderboardItems[_player].gameObject);
 
-        leaderboardItems.Remove(_player);
+            leaderboardItems.Remove(_player);
+        }
     }
 
     private void UpdateScore(Player _player, int _score)
@@ -82,7 +85,10 @@ public class Leaderboard : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        AddLeaderboardItem(newPlayer);
+        if (!newPlayer.CustomProperties.ContainsKey("isVR"))
+        {
+            AddLeaderboardItem(newPlayer);
+        }
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

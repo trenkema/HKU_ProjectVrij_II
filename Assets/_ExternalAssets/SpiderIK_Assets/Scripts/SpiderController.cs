@@ -43,7 +43,7 @@ public class SpiderController : MonoBehaviour {
 
     private void OnEnable()
     {
-        EventSystemNew.Subscribe(Event_Type.GAME_STARTED, GameStarted);
+        EventSystemNew.Subscribe(Event_Type.PRE_GAME, GameStarted);
         EventSystemNew.Subscribe(Event_Type.GAME_ENDED, GameEnded);
 
         // Input Events
@@ -68,7 +68,7 @@ public class SpiderController : MonoBehaviour {
 
     private void OnDisable()
     {
-        EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, GameStarted);
+        EventSystemNew.Unsubscribe(Event_Type.PRE_GAME, GameStarted);
         EventSystemNew.Unsubscribe(Event_Type.GAME_ENDED, GameEnded);
 
         // Input Events
@@ -123,16 +123,31 @@ public class SpiderController : MonoBehaviour {
     #region Input Events
     private void Move(float _x, float _y)
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         moveInput = new Vector2(_x, _y);
     }
 
     private void Jump()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         spider.Jump();
     }
 
     private void Fall(bool _isFalling)
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         if (_isFalling && spider.IsGrounded())
         {
             Invoke("SetFalling", isFallingCheckTime);

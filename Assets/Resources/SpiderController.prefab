@@ -3000,6 +3000,7 @@ GameObject:
   - component: {fileID: 8462545090377098042}
   - component: {fileID: 5073811925196541321}
   - component: {fileID: 2382786919862942768}
+  - component: {fileID: 2918446279968488580}
   m_Layer: 15
   m_Name: SpiderController
   m_TagString: Spider
@@ -3366,6 +3367,18 @@ MonoBehaviour:
   gObjEvent:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2918446279968488580}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
+        m_MethodName: DestroySpider
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2382786919862942768}
         m_TargetAssemblyTypeName: AddPoints, Assembly-CSharp
         m_MethodName: SetPoints
@@ -3395,6 +3408,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d89a2c9c68c8a94eaccf051093b7b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PV: {fileID: 4755670782678666468}
+--- !u!114 &2918446279968488580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059377557813265921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da1de2f6d008974aac36f0399791788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 4755670782678666468}
@@ -5292,10 +5318,12 @@ MonoBehaviour:
   spiderCamera: {fileID: 2059377558581881328}
   spiderCollider: {fileID: 6332434669677768168}
   webTrailPrefabName: WebTrail
+  nestTrailPrefabName: NestTrail
   webTrailSpawnPoint: {fileID: 7728275695751807984}
   webShootCooldownText: {fileID: 7848551659987795759}
   webTrailSpeed: 5
   shootDelay: 5
+  nestDelay: 3
 --- !u!1 &3777555452190476919
 GameObject:
   m_ObjectHideFlags: 0
@@ -8095,18 +8123,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7728275697481223116}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3271422843335574587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7458295359528908445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b299e02522df547a0617f853622642, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4964661663518766746
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,10 +5,19 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using TMPro;
+using UnityEngine.Events;
 
 public class LevelTimer : MonoBehaviourPunCallbacks
 {
-    [SerializeField] TextMeshProUGUI timeText;
+    [SerializeField] UnityEvent onGameStart;
+
+    [SerializeField] TextMeshProUGUI timeTextVR;
+    [SerializeField] TextMeshProUGUI timeTextNonVR;
+
+    [SerializeField] GameObject preGameText;
+    [SerializeField] GameObject inGameText;
+
+    [SerializeField] float preGameTime = 30;
 
     float startTime = 0;
 
@@ -16,28 +25,34 @@ public class LevelTimer : MonoBehaviourPunCallbacks
 
     bool timerIsRunning = false;
 
+    bool isPreGame = true;
+
     bool gameOver = false;
 
     public override void OnEnable()
     {
         base.OnEnable();
 
+        EventSystemNew.Subscribe(Event_Type.PRE_GAME, StartPreGameTimer);
+
         EventSystemNew.Subscribe(Event_Type.GAME_STARTED, StartTimer);
 
         EventSystemNew<string>.Subscribe(Event_Type.GAME_WON, GameWon);
 
-        EventSystemNew<float, bool>.Subscribe(Event_Type.SYNC_TIMER, SyncTimer);
+        EventSystemNew<float, bool, bool>.Subscribe(Event_Type.SYNC_TIMER, SyncTimer);
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
 
+        EventSystemNew.Unsubscribe(Event_Type.PRE_GAME, StartPreGameTimer);
+
         EventSystemNew.Unsubscribe(Event_Type.GAME_STARTED, StartTimer);
 
         EventSystemNew<string>.Unsubscribe(Event_Type.GAME_WON, GameWon);
 
-        EventSystemNew<float, bool>.Unsubscribe(Event_Type.SYNC_TIMER, SyncTimer);
+        EventSystemNew<float, bool, bool>.Unsubscribe(Event_Type.SYNC_TIMER, SyncTimer);
     }
 
     private void Awake()
@@ -46,7 +61,7 @@ public class LevelTimer : MonoBehaviourPunCallbacks
 
         startTime *= 60;
 
-        DisplayTime(startTime);
+        DisplayTime(preGameTime);
     }
 
     private void Update()
@@ -69,6 +84,22 @@ public class LevelTimer : MonoBehaviourPunCallbacks
                 timerIsRunning = false;
 
                 DisplayTime(timeRemaining);
+
+                if (isPreGame)
+                {
+                    isPreGame = false;
+
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        object[] content = new object[] { };
+
+                        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+
+                        PhotonNetwork.RaiseEvent((int)Event_Code.GameStarted, content, raiseEventOptions, SendOptions.SendReliable);
+                    }
+
+                    return;
+                }
 
                 if (PhotonNetwork.IsMasterClient)
                 {
@@ -101,20 +132,39 @@ public class LevelTimer : MonoBehaviourPunCallbacks
         float minutes = Mathf.FloorToInt(_timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(_timeToDisplay % 60);
 
-        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeTextVR.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeTextNonVR.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    private void StartPreGameTimer()
+    {
+        preGameText.SetActive(true);
+
+        timerIsRunning = true;
+
+        timeRemaining = preGameTime;
     }
 
     private void StartTimer()
     {
+        onGameStart?.Invoke();
+
+        preGameText.SetActive(false);
+        inGameText.SetActive(true);
+
         timerIsRunning = true;
 
         timeRemaining = startTime;
     }
 
-    private void SyncTimer(float _timeRemaining, bool _timerIsRunning)
+    private void SyncTimer(float _timeRemaining, bool _timerIsRunning, bool _isPreGame)
     {
         timeRemaining = _timeRemaining;
         timerIsRunning = _timerIsRunning;
+        isPreGame = _isPreGame;
+
+        preGameText.SetActive(_isPreGame);
+        inGameText.SetActive(!_isPreGame);
 
         DisplayTime(timeRemaining);
     }
@@ -128,7 +178,7 @@ public class LevelTimer : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            object[] content = new object[] { timeRemaining, timerIsRunning };
+            object[] content = new object[] { timeRemaining, timerIsRunning, isPreGame };
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
 
